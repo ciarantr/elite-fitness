@@ -1,0 +1,77 @@
+name: Run Tests and Create Pull Request
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  test_and_create_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Django tests
+        run: |
+          python manage.py test apps
+          echo "::set-output name=tests_passed::$(python -c 'exit(not any(line.endswith("FAILED") for line in open("test_results.txt"))))')"
+
+      - name: Determine test status
+        id: test_status
+        run: |
+          if ${{ needs.test_and_push.outputs.tests_passed }}; then
+            echo "::set-output name=status::success"
+          else
+            echo "::set-output name=status::failure"
+          fi
+
+      - name: Create Pull Request
+        if: ${{ needs.test_and_push.outputs.status == 'failure' }
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "[Automated] Fix failing tests"
+          title: "[Automated] Fix failing tests"
+          body: |
+            Automated pull request created to fix failing tests.
+            Please review and merge if appropriate.
+          branch: fix-failing-tests
+          branch-suffix: timestamp
+          base: main
+
+
+      - name: Create npm build
+        if: ${{ needs.test_and_push.outputs.status == 'success' }
+        run: |
+          # Add commands to deploy to the main branch here
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -B main
+          git merge --no-ff staging -m "Merge branch 'staging' into main"
+          git push origin main
+          
+          steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-node@v3
+            with:
+              node-version: 18
+          
+          - name: Install npm dependencies
+          - run: npm install
+          
+          - name: Build the project
+          - run: npm run build
+          
+
