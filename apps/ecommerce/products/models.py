@@ -122,3 +122,48 @@ class Category(models.Model):
             self.slug = create_slug(self.name)
         super().save(*args, **kwargs)
 
+
+class BaseProduct(models.Model):
+    class Meta:
+        abstract = True
+        verbose_name_plural = 'Products'
+        ordering = ['name']
+
+    created = models.DateTimeField(auto_now_add=True,
+                                   verbose_name='Created on',
+                                   editable=False)
+
+    updated = models.DateTimeField(auto_now=True,
+                                   verbose_name='Last updated')
+
+    sku = models.CharField(max_length=15,
+                           blank=True,
+                           help_text='Generated automatically on save.',
+                           unique=True)
+    slug = models.SlugField(max_length=200,
+                            blank=True,
+                            help_text='Generated automatically on save.',
+                            unique=True)
+
+    description = models.TextField(
+        max_length=1000, null=True, blank=True
+    )
+    name = models.CharField(max_length=150, verbose_name='Product name',
+                            unique=True,
+                            help_text='Required. 150 characters or fewer.')
+    is_active = models.BooleanField(default=True, verbose_name='Active')
+    is_reviewed = models.BooleanField(default=False, verbose_name='Reviewed')
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        # Generate slug if it doesn't exist
+        if not self.slug:
+            self.slug = create_slug(self.name)
+            self.sku = create_sku(self.name)
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
