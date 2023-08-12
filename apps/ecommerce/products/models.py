@@ -167,3 +167,27 @@ class BaseProduct(models.Model):
     def __str__(self):
         return self.name
 
+
+class Product(BaseProduct):
+    """Product model"""
+
+    class Meta:
+        verbose_name_plural = 'Products'
+        ordering = ['name']
+
+    attributes = models.ManyToManyField(Attribute,
+                                        related_name='product_attributes',
+                                        blank=True)
+
+    brand = models.ForeignKey(Brand,
+                              blank=True,
+                              null=True,
+                              related_name='product_brand',
+                              on_delete=models.SET_NULL)
+    category = models.ManyToManyField(Category,
+                                      related_name='product_category',
+                                      blank=True)
+
+    def __str__(self):
+        return self.name
+
