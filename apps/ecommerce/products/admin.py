@@ -36,7 +36,6 @@ class KeyBenefitInline(admin.StackedInline):
     verbose_name_plural = 'Product Key Benefit'
 
 
-# Register your models here.
 product_fieldset = (
     ('Product Details', {
         'fields': (
@@ -62,5 +61,71 @@ product_fieldset = (
      }),
 
 )
+
+
+@admin.register(Variant)
+class VariantAdmin(admin.ModelAdmin):
+    """Variant admin"""
+
+    # get product brand
+    def product_brand(self, obj):
+        return obj.product.brand if obj.product.brand else "None"
+
+    def display_product_categories(self, obj):
+        return ", ".join(
+            [category.name for category in obj.product.category.all()])
+
+    display_product_categories.short_description = 'Product Categories'
+
+    inlines = (ImageInline,)
+    filter_horizontal = ['attributes']
+
+    readonly_fields = [
+        'slug',
+        'sku',
+        'product_brand',
+        'created',
+        'updated',
+        'display_product_categories'
+    ]
+
+    list_display = [
+        'name',
+        'product',
+        'product_brand',
+        'price',
+        'stock',
+        'is_active',
+    ]
+
+    list_filter = [
+        'is_active',
+        'is_reviewed',
+        'product__brand__name',
+        'product__category__name',
+        'created', 'updated'
+    ]
+
+    search_fields = [
+        'name',
+        'sku',
+        'slug',
+        'product__name',
+        'product__sku',
+        'product__slug',
+        'product__brand__name',
+        'product__category__name'
+    ]
+
+    # add product field to fieldsets tuple
+    product_fieldset = product_fieldset + (('Related Product', {
+        'fields': (
+            'product',
+            'product_brand',
+            'display_product_categories'
+        )
+    }),)
+
+    fieldsets = product_fieldset
 
 
