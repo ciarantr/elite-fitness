@@ -1,0 +1,175 @@
+{% load static %}
+<nav class="relative lg:container lg:mx-auto lg:px-8">
+  <div class="flex flex-wrap items-center">
+    <button
+      aria-haspopup="true"
+      aria-controls="menu-content"
+      id="toggle-nav-sidebar"
+      type="button"
+      class="lg:hidden"
+    >
+      <img
+        src="{% static 'icons/mobile-menu.svg' %}"
+        height="32"
+        width="32"
+        aria-controls="mobile-menu"
+        alt="menu icon"
+      />
+    </button>
+    {# Account login / signup desktop #}
+    <a
+      class="hidden lg:flex lg:items-center lg:gap-x-1"
+      href="#"
+    >
+      <img
+        src="{% static 'icons/account.svg' %}"
+        height="26"
+        width="26"
+        alt="account icon"
+      />
+      <span class="hidden lg:inline lg:text-sm">Account</span>
+    </a>
+
+    <a
+      class="flex grow justify-center gap-x-2"
+      href="{% url 'home' %}"
+    >
+      <img
+        src="{% static 'icons/elite-fitness-icon.svg' %}"
+        height="26"
+        width="26"
+        alt="home icon"
+      />
+      <span class="text-lg lg:text-xl">Elite Fitness</span>
+    </a>
+
+    <div class="flex items-center justify-end gap-x-6">
+      {# Search button for desktop #}
+      <button
+        id="toggle-search-form"
+        aria-haspopup="true"
+        aria-controls="search-container"
+        class="hidden lg:flex lg:gap-x-2"
+        aria-expanded="false"
+      >
+        <img
+          src="{% static 'icons/search.svg' %}"
+          height="20"
+          width="20"
+          alt="heart icon"
+        />
+        Search
+      </button>
+
+      {# Account login / signup mobile #}
+      <a
+        class="flex items-center gap-x-1 lg:hidden"
+        href="#"
+      >
+        <img
+          src="{% static 'icons/account.svg' %}"
+          height="26"
+          width="26"
+          alt="account icon"
+        />
+        <span class="hidden lg:inline lg:text-sm">Account</span>
+      </a>
+      <a
+        class="lg:flex lg:items-center lg:gap-x-1"
+        href="#"
+      >
+        <img
+          src="{% static 'icons/cart.svg' %}"
+          height="26"
+          width="26"
+          alt="account icon"
+        />
+        <span class="hidden lg:inline lg:text-sm">Cart</span>
+      </a>
+    </div>
+    {# Search form mobile #}
+    <div
+      id="search-container"
+      aria-hidden="true"
+      class="mt-6 w-full lg:absolute lg:inset-x-0 lg:top-[65px] lg:px-8"
+    >
+      {% include 'partials/forms/search_form.html' %}
+    </div>
+  </div>
+
+  {# Desktop menu and submenu #}
+  <div class="hidden lg:mx-auto lg:mt-8 lg:flex lg:max-w-4xl lg:justify-evenly">
+    {# menu 1 health #}
+    <div
+      class="desktop-nav-menu"
+      aria-haspopup="true"
+      aria-controls="submenu-1"
+      aria-expanded="false"
+    >
+      Health
+    </div>
+    <div
+      aria-hidden="true"
+      id="submenu-1"
+      class="absolute top-[5.5rem] z-50 w-full rounded bg-white shadow-lg"
+    >
+      <ul
+        class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
+      >
+        <li><a href="#">Vitamins & Supplements</a></li>
+        <li><a href="#">Food-Grown® Organic Turmaforte</a></li>
+        <li><a href="#">Food-Grown® Energy Support</a></li>
+        <li><a href="#">Skin Health Duo</a></li>
+        <li><a href="#">Food-Grown® Bone + Muscle Support</a></li>
+      </ul>
+    </div>
+    {# menu 2 fitness #}
+    <div
+      class="desktop-nav-menu"
+      aria-haspopup="true"
+      aria-expanded="false"
+      aria-controls="submenu-2"
+    >
+      Fitness
+    </div>
+    <div
+      aria-hidden="true"
+      id="submenu-2"
+      class="absolute top-[5.5rem] z-50 w-full bg-white shadow-lg"
+    >
+      <ul
+        class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
+      >
+        <li><a href="#">Peloton Bike</a></li>
+        <li><a href="#">Peloton Thread</a></li>
+        <li><a href="#">Peloton Dumbbells</a></li>
+        <li><a href="#">Peloton Yogo Blocks</a></li>
+        <li><a href="#">Peloton Row</a></li>
+      </ul>
+    </div>
+    {# menu 3 bestsellers #}
+    <div
+      aria-haspopup="true"
+      aria-controls="submenu-3"
+      aria-expanded="false"
+      class="desktop-nav-menu"
+    >
+      Bestsellers
+    </div>
+    <div
+      aria-hidden="true"
+      id="submenu-3"
+      class="absolute top-[5.5rem] z-50 w-full bg-white shadow-lg"
+    >
+      <ul
+        class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
+      >
+        <li><a href="#">Peloton Bike</a></li>
+        <li><a href="#">Hurom H300 Self-Feeding Slow Juicer in Red</a></li>
+        <li><a href="#">Organic Protein + Superfood Powder</a></li>
+        <li><a href="#">Peloton Yogo Blocks</a></li>
+        <li><a href="#">Food-Grown® Bone + Muscle Support</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
