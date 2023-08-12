@@ -1,0 +1,45 @@
+{% load static %}
+<nav
+  aria-hidden="true"
+  id="menu-content"
+  class="absolute left-0 top-0 z-50 h-screen w-[min(400px,_80%)] space-y-8 border-r bg-white px-6 pt-4 transition-opacity duration-300"
+>
+  <div class="flex">
+    <button
+      aria-controls="menu-content"
+      aria-expanded="false"
+      type="button"
+    >
+      <img
+        src="{% static 'icons/close.svg' %}"
+        alt="mobile menu icon"
+        width="26"
+        height="26"
+      />
+    </button>
+
+    <a
+      href="{% url 'home' %}"
+      class="flex grow justify-center gap-x-2"
+    >
+      <img
+        src="{% static 'icons/elite-fitness-icon.svg' %}"
+        alt="Elite Fitness icon "
+      />
+      <span class="text-lg">Elite</span>
+    </a>
+  </div>
+  {# Navigation links #}
+  <ul class="space-y-3 divide-y [&_li]:pt-3">
+    <li class="text-lg font-semibold">Shop by range</li>
+    <li><a href="#">Vitamins & Supplements</a></li>
+    <li><a href="#">Juicers & Blenders</a></li>
+    <li><a href="#">Fitness & Exercise equipment</a></li>
+  </ul>
+  <ul class="space-y-3 text-lg">
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Shipping & Delivery</a></li>
+    <li><a href="#">Returns</a></li>
+  </ul>
+  {# Social media links #} {% include 'partials/social_media_block.html' %}
+</nav>
