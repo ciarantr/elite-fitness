@@ -187,3 +187,37 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = product_fieldset
 
 
+@admin.register(Attribute)
+class AttributeAdmin(admin.ModelAdmin):
+    """Attribute admin"""
+    list_display = ['type', 'name']
+
+    class Meta:
+        model = Attribute
+
+
+@admin.register(Brand)
+class BrandAdmin(admin.ModelAdmin):
+    """Brand admin"""
+
+    def product_count(self, obj):
+        products = Product.objects.filter(brand=obj)
+        return products.count()
+
+    list_display = ['name', 'product_count', 'slug']
+    search_fields = ['name']
+    readonly_fields = ['slug']
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    """Category admin"""
+
+    # sum the number of products in a category
+    def product_count(self, obj):
+        products = Product.objects.filter(category=obj)
+        return products.count()
+
+    list_display = ['name', 'product_count', 'slug']
+    search_fields = ['name']
+    readonly_fields = ['slug']
