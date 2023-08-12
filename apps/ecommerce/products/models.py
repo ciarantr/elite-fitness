@@ -30,7 +30,6 @@ class Attribute(models.Model):
         return f'{self.type} - {self.name}'
 
 
-# Create your models here.
 class Brand(models.Model):
     """Brand model"""
 
