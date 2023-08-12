@@ -1,4 +1,9 @@
 from django.db import models
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
+from apps.ecommerce.products.utils import create_sku, create_slug
+
 
 class AttributeType(models.TextChoices):  # enum class
     """Attribute type model"""
@@ -26,3 +31,29 @@ class Attribute(models.Model):
 
 
 # Create your models here.
+class Brand(models.Model):
+    """Brand model"""
+
+    class Meta:
+        verbose_name_plural = 'Brands'
+        ordering = ['name']
+
+    name = models.CharField(max_length=50,
+                            unique=True,
+                            blank=True,
+                            verbose_name='Brand name',
+                            help_text='Required. 50 characters or fewer.')
+
+    slug = models.SlugField(max_length=100,
+                            help_text='Generated automatically on save.',
+                            blank=True, unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # Generate slug if it doesn't exist
+        if not self.slug:
+            self.slug = create_slug(self.name)
+        super().save(*args, **kwargs)
+
