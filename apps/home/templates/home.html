@@ -1,0 +1,131 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="mx-auto mt-12 px-2 lg:container md:px-0">
+  <div class="px-2 lg:grid">
+    <img
+      class="rounded lg:[grid-area:1_/_1]"
+      src="{% static 'images/hero-banner-wn.jpg' %}"
+      width="2880"
+      height="800"
+      loading="eager"
+      alt="model holding a bottle of wild nutrition supplements in a meadow"
+    />
+    <div class="relative z-20 space-y-4 pl-10 pt-8 lg:[grid-area:1_/_1]">
+      <h1 class="text-2xl lg:text-4xl">
+        Boost Your Fitness Journey with<br />
+        Premium Health Supplements!
+      </h1>
+      <a
+        class="block w-max justify-end rounded-full bg-slate-500 px-2 py-1 text-lg text-white"
+        href="#"
+        >Shop now</a
+      >
+    </div>
+  </div>
+
+  <main class="mt-64 px-2">
+    {# Featured products #}
+    <section class="mx-auto lg:container">
+      <h2 class="mb-8 text-center text-3xl">Featured products</h2>
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+        {% for product in products %}
+        <div class="flex flex-col gap-y-4 rounded-lg bg-white pb-4 shadow-lg">
+          <img
+            class="rounded-t-lg"
+            src="{{ product.image.image.url }}"
+            alt="{{ product.name }}"
+            loading="eager"
+          />
+
+          <div class="flex h-full flex-col gap-y-4 px-2">
+            <div class="flex flex-wrap items-baseline gap-x-2">
+              <h3 class="text-lg">{{ product.name }}</h3>
+              <span class="font-bold text-gray-700">€{{ product.price }}</span>
+            </div>
+            <div class="mt-auto flex gap-x-2">
+              <a
+                class="block w-max grow justify-end rounded-full border border-slate-500 px-2 py-1 text-center text-lg font-light text-slate-500 transition-colors ease-in-out hover:bg-slate-700 hover:text-white"
+                href="#"
+                >View Product</a
+              >
+              <button>
+                <img
+                  src="{% static 'icons/cart.svg' %}"
+                  class="rounded-full border-2 border-transparent p-1 transition-colors ease-in-out hover:border-slate-500"
+                  width="38"
+                  height="38"
+                  loading="eager"
+                  alt="add to cart icon"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="mt-64">
+      <hr />
+      <h2 class="pt-12 text-3xl">The Wild Nutrition Difference</h2>
+      <div class="mt-8 grid md:grid-cols-2 md:gap-x-24">
+        <img
+          src="{% static 'images/wild-nutrition-supplement-bundle.webp' %}"
+          alt="wild nutrition supplement bundle on counter-top"
+          class="rounded"
+          width="1500"
+          height="1100"
+          loading="lazy"
+        />
+        <div class="grid">
+          <div class="space-y-4 place-self-center">
+            <h3 class="text-lg">
+              Wild Nutrition is a UK brand that provides premium supplements.
+            </h3>
+            <p>
+              All of their products are made from whole food ingredients, which
+              means they are highly bio-available & easily absorbed by the body.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-16 grid pb-12 md:grid-cols-2 md:gap-x-24">
+        <img
+          src="{% static 'images/ashwagandha-plant.webp' %}"
+          alt="fresh ashwagandha plant"
+          class="rounded lg:order-2"
+          width="1500"
+          height="1100"
+          loading="lazy"
+        />
+        <div class="grid">
+          <div class="space-y-4 place-self-center">
+            <h3 class="text-xl">
+              Widely studied ingredients to support your health goals.
+            </h3>
+            <p>
+              Wild Nutrition products are formulated by a team of nutritional
+              experts, so you can be sure you're getting the best quality.
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </section>
+
+    <section
+      class="mt-64 space-y-4 rounded-lg bg-[hsl(49deg,_20%,_84%)] p-8 shadow lg:mx-auto lg:max-w-4xl"
+    >
+      <h4 class="font-semibold">
+        Join Elite Fitness for Exclusive Offers and Community Connection!
+      </h4>
+      <p class="font-light">
+        Sign up now for exclusive offers and become part of the Elite Fitness
+        community! Join us to discover exciting benefits and connect with
+        like-minded individuals dedicated to fitness and wellness. Don't wait,
+        be part of the Elite Fitness experience today!
+      </p>
+    </section>
+  </main>
+</section>
+
+{% endblock %}
