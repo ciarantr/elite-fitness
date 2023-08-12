@@ -37,3 +37,30 @@ class KeyBenefitInline(admin.StackedInline):
 
 
 # Register your models here.
+product_fieldset = (
+    ('Product Details', {
+        'fields': (
+            'is_active',
+            'is_reviewed',
+            'name',
+            'description',
+            'price',
+            'stock',
+            'attributes',
+
+        )
+    }),
+    ('Meta Data',
+     {
+         'fields': (
+             'sku',
+             'slug',
+             'created',
+             'updated',
+         ),
+         'classes': ('collapse',),
+     }),
+
+)
+
+
