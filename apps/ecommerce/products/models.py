@@ -93,3 +93,32 @@ class KeyBenefit(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Category(models.Model):
+    """Category model"""
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['name']
+
+    name = models.CharField(max_length=100,
+                            unique=True,
+                            verbose_name='Category name',
+                            help_text='Required. 100 characters or fewer.')
+
+    slug = models.SlugField(
+        max_length=150,
+        blank=True,
+        help_text='Generated automatically on save.',
+        unique=True)
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        # Generate slug if it doesn't exist
+        if not self.slug:
+            self.slug = create_slug(self.name)
+        super().save(*args, **kwargs)
+
