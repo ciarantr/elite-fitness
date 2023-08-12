@@ -1,0 +1,38 @@
+{% load static %}
+<form id="product-search-form">
+  <div
+    class="grid grid-cols-[auto,1fr,auto] items-center rounded bg-white px-2 py-3 lg:shadow"
+  >
+    <button
+      class="h-full pr-2"
+      type="submit"
+    >
+      <img
+        src="{% static 'icons/search.svg' %}"
+        width="30"
+        height="30"
+        alt="search icon"
+      />
+    </button>
+    <label>
+      <input
+        class="h-full w-full rounded bg-inherit placeholder-gray-800 focus-visible:outline-0"
+        name="q"
+        type="text"
+        placeholder="Search our store"
+      />
+    </label>
+    <button
+      aria-label="close-search"
+      type="reset"
+      class="hidden lg:block"
+    >
+      <img
+        src="{% static 'icons/close.svg' %}"
+        alt="close icon"
+        width="30"
+        height="30"
+      />
+    </button>
+  </div>
+</form>
