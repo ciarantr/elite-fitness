@@ -1,0 +1,105 @@
+{% load static %}
+<footer class="mt-12 bg-black text-white">
+  <section
+    class="space-y-8 px-8 pb-8 pt-12 lg:container lg:mx-auto lg:grid lg:grid-cols-4 lg:space-y-0 [&_h2]:text-lg [&_li]:text-sm"
+  >
+    <div class="lg:hidden">
+      {% include 'partials/social_media_block.html' %}
+    </div>
+    {# useful links #}
+    <div class="space-y-2">
+      <h2>About us</h2>
+      <ul
+        class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
+      >
+        <li><a href="#">Who we are</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="space-y-2">
+      <h2>Help & Information</h2>
+      <ul
+        class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
+      >
+        <li><a href="#">Shipping & Information</a></li>
+        <li><a href="#">Refunds & Returns</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+    <div class="space-y-2">
+      <h2>Brands</h2>
+      <ul
+        class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
+      >
+        <li><a href="#">Wild Nutrition</a></li>
+        <li><a href="#">Pelaton</a></li>
+        <li><a href="#">Humron</a></li>
+        <li><a href="#">Vitamix</a></li>
+        <li><a href="#">Kuvings</a></li>
+      </ul>
+    </div>
+    {# Social media links on desktop #}
+    <div class="hidden lg:block lg:space-y-2">
+      <h2>Let's connect</h2>
+      <ul
+        class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
+      >
+        <li>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit us on Facebook"
+          >
+            Visit us on Facebook
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit us on Instagram"
+          >
+            Visit us on Instagram
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit us on Twitter"
+          >
+            Visit us on Twitter
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <hr />
+  {# copyright & payment icons #}
+  <div class="flex flex-wrap justify-between p-2 lg:container lg:mx-auto">
+    <p class="p-2 text-sm">
+      &copy; <span id="copy-year"></span> Elite Fitness | All rights reserved
+    </p>
+    <div class="flex gap-x-2">
+      <img
+        src="{% static 'icons/visa.svg' %}"
+        alt="Visa logo"
+        width="32"
+        height="32"
+        loading="lazy"
+      />
+      <img
+        src="{% static 'icons/mastercard.svg' %}"
+        alt="Mastercard logo"
+        width="32"
+        height="32"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</footer>
