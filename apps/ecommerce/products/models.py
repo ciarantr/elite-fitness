@@ -212,3 +212,27 @@ class Variant(BaseProduct):
     def __str__(self):
         return self.name
 
+
+class Image(models.Model):
+    """Product image model"""
+    product = models.ForeignKey(Product,
+                                on_delete=models.CASCADE,
+                                related_name='images',
+                                null=True, blank=True)
+    variant = models.ForeignKey(Variant, on_delete=models.CASCADE,
+                                related_name='images',
+                                null=True, blank=True)
+
+    image = models.ImageField(upload_to='products/',
+                              blank=True,
+                              null=True)
+    alt_text = models.CharField(max_length=200,
+                                blank=True,
+                                null=True)
+    img_url = models.URLField(max_length=1024,
+                              blank=True,
+                              null=True)
+
+    def __str__(self):
+        return self.image.name
+
