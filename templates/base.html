@@ -1,0 +1,35 @@
+{% load django_vite %} {% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% vite_hmr_client %}
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    <!-- prettier-ignore -->
+    {% block extra_meta %}{% endblock %}
+
+    {% vite_asset 'js/css-import.js' %} {% vite_asset 'js/main.js' %}
+    <!-- prettier ignore -->
+    {% block extra_js %}{% endblock %}
+
+    <title>Elite Fitness | {% block extra_tite %}{% endblock %}</title>
+  </head>
+  <body>
+    <header class="bg-[hsl(49deg,_20%,_84%)] px-4 py-4">
+      {% include 'partials/navigation/nav_menu_mobile.html' %}
+      <!-- prettier ignore -->
+      {% include 'partials/navigation/nav_menu.html' %}
+    </header>
+    {% block page_header %} {% endblock %} {% block content %}{% endblock %}
+    <!-- prettier ignore -->
+    {% include 'partials/footer.html' %}
+  </body>
+</html>
