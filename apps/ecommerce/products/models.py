@@ -236,3 +236,30 @@ class Image(models.Model):
     def __str__(self):
         return self.image.name
 
+
+def update_slug_and_sku(instance):
+    if instance.pk is not None:
+        original = instance.__class__.objects.get(pk=instance.pk)
+        if instance.name != original.name:
+            instance.slug = create_slug(instance.name)
+            instance.sku = create_sku(instance.name)
+
+
+@receiver(pre_save, sender=Product)
+def update_product_sku_slug(sender, instance, **kwargs):
+    update_slug_and_sku(instance)
+
+
+@receiver(pre_save, sender=Variant)
+def update_variant_sku_slug(sender, instance, **kwargs):
+    update_slug_and_sku(instance)
+
+
+@receiver(pre_save, sender=Brand)
+def update_brand_slug(sender, instance, **kwargs):
+    update_slug_and_sku(instance)
+
+
+@receiver(pre_save, sender=Category)
+def update_category_slug(sender, instance, **kwargs):
+    update_slug_and_sku(instance)
