@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mobile/ Desktop menu animations*/
+/* used to set opacity on hidden elements (mobile / desktop menu)*/
+#menu-content,
+.desktop-nav-menu + div {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#menu-content.open,
+.desktop-nav-menu + div.open,
+#search-container.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+@screen lg {
+  #search-container {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #search-container.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.desktop-nav-menu {
+  @apply pb-4;
+}
+
+.desktop-nav-menu,
+.desktop-nav-menu__active li {
+  @apply relative
+    w-max
+    cursor-pointer;
+}
+/* hover border animation for desktop menu items*/
+.desktop-nav-menu::before,
+.desktop-nav-menu__active li::before {
+  @apply invisible
+    absolute
+    left-0
+    block
+    h-0.5
+    w-full
+    bg-gray-700
+    content-[''];
+  transform: scaleX(0);
+  transition:
+    visibility 0.1s ease-in-out 0s,
+    transform 0.1s ease-in-out 0s;
+}
+
+.desktop-nav-menu:hover::before,
+.desktop-nav-menu__active li:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+.desktop-nav-menu::before {
+  @apply bottom-4;
+}
+
+.desktop-nav-menu__active li::before {
+  @apply -bottom-1;
+}
