@@ -129,3 +129,61 @@ class VariantAdmin(admin.ModelAdmin):
     fieldsets = product_fieldset
 
 
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    """Product admin"""
+
+    # get all variants for a product and create a link for each variant
+    def product_variants(self, obj):
+        variants = obj.variants.all()
+        return format_html(
+            '<br>'.join(
+                ['<a href="/admin/products/variant/{}/change/">{}</a>'.format(
+                    variant.id, variant.name) for variant in variants]))
+
+    inlines = (ImageInline, BenefitInline, KeyBenefitInline,)
+    readonly_fields = ['slug',
+                       'sku',
+                       'created',
+                       'updated',
+                       'product_variants']
+
+    list_display = ['name',
+                    'updated',
+                    'brand',
+                    'price',
+                    'stock',
+                    'is_active', 'is_reviewed']
+
+    list_filter = ['is_active',
+                   'is_reviewed',
+                   'brand',
+                   'category',
+                   'created', 'updated']
+
+    search_fields = ['name',
+                     'sku',
+                     'slug',
+                     'brand__name', 'category__name']
+
+    filter_horizontal = ['attributes', 'category']
+
+    #  insert category and brand in the Product Details fieldset
+    product_fieldset = product_fieldset[:1] + (('Category & Brand', {
+        'fields': (
+            'category',
+            'brand',
+        ),
+        'classes': ('collapse',),
+    }),) + product_fieldset[1:]
+    # insert product_variants in the Product Details fieldset
+    product_fieldset = product_fieldset[:2] + (('Product Variants', {
+        'fields': (
+            'product_variants',
+        ),
+        'classes': ('collapse',),
+    }),) + product_fieldset[2:]
+
+    fieldsets = product_fieldset
+
+
