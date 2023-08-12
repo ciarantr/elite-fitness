@@ -191,3 +191,24 @@ class Product(BaseProduct):
     def __str__(self):
         return self.name
 
+
+class Variant(BaseProduct):
+    """Product variant model"""
+
+    class Meta:
+        verbose_name_plural = 'Product Variants'
+        ordering = ['name']
+
+    attributes = models.ManyToManyField(Attribute,
+                                        related_name='variant_attributes',
+                                        blank=True, )
+
+    product = models.ForeignKey('Product',
+                                related_name='variants',
+                                null=True,
+                                blank=True,
+                                on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
