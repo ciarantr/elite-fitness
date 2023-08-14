@@ -1,5 +1,8 @@
 {% load static %}
-<form id="product-search-form">
+<form
+  id="product-search-form"
+  action="{% url 'products' %}"
+>
   <div
     class="grid grid-cols-[auto,1fr,auto] items-center rounded bg-white px-2 py-3 lg:shadow"
   >
@@ -14,14 +17,14 @@
         alt="search icon"
       />
     </button>
-    <label>
-      <input
-        class="h-full w-full rounded bg-inherit placeholder-gray-800 focus-visible:outline-0"
-        name="q"
-        type="text"
-        placeholder="Search our store"
-      />
-    </label>
+    <label for="search-input">Search products</label>
+    <input
+      class="h-full w-full rounded bg-inherit placeholder-gray-800 focus-visible:outline-0"
+      name="q"
+      id="search-input"
+      type="text"
+      placeholder="Search our store"
+    />
     <button
       aria-label="close-search"
       type="reset"
