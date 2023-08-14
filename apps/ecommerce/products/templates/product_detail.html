@@ -1,0 +1,92 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<section class="container mx-auto mt-12 px-4">
+  <div>
+    <a href="{% url 'home' %}">Home</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'products' %}">Products</a>
+    {% if category.name %}
+    <span class="mx-2">/</span>
+    <a href="{% url 'products' %}?category={{ category.slug }}"
+      >{{ category.name }}</a
+    >
+    {% endif %}
+  </div>
+  {# Product name & price#}
+  <div class="mt-8 md:grid md:grid-cols-2 md:gap-x-32 lg:grid-cols-[2fr,1fr]">
+    <div class="space-y-8 md:col-start-2 md:row-start-1">
+      <div class="space-y-2">
+        <h1 class="text-lg text-slate-500">
+          {% if product.brand and not product_brand_name %}
+          <span class="text-sm font-light">{{ product.brand.name }}</span><br />
+          {% endif %} {{ product.name }}
+        </h1>
+        <p class="text-lg">€{{ product.price }}</p>
+      </div>
+      {# Product key benefits #} {% if key_benefits %}
+      <ul class="hidden md:grid md:grid-cols-2 md:gap-x-2 md:gap-y-6">
+        {% for benefits in key_benefits %}
+        <li
+          class="md:flex md:items-start md:gap-2 md:text-xs md:text-slate-500"
+        >
+          <img
+            src="{% static 'icons/correct.svg' %}"
+            alt="correct icon"
+            width="16"
+            height="16"
+            class="md:rounded-full md:bg-slate-600 md:p-1"
+          />
+          {{ benefits }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    {# Product name & price #}
+    <div class="space-y-6 md:space-y-12">
+      <img
+        class="h-auto w-full md:block lg:max-w-lg"
+        src="{{ product.image }}"
+        alt="{{ product.name }}"
+        width="300"
+        height="300"
+      />
+
+      <div class="space-y-16 md:max-w-2xl">
+        <h2 class="max-w-lg text-sm">{{ product.description }}</h2>
+
+        {# Product key benefits #} {% if key_benefits %}
+        <ul class="grid grid-cols-2 items-start gap-x-8 gap-y-6 md:hidden">
+          {% for benefits in key_benefits %}
+          <li class="flex items-start gap-2 text-sm text-slate-500">
+            <img
+              src="{% static 'icons/correct.svg' %}"
+              alt="correct icon"
+              width="18"
+              height="18"
+              class="rounded-full bg-slate-600 px-1.5 py-1.5"
+            />
+            {{ benefits }}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %} {# Product benefits #} {% if benefits %}
+        <div class="space-y-8">
+          <h3 class="max-w-2xl text-2xl">Key Benefits</h3>
+          <ul class="space-y-8 lg:grid lg:grid-cols-2 lg:gap-12 lg:space-y-0">
+            {% for benefit in benefits %}
+            <li class="space-y-2 text-sm text-slate-500">
+              <h4 class="text-lg font-semibold">{{ benefit.title }}</h4>
+              <p class="text-sm">{{ benefit.description }}</p>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
