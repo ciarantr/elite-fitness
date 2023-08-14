@@ -17,19 +17,21 @@
     {% block extra_meta %}{% endblock %}
 
     {% vite_asset 'js/css-import.js' %} {% vite_asset 'js/main.js' %}
-    <!-- prettier ignore -->
+    <!-- prettier-ignore -->
     {% block extra_js %}{% endblock %}
 
     <title>Elite Fitness | {% block extra_tite %}{% endblock %}</title>
   </head>
-  <body>
+  <body class="flex min-h-screen flex-col">
     <header class="bg-[hsl(49deg,_20%,_84%)] px-4 py-4">
       {% include 'partials/navigation/nav_menu_mobile.html' %}
-      <!-- prettier ignore -->
+      <!-- prettier-ignore -->
       {% include 'partials/navigation/nav_menu.html' %}
     </header>
-    {% block page_header %} {% endblock %} {% block content %}{% endblock %}
-    <!-- prettier ignore -->
-    {% include 'partials/footer.html' %}
+    <section class="flex-auto">
+      {% block page_header %} {% endblock %} {% block content %}{% endblock %}
+    </section>
+    <!-- prettier-ignore -->
+    <div class="flex-shrink-0">{% include 'partials/footer.html' %}</div>
   </body>
 </html>
