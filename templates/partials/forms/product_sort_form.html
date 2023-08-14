@@ -1,0 +1,12 @@
+<form class="sort-form rounded-md border-2 border-slate-400 px-4 py-2">
+  <label for="data-select">{{ label }}:</label>
+  <!-- prettier-ignore -->
+  <select id="data-select" name="{{ name }}">
+  <option disabled selected value>{{ name }} </option>
+    {% for data_name, data_slug in data_choices.items %}
+      <option value="{{ data_slug }}" {% if current_choice == data_slug %}selected{% endif %}>
+        {{ data_name }}
+      </option>
+    {% endfor %}
+  </select>
+</form>
