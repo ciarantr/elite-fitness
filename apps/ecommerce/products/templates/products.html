@@ -1,0 +1,133 @@
+{% extends 'base.html' %} {% load static %} {% block extra_js %}
+<script defer>
+  window.onload = function () {
+    const selectForms = document.querySelectorAll('form.sort-form')
+    console.log(selectForms)
+    selectForms.forEach((form) => {
+      console.log(form)
+      form.addEventListener('change', function () {
+        this.submit()
+      })
+    })
+  }
+</script>
+{% endblock %}
+<!-- prettier-ignore -->
+{% block content %}
+
+<section class="mx-auto mt-12 px-4 lg:container">
+  {# Navigation #}
+  <div>
+    <a href="{% url 'home' %}">Home</a>
+    <span class="mx-2">/</span>
+    <a href="{% url 'products' %}">Products</a>
+    {% if brand %}
+    <span class="mx-2">/</span>
+    <a href="{% url 'products' %}?brand={{ brand }}">{{ brand_name }}</a>
+    {% endif %} {% if category %}
+    <span class="mx-2">/</span>
+    <a href="{% url 'products' %}?category={{ category }}"
+      >{{ category_name }}</a
+    >
+    {% endif %}
+  </div>
+
+  {% if query and results_count > 0 %} {# Search query results#}
+  <div class="mt-12">
+    {% with count=results_count word="product" %}
+    <!-- prettier-ignore -->
+    <p>{{ count }} {{ word }}{{ count|pluralize }} matching '{{ query }}'</p>
+    {% endwith %} {# back to all products #}
+    <a
+      class=":rounded-full mt-4 inline-block rounded-sm border border-slate-500 bg-slate-500 px-3 py-1.5 text-sm text-white transition-colors ease-in-out hover:bg-slate-700 hover:text-white"
+      href="{% url 'products' %}"
+      >View all products</a
+    >
+  </div>
+  {% else %}
+
+  <div class="mt-16 space-y-2">
+    <h1 class="text-xl lg:text-2xl">All products</h1>
+    {% if brand %}
+    <p>Showing all products for the {{ brand_name }} brand</p>
+    {% elif category %}
+    <p>Showing all products for the {{ category_name }} category</p>
+    {% endif %}
+    <p>{{ results_count }} Results</p>
+  </div>
+  {% endif %}
+
+  <!-- prettier-ignore -->
+  {% if paginator.page_range|length > 1 %} {# pagination #}
+  <div class="mt-12 space-x-4 text-center">
+    {% for page_num in paginator.page_range %}
+    <!-- prettier-ignore -->
+    {% if page_num == page_obj.number %}
+    <a
+      class="inline-block rounded-full border border-slate-500 bg-slate-500 px-3 py-1.5 text-sm text-white"
+      href="?page={{ page_num }}&sort={{ current_sort }}"
+      >{{ page_num }}</a
+    >
+    {% else %}
+    <a
+      class="inline-block rounded-full border border-slate-100 px-3 py-1.5 text-sm text-slate-500 transition-colors ease-in-out hover:bg-slate-700 hover:text-white"
+      href="?page={{ page_num }}&sort={{ current_sort }}"
+      >{{ page_num }}</a
+    >
+    {% endif %} {% endfor %}
+  </div>
+  {% endif %} {# filter category/brand/options #}
+  <div class="mt-12 flex flex-wrap gap-4">
+    <!-- prettier-ignore -->
+    {% include "partials/forms/product_sort_form.html" with data_choices=categories current_choice=category  label="Choose Category" name='category' %}
+    <!-- prettier-ignore -->
+    {% include "partials/forms/product_sort_form.html" with data_choices=brands current_choice=brand  label="Choose Brand" name='brand' %}
+    <!-- prettier-ignore -->
+    {% include "partials/forms/product_sort_form.html" with data_choices=sort_options current_choice=current_sort  label="Choose Option" name='sort' %}
+  </div>
+
+  {# all product data (name, image, price) #}
+  <div
+    class="mt-12 grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-x-7 gap-y-12"
+  >
+    <!-- prettier-ignore -->
+    {% for product in products %}
+    <div class="flex flex-col gap-y-4 rounded-lg bg-white pb-4 shadow-lg">
+      <img
+        class="aspect-square w-full rounded-t-lg object-cover"
+        src="{{ product.image }}"
+        alt="{{ product.name }}"
+        width="300"
+        height="300"
+        loading="eager"
+      />
+
+      <div class="flex h-full flex-col gap-y-4 px-2">
+        <div class="flex flex-wrap items-baseline gap-x-2">
+          <h3 class="text-lg">{{ product.name }}</h3>
+          <span class="font-bold text-gray-700">€{{ product.price }}</span>
+        </div>
+        <div class="mt-auto flex gap-x-2">
+          <a
+            class="block w-max grow justify-end rounded-full border border-slate-500 px-2 py-1 text-center text-lg font-light text-slate-500 transition-colors ease-in-out hover:bg-slate-700 hover:text-white"
+            href="{% url 'product_detail' product.slug %}"
+            >View Product</a
+          >
+          <button>
+            <img
+              src="{% static 'icons/cart.svg' %}"
+              class="rounded-full border-2 border-transparent p-1 transition-colors ease-in-out hover:border-slate-500"
+              width="38"
+              height="38"
+              loading="eager"
+              alt="add to cart icon"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
