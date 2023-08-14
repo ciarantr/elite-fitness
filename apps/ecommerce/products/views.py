@@ -102,5 +102,39 @@ class AllProductsView(ListView):
         return context
 
 
+class ProductDetailView(TemplateView):
+    """ A view to display a single product"""
+    template_name = 'product_detail.html'
 
-# Create your views here.
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Get the product otherwise return 404
+        product = get_object_or_404(
+            Product.objects.prefetch_related('images', 'variants__images'),
+            slug=self.kwargs['slug'])
+
+        if product.images.exists():
+            product.image = product.images.first().image.url
+        #  add variant image if exists
+        elif product.variants.exists():
+            product.image = product.variants.first().images.first().image.url
+        else:
+            # set the default image
+            product.image = '/media/products/placeholder.svg'
+
+        context['product'] = product
+        context['category'] = product.category.first()
+        context['benefits'] = product.benefits.all()
+        context['key_benefits'] = product.key_benefits.all()
+
+        if product.brand:
+            product_brand_name = product.brand.name.split()
+            product_name_parts = product.name.split()
+            #  remove brand name from product name if it exists
+            if product_name_parts[0].lower() == product_brand_name[0].lower():
+                context['product_brand_name'] = ' '.join(
+                    product_name_parts[1:]).strip()
+
+        return context
+    
