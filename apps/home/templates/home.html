@@ -15,8 +15,8 @@
         Premium Health Supplements!
       </h1>
       <a
-        class="block w-max justify-end rounded-full bg-slate-500 px-2 py-1 text-lg text-white"
-        href="#"
+        class="block w-max justify-end rounded-md bg-slate-500 px-4 py-1 text-white"
+        href="{% url 'products' %}"
         >Shop now</a
       >
     </div>
@@ -41,22 +41,13 @@
               <h3 class="text-lg">{{ product.name }}</h3>
               <span class="font-bold text-gray-700">€{{ product.price }}</span>
             </div>
-            <div class="mt-auto flex gap-x-2">
+            <div class="mt-auto flex items-center gap-x-1">
               <a
                 class="block w-max grow justify-end rounded-full border border-slate-500 px-2 py-1 text-center text-lg font-light text-slate-500 transition-colors ease-in-out hover:bg-slate-700 hover:text-white"
-                href="#"
+                href="{% url 'product_detail' product.slug %}"
                 >View Product</a
               >
-              <button>
-                <img
-                  src="{% static 'icons/cart.svg' %}"
-                  class="rounded-full border-2 border-transparent p-1 transition-colors ease-in-out hover:border-slate-500"
-                  width="38"
-                  height="38"
-                  loading="eager"
-                  alt="add to cart icon"
-                />
-              </button>
+              {% include 'partials/forms/cart_add_form.html' %}
             </div>
           </div>
         </div>
@@ -112,18 +103,22 @@
       <hr />
     </section>
 
+    {# newsletter signup #}
     <section
-      class="mt-64 space-y-4 rounded-lg bg-[hsl(49deg,_20%,_84%)] p-8 shadow lg:mx-auto lg:max-w-4xl"
+      class="mt-64 space-y-12 rounded-lg bg-[hsl(49deg,_20%,_84%)] p-8 shadow lg:mx-auto lg:max-w-4xl"
     >
-      <h4 class="font-semibold">
-        Join Elite Fitness for Exclusive Offers and Community Connection!
-      </h4>
-      <p class="font-light">
-        Sign up now for exclusive offers and become part of the Elite Fitness
-        community! Join us to discover exciting benefits and connect with
-        like-minded individuals dedicated to fitness and wellness. Don't wait,
-        be part of the Elite Fitness experience today!
-      </p>
+      <div class="space-y-4">
+        <h4 class="font-semibold">
+          Join Elite Fitness for Exclusive Offers and Community Connection!
+        </h4>
+        <p class="font-light">
+          Sign up now for exclusive offers and become part of the Elite Fitness
+          community! Join us to discover exciting benefits and connect with
+          like-minded individuals dedicated to fitness and wellness. Don't wait,
+          be part of the Elite Fitness experience today!
+        </p>
+      </div>
+      <div>{% include 'partials/subscription_form.html' %}</div>
     </section>
   </main>
 </section>

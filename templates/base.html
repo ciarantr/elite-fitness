@@ -17,6 +17,9 @@
     {% block extra_meta %}{% endblock %}
 
     {% vite_asset 'js/css-import.js' %} {% vite_asset 'js/main.js' %}
+    {# stripe #}
+    <script src="https://js.stripe.com/v3/"></script>
+
     <!-- prettier-ignore -->
     {% block extra_js %}{% endblock %}
 
