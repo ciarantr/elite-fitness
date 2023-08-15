@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% load static %} {% block title %}Login{% endblock %}
+<!-- prettier-ignore -->
+{% block content %}
+<main class="container mx-auto mt-16 max-w-lg rounded px-8 py-12 shadow">
+  <h1 class="text-lg font-semibold">Returning customer</h1>
+  <div class="mt-8">{% include 'partials/forms/login.html' %}</div>
+</main>
+{%endblock %}
