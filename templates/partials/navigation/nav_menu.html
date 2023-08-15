@@ -16,10 +16,10 @@
         alt="menu icon"
       />
     </button>
-    {# Account login / signup desktop #}
+    {# Account login / signup desktop #} {% if user.is_authenticated %}
     <a
       class="hidden lg:flex lg:items-center lg:gap-x-1"
-      href="#"
+      href="{% url 'profile' %}"
     >
       <img
         src="{% static 'icons/account.svg' %}"
@@ -27,9 +27,30 @@
         width="26"
         alt="account icon"
       />
-      <span class="hidden lg:inline lg:text-sm">Account</span>
     </a>
+    <div class="hidden lg:block">
+      <span class="inline text-sm">({{ user.username }})</span>
+    </div>
 
+    <div class="ml-6 mt-0.5 hidden text-sm lg:block">
+      <a
+        class="flex items-center gap-x-1"
+        href="{% url 'logout' %}"
+      >
+        <img
+          src="{% static 'icons/logout.svg' %}"
+          height="14"
+          width="14"
+          alt="logout-icon"
+        />
+        Sign out
+      </a>
+    </div>
+
+    {% else %}
+    <!-- prettier-ignore -->
+    <a href="{% url 'profile' %}" class=" text-sm">Sign-in / Register </a>
+    {% endif %}
     <a
       class="flex grow justify-center gap-x-2"
       href="{% url 'home' %}"
@@ -64,7 +85,7 @@
       {# Account login / signup mobile #}
       <a
         class="flex items-center gap-x-1 lg:hidden"
-        href="#"
+        href="{% url 'profile' %}"
       >
         <img
           src="{% static 'icons/account.svg' %}"
@@ -76,15 +97,23 @@
       </a>
       <a
         class="lg:flex lg:items-center lg:gap-x-1"
-        href="#"
+        href="{% url 'cart' %}"
       >
-        <img
-          src="{% static 'icons/cart.svg' %}"
-          height="26"
-          width="26"
-          alt="account icon"
-        />
-        <span class="hidden lg:inline lg:text-sm">Cart</span>
+        <div class="relative">
+          <img
+            src="{% static 'icons/cart.svg' %}"
+            height="30"
+            width="30"
+            alt="account icon"
+          />
+          {% if cart_total_quantity > 0 %}
+          <span
+            class="absolute -right-3 -top-2.5 block rounded-full bg-slate-500 p-0.5 px-2 text-sm text-white"
+          >
+            {{ cart_total_quantity }}</span
+          >
+          {% endif %}
+        </div>
       </a>
     </div>
     {# Search form mobile #}
@@ -111,16 +140,37 @@
     <div
       aria-hidden="true"
       id="submenu-1"
-      class="absolute top-[5.5rem] z-50 w-full rounded bg-white shadow-lg"
+      class="absolute top-[5.5rem] z-50 grid w-full grid-flow-col rounded bg-white shadow-lg"
     >
       <ul
         class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
       >
-        <li><a href="#">Vitamins & Supplements</a></li>
-        <li><a href="#">Food-Grown® Organic Turmaforte</a></li>
-        <li><a href="#">Food-Grown® Energy Support</a></li>
-        <li><a href="#">Skin Health Duo</a></li>
-        <li><a href="#">Food-Grown® Bone + Muscle Support</a></li>
+        <li>
+          <a href="{% url 'products' %}?=category=supplements"
+            >Vitamins & Supplements</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'product_detail' 'food-grown-organic-turmaforte-turmeric' %}"
+            >Food-Grown® Organic Turmaforte</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'food-grown-energy-support'%}"
+            >Food-Grown® Energy Support</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'skin-health-duo'%}"
+            >Skin Health Duo</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support'%}"
+            >Food-Grown® Bone + Muscle Support</a
+          >
+        </li>
       </ul>
     </div>
     {# menu 2 fitness #}
@@ -135,16 +185,60 @@
     <div
       aria-hidden="true"
       id="submenu-2"
-      class="absolute top-[5.5rem] z-50 w-full bg-white shadow-lg"
+      class="absolute top-[5.5rem] z-50 grid w-full grid-flow-col rounded bg-white shadow-lg"
     >
+      {# Gym equipment #}
       <ul
         class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
       >
-        <li><a href="#">Peloton Bike</a></li>
-        <li><a href="#">Peloton Thread</a></li>
-        <li><a href="#">Peloton Dumbbells</a></li>
-        <li><a href="#">Peloton Yogo Blocks</a></li>
-        <li><a href="#">Peloton Row</a></li>
+        <li>
+          <a href="{% url 'products' %}?category=gym-equipment"
+            >Gym Equipment</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-bike'%}">Peloton Bike</a>
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-thread'%}"
+            >Peloton Thread</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-dumbbells'%}"
+            >Peloton Dumbbells</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-yoga-blocks'%}"
+            >Peloton Yoga Blocks</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-row'%}">Peloton Row</a>
+        </li>
+      </ul>
+      {# Juicers & extractors #}
+      <ul
+        class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
+      >
+        <li>
+          <a href="{% url 'products' %}?category=juicers-extractors"
+            >Juicers & Extractors</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'product_detail' 'kuvings-evo820-wide-feed-juicer-in-gunmetal' %}"
+            >Kuvings EVO820 Wide Feed Juicer in Gunmetal</a
+          >
+        </li>
+        <li>
+          <a
+            href="{% url 'product_detail' 'vitamix-ascent-3500i-anniversary-edition-blender-in-graphite' %}"
+            >Vitamix Ascent 3500i Anniversary Edition Blender in Graphite</a
+          >
+        </li>
       </ul>
     </div>
     {# menu 3 bestsellers #}
@@ -159,16 +253,35 @@
     <div
       aria-hidden="true"
       id="submenu-3"
-      class="absolute top-[5.5rem] z-50 w-full bg-white shadow-lg"
+      class="absolute top-[5.5rem] z-50 grid w-full grid-flow-col rounded bg-white shadow-lg"
     >
       <ul
         class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
       >
-        <li><a href="#">Peloton Bike</a></li>
-        <li><a href="#">Hurom H300 Self-Feeding Slow Juicer in Red</a></li>
-        <li><a href="#">Organic Protein + Superfood Powder</a></li>
-        <li><a href="#">Peloton Yogo Blocks</a></li>
-        <li><a href="#">Food-Grown® Bone + Muscle Support</a></li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-bike'%}">Peloton Bike</a>
+        </li>
+        <li>
+          <a
+            href="{% url 'product_detail' 'hurom-h300-self-feeding-slow-juicer-in-red' %}"
+            >Hurom H300 Self-Feeding Slow Juicer in Red</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'organic-protein-superfood-powder'%}"
+            >Organic Protein + Superfood Powder</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'peloton-yoga-blocks'%}"
+            >Peloton Yoga Blocks</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support'%}"
+            >Food-Grown® Bone + Muscle Support</a
+          >
+        </li>
       </ul>
     </div>
   </div>
