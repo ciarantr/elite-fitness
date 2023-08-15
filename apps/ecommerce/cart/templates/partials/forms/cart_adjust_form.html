@@ -1,0 +1,33 @@
+<form
+  action="{% url 'adjust_cart' item.product.id %}"
+  method="POST"
+>
+  {% csrf_token %}
+  <div class="flex items-center space-x-2">
+    <label
+      for="quantity"
+      class="text-sm"
+      >Qty:</label
+    >
+    <input
+      id="quantity"
+      name="quantity"
+      type="number"
+      min="1"
+      max="{{ item.product.stock }}"
+      value="{{ item.quantity }}"
+      class="rounded border border-gray-300 px-2 py-1 text-sm"
+    />
+    <button
+      type="submit"
+      class="rounded bg-blue-600 px-2 py-1 text-sm text-white"
+    >
+      Update
+    </button>
+    <input
+      type="hidden"
+      name="redirect_url"
+      value="{{ request.path }}"
+    />
+  </div>
+</form>
