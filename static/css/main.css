@@ -69,3 +69,122 @@
 .desktop-nav-menu__active li::before {
   @apply -bottom-1;
 }
+
+/* forms */
+
+form {
+  & label {
+    @apply sr-only;
+  }
+
+  &#subscribe-form {
+    @apply flex flex-wrap gap-4;
+
+    /*not input submit*/
+    & input:not([type='submit']) {
+      @apply border
+      border-gray-300
+      focus:border-indigo-500
+      focus:outline-none
+      focus:ring-indigo-500;
+    }
+
+    & input[type='submit'] {
+      @apply w-max
+      bg-black
+      text-white;
+    }
+
+    & input {
+      @apply block
+      w-full
+      rounded-md
+      px-4
+      py-2
+      shadow-sm
+      sm:text-sm;
+    }
+  }
+
+  /*  login form */
+  &#login-form, &#register-form, &#profile-form {
+    @apply flex flex-col gap-4;
+
+    & input, & select {
+      @apply block
+      w-full
+      rounded-md
+      px-4
+      py-2
+      shadow-sm
+      sm:text-sm;
+    }
+
+    & input[type='submit'] {
+      @apply w-max
+      bg-black
+      text-white;
+    }
+
+    & input:not([type='submit']) {
+      @apply border
+      border-gray-300
+      focus:border-indigo-500
+      focus:outline-none
+      focus:ring-indigo-500;
+    }
+  }
+}
+
+form {
+  .field-wrapper {
+    @apply relative;
+  }
+
+  /* Django built-in form error class*/
+  .errorlist {
+    @apply text-sm
+      text-red-500;
+  }
+}
+
+/* Strip */
+/*stripe form elements*/
+
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+  color: #aab7c4;
+}
+
+.fieldset-label {
+  position: relative;
+  right: 0.45rem;
+}
+
+#payment-form .form-control,
+#card-element {
+  color: #000;
+  border: 1px solid #000;
+}
