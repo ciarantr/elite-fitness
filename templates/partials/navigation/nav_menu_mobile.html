@@ -32,9 +32,9 @@
   {# Navigation links #}
   <ul class="space-y-3 divide-y [&_li]:pt-3">
     <li class="text-lg font-semibold">Shop by range</li>
-    <li><a href="#">Vitamins & Supplements</a></li>
-    <li><a href="#">Juicers & Blenders</a></li>
-    <li><a href="#">Fitness & Exercise equipment</a></li>
+    <li><a href="{% url 'products' %}?category=supplements">Vitamins & Supplements</a></li>
+    <li><a href="{% url 'products' %}?category=juicers-extractors">Juicers & Blenders</a></li>
+    <li><a href="{% url 'products' %}?category=gym-equipment">Fitness & Exercise equipment</a></li>
   </ul>
   <ul class="space-y-3 text-lg">
     <li><a href="#">Contact</a></li>
