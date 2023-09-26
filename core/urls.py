@@ -19,13 +19,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+from .views import Handler404View, Handler500View
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('allauth.urls')),
     path('account/', include('apps.accounts.urls')),
     path('', include('apps.home.urls')),
-    path('', include('apps.accounts.urls')),
     path('products/', include('apps.ecommerce.products.urls')),
     path('cart/', include('apps.ecommerce.cart.urls')),
+    path('', include('apps.ecommerce.wishlist.urls')),
     path('checkout/', include('apps.ecommerce.checkout.urls')),
+    path('support/', include('apps.customer_support.urls')),
+    path('subscriptions/', include('apps.subscriptions.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler500 = Handler500View.as_view()
+handler404 = Handler404View.as_view()
