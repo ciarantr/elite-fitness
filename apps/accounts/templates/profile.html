@@ -1,52 +1,54 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block extra_tite %}Profile Account
+information{%endblock %} {% load static %} {% block content %}
 
-<main class="container mx-auto mt-16 px-4">
+<div class="container mx-auto mt-12 space-y-12 px-4">
   <h1 class="text-center text-2xl">Profile</h1>
-  <section
-    class="mt-12 space-y-12 lg:grid lg:grid-cols-2 lg:gap-x-24 lg:space-y-0"
-  >
-    <div class="space-y-3">
-      <h2 class="text-lg">Delivery Information</h2>
-      <div class="max-w-2xl p-4 shadow">
-        {% include 'partials/forms/profile.html' %}
+  <div class="flex justify-between">
+    <a
+      class="flex items-center gap-x-1 text-sm underline underline-offset-2"
+      href=" {% url 'home' %}"
+    >
+      <img
+        aria-hidden="true"
+        src="{% static 'icons/arrow-back.svg' %}"
+        alt="home icon"
+        width="12"
+        height="12"
+      />
+      Home</a
+    >
+    <a
+      class="flex items-center gap-x-1 text-sm underline underline-offset-2"
+      href="{% url 'order_information' %}"
+    >
+      Order Details
+      <img
+        aria-hidden="true"
+        src="{% static 'icons/arrow-back.svg' %}"
+        alt="home icon"
+        width="12"
+        height="12"
+        class="rotate-180"
+      />
+    </a>
+  </div>
+  <hr>
+
+  <main class="container mx-auto mt-16 px-4">
+    <section class="mt-12 space-y-12">
+      <div class="mx-auto max-w-2xl space-y-3">
+        <h2 class="text-lg">Account Information</h2>
+        <div class="p-4 shadow">
+          {% include 'partials/forms/profile_form.html' %}
+        </div>
       </div>
-    </div>
-    <!-- Display orders or any other relevant information -->
-    {% if orders %}
-    <div class="space-y-3">
-      <h3 class="text-lg">Order History</h3>
-      <table class="h-max w-full table-auto rounded shadow">
-        <thead>
-          <tr class="text-sm capitalize tracking-wider text-gray-600">
-            <th class="px-4 py-3">Order Number</th>
-            <th class="px-4 py-3">Status</th>
-            <th class="px-4 py-3">Delivery Cost</th>
-            <th class="px-4 py-3">Grand Total</th>
-          </tr>
-        </thead>
-        {% for order in orders %}
-        <tbody class="text-gray-700">
-          <tr class="border text-center">
-            <td class="px-4 py-3">
-              <a
-                class="text-blue-500"
-                href=" {% url 'checkout_success' order.order_number %}"
-              >
-                {{ order.order_number|truncatechars:8 }}
-              </a>
-            </td>
-            <td class="px-4 py-3">{{ order.get_status_display }}</td>
-            <td class="px-4 py-3">€{{ order.delivery_cost }}</td>
-            <td class="px-4 py-3">€{{ order.grand_total }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <h3 class="text-lg">No orders made.</h3>
-      {% endif %}
-    </div>
-  </section>
-</main>
+      <a
+        class="block rounded bg-slate-700 px-4 py-2 text-center text-sm text-white lg:hidden"
+        href="{% url 'logout' %}"
+        >Sign out</a
+      >
+    </section>
+  </main>
+</div>
 
 {% endblock content %}
