@@ -37,9 +37,17 @@
     <li><a href="{% url 'products' %}?category=gym-equipment">Fitness & Exercise equipment</a></li>
   </ul>
   <ul class="space-y-3 text-lg">
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Shipping & Delivery</a></li>
-    <li><a href="#">Returns</a></li>
+    <li><a href="{% url 'customer_support:contact' %}">Contact</a></li>
+    <li><a href="{% url 'customer_support:shipping-and-information' %}">Shipping & Delivery</a></li>
+    <li><a href="{% url 'customer_support:shipping-and-information' %}">Returns</a></li>
   </ul>
   {# Social media links #} {% include 'partials/social_media_block.html' %}
+  {# Sign in/out links #}
+  {% if user.is_authenticated %}
+  <a
+    class="block rounded bg-slate-700 px-4 py-2 text-center text-sm text-white lg:hidden "
+    href="{% url 'logout' %}"
+  >Sign out</a
+  >
+  {% endif %}
 </nav>
