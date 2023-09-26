@@ -28,8 +28,21 @@
         alt="account icon"
       />
     </a>
-    <div class="hidden lg:block">
+    <div class="hidden lg:flex lg:items-center lg:gap-x-2">
       <span class="inline text-sm">({{ user.username }})</span>
+      {% if request.path != '/checkout/' %} {#wishlist link#}
+      <a
+        class="lg:flex lg:items-center lg:gap-x-1"
+        href="{% url 'wishlist' %}"
+      >
+        <img
+          src="{% static 'icons/wishlist.svg' %}"
+          height="22"
+          width="22"
+          alt="heart icon"
+        />
+      </a>
+      {% endif %}
     </div>
 
     <div class="ml-6 mt-0.5 hidden text-sm lg:block">
@@ -49,7 +62,7 @@
 
     {% else %}
     <!-- prettier-ignore -->
-    <a href="{% url 'profile' %}" class=" text-sm">Sign-in / Register </a>
+    <a href="{% url 'login' %}" class=" text-sm hidden lg:block">Sign-in / Register </a>
     {% endif %}
     <a
       class="flex grow justify-center gap-x-2"
@@ -82,39 +95,62 @@
         Search
       </button>
 
-      {# Account login / signup mobile #}
-      <a
-        class="flex items-center gap-x-1 lg:hidden"
-        href="{% url 'profile' %}"
+      <!-- prettier-ignore -->
+      {# Cart link #}
+      {% if request.path != '/cart/' and request.path != '/checkout/' and  cart_total_quantity > 0 %}
+        {# Cart preview #}
+      <div
+        id="cart-navigation"
+        class="hidden lg:block lg:relative lg:self-end"
+        aria-controls="cart-dropdown"
+        aria-expanded="false"
       >
-        <img
-          src="{% static 'icons/account.svg' %}"
-          height="26"
-          width="26"
-          alt="account icon"
-        />
-        <span class="hidden lg:inline lg:text-sm">Account</span>
-      </a>
-      <a
-        class="lg:flex lg:items-center lg:gap-x-1"
-        href="{% url 'cart' %}"
-      >
-        <div class="relative">
-          <img
-            src="{% static 'icons/cart.svg' %}"
-            height="30"
-            width="30"
-            alt="account icon"
-          />
-          {% if cart_total_quantity > 0 %}
-          <span
-            class="absolute -right-3 -top-2.5 block rounded-full bg-slate-500 p-0.5 px-2 text-sm text-white"
-          >
-            {{ cart_total_quantity }}</span
-          >
-          {% endif %}
+        <a
+          class="lg:flex lg:items-center lg:gap-x-1"
+          href="{% url 'cart' %}"
+        >
+          <div class="relative">
+            <img
+              src="{% static 'icons/cart.svg' %}"
+              height="26"
+              width="26"
+              alt="account icon"
+            />
+            {% if cart_total_quantity > 0 %}
+            <span
+              class="lg:absolute lg:-right-3 lg:-top-2.5 lg:block lg:rounded-full lg:bg-slate-500 lg:px-2 lg:py-1 lg:text-xs lg:text-white"
+            >
+              {{ cart_total_quantity }}</span
+            >
+            {% endif %}
+          </div>
+        </a>
+        <div
+          id="cart-dropdown"
+          aria-label="cart preview"
+          aria-hidden="true"
+          class="lg:absolute lg:right-0 lg:top-[1.5rem] lg:z-50 lg:px-2 lg:t-4 lg:aria-hidden:invisible"
+        >
+          <div class="lg:rounded lg:bg-white lg:px-4 lg:pt-2 lg:shadow">
+            <div class="lg:flex lg:w-full">
+              <button
+                type="button"
+                class="lg:ml-auto lg:mt-2"
+                onclick="this.closest('#cart-dropdown').setAttribute('aria-hidden', 'true')"
+              >
+                <img
+                  src="{% static 'icons/close.svg' %}"
+                  height="26"
+                  width="26"
+                  alt="close icon"
+                />
+              </button>
+            </div>
+            {% include 'partials/cart_preview.html' %}
+          </div>
         </div>
-      </a>
+        {% endif %}
+      </div>
     </div>
     {# Search form mobile #}
     <div
@@ -146,7 +182,7 @@
         class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
       >
         <li>
-          <a href="{% url 'products' %}?=category=supplements"
+          <a href="{% url 'products' %}?category=supplements"
             >Vitamins & Supplements</a
           >
         </li>
@@ -157,17 +193,17 @@
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'food-grown-energy-support'%}"
+          <a href="{% url 'product_detail' 'food-grown-energy-support' %}"
             >Food-Grown® Energy Support</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'skin-health-duo'%}"
+          <a href="{% url 'product_detail' 'skin-health-duo' %}"
             >Skin Health Duo</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support'%}"
+          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support' %}"
             >Food-Grown® Bone + Muscle Support</a
           >
         </li>
@@ -197,25 +233,25 @@
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-bike'%}">Peloton Bike</a>
+          <a href="{% url 'product_detail' 'peloton-bike' %}">Peloton Bike</a>
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-thread'%}"
+          <a href="{% url 'product_detail' 'peloton-thread' %}"
             >Peloton Thread</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-dumbbells'%}"
+          <a href="{% url 'product_detail' 'peloton-dumbbells-10-lbs' %}"
             >Peloton Dumbbells</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-yoga-blocks'%}"
+          <a href="{% url 'product_detail' 'peloton-yoga-blocks' %}"
             >Peloton Yoga Blocks</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-row'%}">Peloton Row</a>
+          <a href="{% url 'product_detail' 'peloton-row' %}">Peloton Row</a>
         </li>
       </ul>
       {# Juicers & extractors #}
@@ -259,7 +295,7 @@
         class="desktop-nav-menu__active container mx-auto space-y-2 px-12 py-12 text-sm"
       >
         <li>
-          <a href="{% url 'product_detail' 'peloton-bike'%}">Peloton Bike</a>
+          <a href="{% url 'product_detail' 'peloton-bike' %}">Peloton Bike</a>
         </li>
         <li>
           <a
@@ -268,17 +304,18 @@
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'organic-protein-superfood-powder'%}"
+          <a
+            href="{% url 'product_detail' 'organic-protein-superfood-powder' %}"
             >Organic Protein + Superfood Powder</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'peloton-yoga-blocks'%}"
+          <a href="{% url 'product_detail' 'peloton-yoga-blocks' %}"
             >Peloton Yoga Blocks</a
           >
         </li>
         <li>
-          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support'%}"
+          <a href="{% url 'product_detail' 'food-grown-bone-muscle-support' %}"
             >Food-Grown® Bone + Muscle Support</a
           >
         </li>
