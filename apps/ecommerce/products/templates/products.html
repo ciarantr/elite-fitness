@@ -1,16 +1,29 @@
-{% extends 'base.html' %} {% load static %} {% block extra_js %}
+{% extends 'base.html' %} {% load static %}
+{# meta information #}
+{% block extra_meta %}
+  <meta name="description" content="Shop for all your vitamins and supplements, juicers, blenders, & fitness equipment.">
+  <meta name="keywords" content="vitamins, supplements, juicers, blenders,
+  fitness equipment, free weights, wild nutrition, vitamins supplements">
+{% endblock %}
+
+{% block extra_js %}
 <script defer>
   window.onload = function () {
     const selectForms = document.querySelectorAll('form.sort-form')
-    selectForms.forEach((form) => {
-      form.addEventListener('change', function () {
-        this.submit()
-      })
-    })
+    {# submit any for the filter category/brand/options forms #}
+    selectForms.forEach((form) => form.addEventListener('change', () => form.submit()))
   }
 </script>
 {% endblock %}
+
 <!-- prettier-ignore -->
+{% block extra_tite %}
+  {% if brand %}Brand {{ brand_name }}
+  {% elif category %}Category {{ category_name }}
+  {% else %}
+  All Products
+{% endif %}
+{% endblock %}
 {% block content %}
 
 <section class="mx-auto mt-12 px-4 lg:container">
