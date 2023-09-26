@@ -1,16 +1,27 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-from .models import CustomerProfile
+from .models import DeliveryDetails
 
 
-class CustomLoginForm(AuthenticationForm):
+class UserUpdateForm(forms.ModelForm):
+    """
+    A customer profile model for maintaining default
+    """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['username'].widget.attrs.update(
-            {'placeholder': 'Username'})
-        self.fields['password'].widget.attrs.update(
-            {'placeholder': 'Password'})
+
+        for field in self.fields.values():
+            # Adding placeholder
+            field.widget.attrs['placeholder'] = field.label
+            # Hiding initial help_text
+            field.help_text = ''
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -28,10 +39,9 @@ class CustomUserCreationForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields
 
 
-class CustomerProfileForm(forms.ModelForm):
-
+class CustomerDeliveryForm(forms.ModelForm):
     class Meta:
-        model = CustomerProfile
+        model = DeliveryDetails
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
@@ -42,9 +52,8 @@ class CustomerProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
-            'username': 'Username',
-            'full_name': 'Full Name',
-            'email': 'Email Address',
+            'default_full_name': 'Full Name',
+            'default_email': 'Email Address',
             'default_phone_number': 'Phone Number',
             'default_country': 'Country',
             'default_postcode': 'Postal Code',
