@@ -5,12 +5,17 @@ from django.dispatch import receiver
 from django_countries.fields import CountryField
 
 
-class CustomerProfile(models.Model):
+class DeliveryDetails(models.Model):
     """
     A customer profile model for maintaining default
     """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    class Meta:
+        verbose_name_plural = 'Delivery Details'
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    default_full_name = models.CharField(max_length=50, null=True, blank=True)
+    default_email = models.EmailField(max_length=254, null=True, blank=True,
+                                      unique=True)
     default_phone_number = models.CharField(max_length=20, null=True,
                                             blank=True)
     default_country = CountryField(blank_label='Country *', null=True,
@@ -34,6 +39,6 @@ def create_or_update_customer_profile(sender, instance, created, **kwargs):
     Create or update the customer profile
     """
     if created:
-        CustomerProfile.objects.create(user=instance)
+        DeliveryDetails.objects.create(user=instance)
     # Existing users: just save the profile
-    instance.customerprofile.save()
+    instance.deliverydetails.save()
