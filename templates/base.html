@@ -1,6 +1,6 @@
 {% load django_vite %} {% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     {% vite_hmr_client %}
@@ -13,17 +13,52 @@
       http-equiv="X-UA-Compatible"
       content="ie=edge"
     />
+    <!-- For classic favicon -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'public/icons/favicon.ico' %}"
+    />
+
+    <!-- For modern browsers -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'public/icons/favicon-16x16.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'public/icons/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'public/icons/favicon.svg' %}"
+    />
+    <!-- For apple devices -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'public/icons/apple-touch-icon.png' %}"
+    />
+
+    <title>Elite Fitness | {% block extra_tite %}{% endblock %}</title>
     <!-- prettier-ignore -->
     {% block extra_meta %}{% endblock %}
-
+    {# vite compiled assets #}
     {% vite_asset 'js/css-import.js' %} {% vite_asset 'js/main.js' %}
-    {# stripe #}
+
+    {% block corejs %}
+    <!-- stripe js -->
     <script src="https://js.stripe.com/v3/"></script>
+    {% endblock %}
 
     <!-- prettier-ignore -->
     {% block extra_js %}{% endblock %}
 
-    <title>Elite Fitness | {% block extra_tite %}{% endblock %}</title>
   </head>
   <body class="flex min-h-screen flex-col">
     <header class="bg-[hsl(49deg,_20%,_84%)] px-4 py-4">
@@ -31,10 +66,28 @@
       <!-- prettier-ignore -->
       {% include 'partials/navigation/nav_menu.html' %}
     </header>
+
+    {% if messages %}
+    <div class="fixed right-20 top-12 z-50 grid">
+      {% for message in messages %}
+      <div
+        role="alertdialog"
+        data-django-message
+        aria-labelledby="alert"
+      >
+        {% include 'partials/toasts/toast.html' %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
     <section class="flex-auto">
       {% block page_header %} {% endblock %} {% block content %}{% endblock %}
     </section>
     <!-- prettier-ignore -->
     <div class="flex-shrink-0">{% include 'partials/footer.html' %}</div>
+    {# mobile sticky footer #}
+    <!-- prettier-ignore -->
+    {% include 'partials/navigation/nav_menu_footer_mobile.html' %}
   </body>
 </html>
