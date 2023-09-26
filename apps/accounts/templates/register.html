@@ -1,8 +1,9 @@
-{% extends 'base.html' %}{% load static %} {% block title %}Login{% endblock %}
+{% extends 'base.html' %}{% load static %}
+{% block extra_tite %}Register{%endblock %}
 <!-- prettier-ignore -->
 {% block content %}
 <main class="container mx-auto mt-16 max-w-lg rounded px-8 py-12 shadow">
   <h1 class="text-lg font-semibold">Create account</h1>
-  <div class="mt-8">{% include 'partials/forms/register.html' %}</div>
+  <div class="mt-8">{% include 'partials/forms/register_form.html' %}</div>
 </main>
 {%endblock %}
