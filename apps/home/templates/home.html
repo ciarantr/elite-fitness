@@ -1,4 +1,84 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block extra_tite %}Health,
+Fitness & Nutritional Supplements{% endblock %} {% block extra_meta %}
+<!-- Meta keywords -->
+<meta
+  name="keywords"
+  content="elite fitness, juicers, vitamin supplements, health supplements, fitness equipment,
+  fitness, health, wellness, wild nutrition, peloton, hurom juicer"
+/>
+<!-- Meta description -->
+<meta
+  name="description"
+  content="Elite Fitness offers a wide range of juicers, fitness equipment, and health supplements.
+  Shop our selection for high-quality products to support your fitness and wellness goals."
+/>
+
+  <!-- Open Graph meta tags -->
+  <meta
+    property="og:title"
+    content="Elite Fitness - Juicers, Fitness Equipment, Health Supplements"
+  />
+  <meta
+    property="og:description"
+    content="Elite Fitness offers a wide range of juicers, fitness equipment, and health supplements. Shop our selection
+    for high-quality products to support your fitness and wellness goals."
+  />
+  <meta
+    property="og:type"
+    content="website"
+  />
+  <meta
+    property="og:url"
+    content="{{ request.build_absolute_uri }}"
+  />
+  <meta
+    property="og:image"
+    content="{% static 'images/logo-og.png' %}"
+  />
+  <meta
+    property="og:image:alt"
+    content="Elite Fitness Logo"
+  />
+  <meta
+    property="og:image:width"
+    content="1200"
+  />
+  <meta
+    property="og:image:height"
+    content="630"
+  />
+
+  <!-- Twitter meta tags -->
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  />
+  <meta
+    name="twitter:site"
+    content="@elitefitness"
+  />
+  <meta
+    name="twitter:creator"
+    content="@elitefitness"
+  />
+  <meta
+    name="twitter:title"
+    content="Elite Fitness - Juicers, Fitness Equipment, Health Supplements"
+  />
+  <meta
+    name="twitter:description"
+    content="Elite Fitness offers a wide range of juicers, fitness equipment, and health supplements. Shop our selection for high-quality products to support your fitness and wellness goals."
+  />
+  <meta
+    name="twitter:image"
+    content="{% static 'images/logo-og.png' %}"
+  />
+  <meta
+    name="twitter:image:alt"
+    content="Elite Fitness Logo"
+  />
+
+{% endblock %} {% block content %}
 <section class="mx-auto mt-12 px-2 lg:container md:px-0">
   <div class="px-2 lg:grid">
     <img
