@@ -1,7 +1,7 @@
 {% load static %}
 <footer class="mt-12 bg-black text-white">
   <section
-    class="space-y-8 px-8 pb-8 pt-12 lg:container lg:mx-auto lg:grid lg:grid-cols-4 lg:space-y-0 [&_h2]:text-lg [&_li]:text-sm"
+    class="space-y-8 px-8 pb-8 md:px-0 pt-12 md:container md:mx-auto md:grid md:grid-col md:justify-around md:space-y-0 md:grid-flow-col [&_h2]:text-lg [&_li]:text-sm"
   >
     <div class="lg:hidden">
       {% include 'partials/social_media_block.html' %}
@@ -12,9 +12,9 @@
       <ul
         class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
       >
-        <li><a href="#">Who we are</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="{% url 'customer_support:about' %}">Who we are</a></li>
+        <li><a href="{% url 'customer_support:terms-and-conditions' %}">Terms & Conditions</a></li>
+        <li><a href="{% url 'customer_support:privacy-policy' %}">Privacy Policy</a></li>
       </ul>
     </div>
     <div class="space-y-2">
@@ -22,10 +22,9 @@
       <ul
         class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
       >
-        <li><a href="#">Shipping & Information</a></li>
-        <li><a href="#">Refunds & Returns</a></li>
-        <li><a href="#">FAQs</a></li>
-        <li><a href="#"></a></li>
+        <li><a href='{% url 'customer_support:contact' %}'>Contact</a></li>
+        <li><a href="{% url 'customer_support:shipping-and-information' %}">Shipping & Information</a></li>
+        <li><a href="{% url 'customer_support:faqs' %}">FAQs</a></li>
       </ul>
     </div>
     <div class="space-y-2">
@@ -33,11 +32,11 @@
       <ul
         class="space-y-2 [&_li:hover]:border-white [&_li]:w-max [&_li]:border-b [&_li]:border-transparent [&_li]:transition-colors"
       >
-        <li><a href="#">Wild Nutrition</a></li>
-        <li><a href="#">Pelaton</a></li>
-        <li><a href="#">Humron</a></li>
-        <li><a href="#">Vitamix</a></li>
-        <li><a href="#">Kuvings</a></li>
+        <li><a href="/products/?brand=wild-nutrition">Wild Nutrition</a></li>
+        <li><a href="/products/?brand=peloton">Pelaton</a></li>
+        <li><a href="/products/?brand=hurom">Hurom</a></li>
+        <li><a href="/products/?brand=vitamix">Vitamix</a></li>
+        <li><a href="/products/?brand=kuvings">Kuvings</a></li>
       </ul>
     </div>
     {# Social media links on desktop #}
@@ -83,7 +82,7 @@
   {# copyright & payment icons #}
   <div class="flex flex-wrap justify-between p-2 lg:container lg:mx-auto">
     <p class="p-2 text-sm">
-      &copy; <span id="copy-year"></span> Elite Fitness | All rights reserved
+      <span id="copyright-year">&copy; </span> Elite Fitness | All rights reserved
     </p>
     <div class="flex gap-x-2">
       <img
