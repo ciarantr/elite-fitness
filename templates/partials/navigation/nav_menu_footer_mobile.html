@@ -1,0 +1,56 @@
+{% load static %}
+<div class="sticky bottom-0 bg-slate-700 lg:hidden">
+  <div class="pb-4 pt-6">
+    <ul class="flex justify-around">
+      <li>
+        <a href="{% url 'home' %}"
+          ><img
+            src="{% static 'icons/home.svg' %}"
+            alt="home icon"
+            height='24'
+            width='24'
+        /></a>
+      </li>
+      <li>
+        <a href="{% url 'products' %}"
+          ><img
+            src="{% static 'icons/product-search.svg' %}"
+            alt="product search icon"
+            height='24'
+            width='24'
+        /></a>
+      </li>
+      <li>
+        <a href="{% url 'profile' %}"
+          ><img
+            src="{% static 'icons/account.svg' %}"
+            alt="account icon"
+            height='24'
+            width='24'
+        /></a>
+      </li>
+    {%  if cart_total_quantity > 0 %}
+      <li class='relative'>
+        <a href="{% url 'cart' %}"
+          ><img
+            src="{% static 'icons/cart.svg' %}"
+            alt="cart icon"
+            height='24'
+            width='24'
+        /> <span class=' text-xs inline-block absolute -top-3 rounded-full p-0.5 px-1.5 -right-3 bg-slate-300'>{{ cart_total_quantity }}</span></a>
+      </li>
+    {% endif %}
+      {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'wishlist' %}"
+          ><img
+            src="{% static 'icons/wishlist.svg' %}"
+            alt="account icon"
+            height='24'
+            width='24'
+        /></a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
