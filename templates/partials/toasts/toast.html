@@ -1,0 +1,29 @@
+<!-- toast with cart items -->
+{% load static %}
+
+<div
+  style="border-top-color: var(--alert-{{ message.tags }});"
+  class="relative mt-4 max-w-xs rounded border-t-4 bg-white p-4 text-black shadow"
+>
+  <div class="flex flex-wrap justify-between">
+    <p class="w-10/12 break-words">{{ message }}</p>
+    <button
+      aria-controls="alertdialog"
+      onclick="this.closest('div[role=alertdialog]').classList.add('hidden')"
+      class="h-6 w-6"
+    >
+      <img
+        src="{% static 'icons/close.svg' %}"
+        alt="close"
+        width="24"
+        height="24"
+      />
+    </button>
+  </div>
+
+  {# user cart #}
+  <!-- prettier-ignore -->
+  {% if not is_excluded_path and cart_total_quantity > 0 %}
+    {% include 'partials/cart_preview.html' %}
+  {% endif %}
+</div>
