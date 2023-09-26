@@ -1,4 +1,22 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+
+{# Meta information#}
+{% block extra_tite %}{{ product.name|safe }}{% endblock %}
+{% block extra_meta %}
+  <meta name="description" content="{{ product.description|safe }}" />
+  <meta property="og:title" content="{{ product.name|safe }}" />
+  <meta property="og:description" content="{{ product.description|safe }}" />
+  <meta property="og:image" content="{{ product.image }}" />
+  <meta property="og:url" content="{{ request.build_absolute_uri|safe }}" />
+  <meta property="og:type" content="product" />
+  <meta property="product:price:amount" content="{{ product.price }}" />
+  <meta property="product:price:currency" content="EUR" />
+  <meta property="product:availability" content="in stock" />
+  <meta property="product:brand" content="{{ product.brand.name|safe }}" />
+{% endblock %}
+
+<!-- prettier-ignore -->
+{% block content %}
 
 <section class="container mx-auto mt-12 px-4">
   <div>
@@ -16,12 +34,12 @@
   <div class="mt-8 md:grid md:grid-cols-2 md:gap-x-32 lg:grid-cols-[2fr,1fr]">
     <div class="space-y-8 md:col-start-2 md:row-start-1">
       <div class="space-y-2">
-        <h1 class="text-lg text-slate-500">
+        <h1 id="product-name" class="text-lg text-slate-500">
           {% if product.brand and not product_brand_name %}
           <span class="text-sm font-light">{{ product.brand.name }}</span><br />
           {% endif %} {{ product.name }}
         </h1>
-        <p class="text-lg">€{{ product.price }}</p>
+        <p id="product-price" class="text-lg">€{{ product.price }}</p>
       </div>
       {# Product key benefits #} {% if key_benefits %}
       <ul class="hidden md:grid md:grid-cols-2 md:gap-x-2 md:gap-y-6">
@@ -89,4 +107,4 @@
   </div>
 </section>
 
-{% endblock content %}
+{% endblock %}
