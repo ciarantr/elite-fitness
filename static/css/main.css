@@ -2,6 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fonts */
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/static/fonts/OpenSans-ExtraBold.woff2') format('woff2');
+}
+
+@layer base {
+  :root {
+    --alert-success: hsl(143, 45%, 24%);
+    --alert-error: hsl(5, 50%, 36%);
+    --alert-warning: hsl(49, 60%, 44%);
+    --alert-info: hsl(204, 58%, 32%);
+  }
+
+  body {
+    font-family: 'Open Sans', Arial sans-serif;
+  }
+}
+
 /* Mobile/ Desktop menu animations*/
 /* used to set opacity on hidden elements (mobile / desktop menu)*/
 #menu-content,
@@ -73,14 +135,28 @@
 /* forms */
 
 form {
-  & label {
+  & label:not([for='id\_remember']) {
     @apply sr-only;
+  }
+
+  & div:has(> label[for='id\_remember']) {
+    @apply flex justify-between;
+
+    & > label {
+      @apply flex-shrink-0
+      text-gray-700;
+    }
+
+    & > input {
+      @apply !w-max;
+    }
   }
 
   &#subscribe-form {
     @apply flex flex-wrap gap-4;
 
     /*not input submit*/
+
     & input:not([type='submit']) {
       @apply border
       border-gray-300
@@ -106,11 +182,18 @@ form {
     }
   }
 
-  /*  login form */
-  &#login-form, &#register-form, &#profile-form {
+  /*  forms with specifies id */
+  &#login-form,
+  &#password-reset,
+  &#register-form,
+  &#profile-form,
+  &#contact-form,
+  &[data-wishlist-form] {
     @apply flex flex-col gap-4;
 
-    & input, & select {
+    & input,
+    & select,
+    & textarea {
       @apply block
       w-full
       rounded-md
@@ -126,7 +209,8 @@ form {
       text-white;
     }
 
-    & input:not([type='submit']) {
+    & input:not([type='submit']),
+    & textarea {
       @apply border
       border-gray-300
       focus:border-indigo-500
@@ -135,7 +219,7 @@ form {
     }
   }
 }
-
+/* forms general */
 form {
   .field-wrapper {
     @apply relative;
@@ -187,4 +271,56 @@ form {
 #card-element {
   color: #000;
   border: 1px solid #000;
+}
+
+/* privacy policy */
+details {
+  @apply rounded-lg
+  p-2
+  text-sm
+  open:my-4
+  open:bg-white
+  open:p-8
+  open:shadow-lg
+  open:ring-1
+  open:ring-black/5;
+
+  & summary {
+    @apply font-semibold
+    leading-6
+    text-slate-900;
+  }
+
+  & ul {
+    @apply list-inside
+    list-disc
+    space-y-2.5
+    py-4;
+  }
+
+  & p {
+    @apply leading-6
+    text-slate-600;
+  }
+  & p:first-of-type {
+    @apply mt-3;
+  }
+}
+
+/* dialog */
+/* add animation to svg when dialog is open */
+dialog#process-order[open] svg {
+  @apply animate-spin;
+}
+
+/* select elements*/
+select {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGZpbGw9IiMxMjI0MmIiIGQ9Ik0xMiAxNC45NzVxLS4yIDAtLjM3NS0uMDYyVDExLjMgMTQuN2wtNC42LTQuNnEtLjI3NS0uMjc1LS4yNzUtLjd0LjI3NS0uN3EuMjc1LS4yNzUuNy0uMjc1dC43LjI3NWwzLjkgMy45bDMuOS0zLjlxLjI3NS0uMjc1LjctLjI3NXQuNy4yNzVxLjI3NS4yNzUuMjc1Ljd0LS4yNzUuN2wtNC42IDQuNnEtLjE1LjE1LS4zMjUuMjEzdC0uMzc1LjA2MloiLz48L3N2Zz4=);
+  @apply appearance-none
+  bg-[length:25px_25px]
+  bg-right
+  bg-no-repeat
+  pr-10
+  focus:outline-none
+  sm:text-sm;
 }
