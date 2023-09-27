@@ -1,0 +1,84 @@
+<form
+  action="{% url 'checkout' %}"
+  method="POST"
+  id="payment-form"
+  class="[&_input]:w-h-max space-y-12 [&_div]:rounded-md [&_div]:border [&_input]:w-full [&_input]:rounded-md [&_input]:border [&_input]:border-gray-400 [&_input]:p-2 [&_input]:placeholder:text-slate-700 [&_select]:w-full [&_select]:rounded-md [&_select]:border [&_select]:border-gray-400 [&_select]:p-2"
+>
+  {% csrf_token %}
+
+  <fieldset class="space-y-4">
+    <legend>Details</legend>
+    {{ order_form.full_name }} {{ order_form.email }}
+  </fieldset>
+
+  <fieldset class="space-y-4">
+    <legend>Delivery</legend>
+    <!-- prettier-ignore -->
+    {% for field in order_form %} {% if field.name != 'full_name' and field.name != 'email' %} {{ field }} {% endif %} {% endfor %}
+  </fieldset>
+
+  <fieldset class="px-3 [&_input]:py-4">
+    <legend class="fieldset-label small mb-4 w-auto text-black">
+      Payment
+    </legend>
+    <!-- A Stripe card element will go here -->
+    <div
+      class="mb-3"
+      id="card-element"
+    ></div>
+    <!-- Used to display form errors -->
+    <div
+      class="mb-3 !border-0 text-red-500"
+      id="card-errors"
+      role="alert"
+    ></div>
+    <!-- Pass the client secret to the view so we can get the payment intent id -->
+    <input
+      type="hidden"
+      value="{{ client_secret }}"
+      name="client_secret"
+    />
+  </fieldset>
+
+  <div
+    class="flex flex-wrap items-start justify-between gap-x-2 border-transparent"
+  >
+    {% if user.is_authenticated %}
+      <label
+        class="!not-sr-only"
+        for="id-save-info"
+      >Save delivery information to profile</label
+      >
+      <input
+        class="!w-max"
+        type="checkbox"
+        id="id-save-info"
+        name="save-info"
+        checked
+      />
+    {% else %}
+      <p class="text-sm">
+        Already have an account?
+        <a href="{% url 'login' %}">Log in</a>
+      </p>
+      <p class="text-sm">
+        Don't have an account?
+        <a href="{% url 'register' %}">Register</a>
+      </p>
+    {% endif %}
+  </div>
+  <div class="grid grid-cols-2 gap-x-6 !border-transparent">
+    <a
+      href="{% url 'cart' %}"
+      class="rounded-md border-black px-4 py-2 text-center font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+    >Back to cart</a
+    >
+    <button
+      id="submit-button"
+      class="rounded-md bg-black px-4 py-2 font-semibold text-white shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+      type="submit"
+    >
+      Pay Now
+    </button>
+  </div>
+</form>
