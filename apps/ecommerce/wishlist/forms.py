@@ -76,3 +76,24 @@ class EditWishlistForm(forms.ModelForm):
             self.fields[field].label = False
 
 
+class AddProductToWishlistForm(forms.Form):
+    """
+    Form for adding a product to a wishlist
+    """
+
+    wishlist = forms.ModelMultipleChoiceField(
+        queryset=None,
+        label='',
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
+    def __init__(self, *args, **kwargs):
+        """
+        Add placeholders and classes, remove auto-generated
+        labels and set autofocus on first field
+        """
+        self.user = kwargs.pop('user')
+        # self.product = kwargs.pop('product')
+        super().__init__(*args, **kwargs)
+        self.fields['wishlist'].queryset = List.objects.filter(user=self.user)
