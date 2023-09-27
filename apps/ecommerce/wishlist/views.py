@@ -1,9 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import DeleteView, FormView, ListView
 
 from .forms import CreateWishlistForm, \
@@ -74,5 +76,19 @@ class WishlistDeleteFormView(LoginRequiredMixin,
         return get_object_or_404(
             List, pk=self.kwargs['pk'], user=self.request.user)
 
+
+class WishListDetailView(LoginRequiredMixin, View):
+    """
+    This view is responsible for returning the description
+    of a specific wishlist
+    """
+
+    def get(self, request, *args, **kwargs):
+        wishlist = get_object_or_404(List, pk=self.kwargs['pk'],
+                                     user=self.request.user)
+        if wishlist.description is None:
+            return JsonResponse({'description': ''})
+        else:
+            return JsonResponse({'description': wishlist.description})
 
 
