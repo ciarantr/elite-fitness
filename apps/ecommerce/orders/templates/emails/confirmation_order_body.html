@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <h1>Hello {{ order.full_name }}!</h1>
+
+    <h2>
+      This is a confirmation of your order at Elite Fitness. Your order
+      information is below:
+    </h2>
+
+    <p>
+      Order Number: {{ order.order_number }}
+      <br />
+      Order Date: {{ order.date }}
+      <br />
+      Order Total: €{{ order.order_total }} Delivery: €{{ order.delivery_cost }}
+      <br />
+      Grand Total: €{{ order.grand_total }}
+    </p>
+
+    <p>
+      Your order will be shipped to {{ order.street_address1 }} in
+      {{order.town_or_city }}, {{ order.country }}.
+    </p>
+
+    <p>We've got your phone number on file as {{ order.phone_number }}.</p>
+
+    <p>
+      If you have any questions, feel free to contact us at {{ contact_email }}.
+    </p>
+
+    <p>Thank you for your order!</p>
+
+    <p>Sincerely,</p>
+
+    <p>The Elite Fitness Team</p>
+  </body>
+</html>
