@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %}
+{% block extra_tite %}Confirm Email{%endblock %}
+
+{% block content %}
+  <main class="container mx-auto mt-16 max-w-2xl space-y-12 px-4">
+    <div>
+      <a
+        class="flex gap-x-2 text-sm underline underline-offset-2"
+        href=" {% url 'home' %}"
+      >
+        <img
+          aria-hidden="true"
+          src="{% static 'icons/arrow-back.svg' %}"
+          alt="home icon"
+          width="12"
+          height="12"
+        />
+        Home</a
+      >
+    </div>
+    <div class="h-64 space-y-8 rounded p-6 shadow">
+      <h2 class="text-center text-2xl">Confirm Account</h2>
+     <p class="text-center">Please confirm youre account for
+       <span class="underline">{{ email }}</span></p>
+      <form
+        id="confirm-account-form"
+        method="post"
+        class="mx-auto max-w-sm space-y-3"
+      >
+        {{ form.as_div }} {% csrf_token %}
+        <input
+          type="submit"
+          value="Confirm"
+          class="!w-full cursor-pointer bg-slate-500 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded"
+        />
+      </form>
+    </div>
+  </main>
+{% endblock %}
