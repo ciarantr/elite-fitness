@@ -1,168 +1,193 @@
-{% extends 'base.html' %} {% block content %}
-<div class="container mt-12 px-4">
-  <div class="mx-auto rounded-lg p-4 shadow lg:w-7/12">
-    <h2 class="mb-4 text-xl">Thank you for your order {{ order.full_name }}</h2>
-    <p class="">
-      We have successfully received your order.<br />
-      You will receive an email to <strong>{{ order.email }}</strong>.
-    </p>
+{% extends 'base.html' %}{% load static %} {% block extra_tite %}Order
+Information{%endblock %} {% block content %}
 
-    <div class="mt-4 p-4">
-      <div class="mb-2">
-        <span class="text-gray-500">Order Info</span>
-      </div>
+<div class="container mx-auto mt-12 px-4">
+  <h1 class="text-center text-2xl">Order Information</h1>
+  <div class="flex justify-between">
+    <a
+      class="flex items-center gap-x-1 text-sm underline underline-offset-2"
+      href=" {% url 'home' %}"
+    >
+      <img
+        aria-hidden="true"
+        src="{% static 'icons/arrow-back.svg' %}"
+        alt="home icon"
+        width="12"
+        height="12"
+      />
+      Home</a
+    >
+  </div>
+</div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Order Number</p>
-        </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.order_number }}</p>
-        </div>
-      </div>
+<main>
+  <div class="container mx-auto mt-24 px-4">
+    <div class="mx-auto rounded-lg p-4 shadow lg:w-7/12">
+      <h2 class="mb-4 text-xl">
+        Thank you for your order {{ order.full_name }}
+      </h2>
+      <p class="">
+        We have successfully received your order.<br />
+        You will receive an email to <strong>{{ order.email }}</strong>.
+      </p>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Order Date</p>
+      <div class="mt-4 p-4">
+        <div class="mb-2">
+          <span class="text-gray-500">Order Info</span>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.date }}</p>
-        </div>
-      </div>
 
-      <hr />
-      <div class="mb-2 mt-8">
-        <span class="text-gray-500">Order Details</span>
-      </div>
-      {% for item in order.line_items.all %}
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">{{ item.product.name }}</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Order Number</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.order_number }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ item.quantity }} @ €{{ item.product.price }} each</p>
-        </div>
-      </div>
-      {% endfor %}
 
-      <hr />
-      <div class="mb-2 mt-8">
-        <span class="text-gray-500">Delivering To</span>
-      </div>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Order Date</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.date }}</p>
+          </div>
+        </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Full Name</p>
+        <hr />
+        <div class="mb-2 mt-8">
+          <span class="text-gray-500">Order Details</span>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.full_name }}</p>
+        {% for item in order.line_items.all %}
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">{{ item.product.name }}</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ item.quantity }} @ €{{ item.product.price }} each</p>
+          </div>
         </div>
-      </div>
+        {% endfor %}
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Address 1</p>
+        <hr />
+        <div class="mb-2 mt-8">
+          <span class="text-gray-500">Delivering To</span>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.street_address1 }}</p>
-        </div>
-      </div>
 
-      {% if order.street_address2 %}
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Full Name</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.full_name }}</p>
+          </div>
+        </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Address 2</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Address 1</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.street_address1 }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.street_address1 }}</p>
-        </div>
-      </div>
 
-      {% endif %} {% if order.county %}
+        {% if order.street_address2 %}
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">County</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Address 2</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.street_address1 }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.county }}</p>
-        </div>
-      </div>
 
-      {% endif %}
+        {% endif %} {% if order.county %}
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Town or City</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">County</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.county }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.town_or_city }}</p>
-        </div>
-      </div>
 
-      {% if order.postcode %}
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Postal Code</p>
-        </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.postcode }}</p>
-        </div>
-      </div>
-      {% endif %}
+        {% endif %}
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Country</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Town or City</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.town_or_city }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.country }}</p>
-        </div>
-      </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Phone Number</p>
+        {% if order.postcode %}
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Postal Code</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.postcode }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.phone_number }}</p>
-        </div>
-      </div>
+        {% endif %}
 
-      <hr />
-      <div class="mb-2 mt-8">
-        <span class="text-gray-500">Billing info</span>
-      </div>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Country</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.country }}</p>
+          </div>
+        </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Order Total</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Phone Number</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.phone_number }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.order_total }}</p>
-        </div>
-      </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Delivery</p>
+        <hr />
+        <div class="mb-2 mt-8">
+          <span class="text-gray-500">Billing info</span>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.delivery_cost }}</p>
-        </div>
-      </div>
 
-      <div class="mb-2 flex items-center">
-        <div class="w-4/12">
-          <p class="">Grand Total</p>
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Order Total</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.order_total }}</p>
+          </div>
         </div>
-        <div class="w-8/12 text-right">
-          <p>{{ order.grand_total }}</p>
+
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Delivery</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.delivery_cost }}</p>
+          </div>
+        </div>
+
+        <div class="mb-2 flex items-center">
+          <div class="w-4/12">
+            <p class="">Grand Total</p>
+          </div>
+          <div class="w-8/12 text-right">
+            <p>{{ order.grand_total }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
 
 {% endblock content %}
