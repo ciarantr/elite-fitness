@@ -91,3 +91,23 @@ desktopSearchCloseBtn.addEventListener('click', () => {
   desktopSearchContainer.setAttribute('aria-hidden', 'true')
   desktopSearchBtn.setAttribute('aria-expanded', 'false')
 })
+
+const cartNavigation = document.querySelector('#cart-navigation');
+const cartDropdown = document.querySelector('#cart-dropdown');
+
+function showCartDropdown() {
+  cartNavigation.setAttribute('aria-expanded', 'true');
+  cartDropdown.setAttribute('aria-hidden', 'false');
+}
+function hideCartDropdown() {
+  if (cartDropdown.getAttribute('aria-hidden') === 'true' && cartNavigation.getAttribute('aria-expanded') === 'true') {
+    cartNavigation.setAttribute('aria-expanded', 'false');
+    cartDropdown.setAttribute('aria-hidden', 'true');
+  }
+}
+
+
+// Add event listeners for hover effects
+cartNavigation?.addEventListener('mouseover', showCartDropdown);
+cartNavigation?.addEventListener('mouseleave', hideCartDropdown);
+cartDropdown?.addEventListener('mouseleave', () => cartDropdown.setAttribute('aria-hidden', 'true'));
