@@ -156,3 +156,19 @@ class WishlistAddProductView(LoginRequiredMixin, View):
         return redirect('cart')
 
 
+class WishlistRemoveProductView(LoginRequiredMixin, View):
+    """
+    This view handles the removal of a product from a wishlist
+    """
+
+    def post(self, request, *args, **kwargs):
+        # get the wishlist and product objects
+        list_obj = get_object_or_404(List, id=kwargs['list_id'])
+
+        try:
+            list_obj.products.remove(kwargs['product_id'])
+            messages.success(request, 'Product removed from wishlist.')
+        except Exception as e:
+            messages.error(request, f'Failed to remove product: {str(e)}')
+
+        return redirect('wishlist')
