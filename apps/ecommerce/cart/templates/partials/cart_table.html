@@ -1,0 +1,140 @@
+{% load static %}
+<table class="w-full divide-y divide-gray-200">
+  <thead class="bg-gray-50">
+    <tr>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Product
+      </th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      ></th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Quantity
+      </th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Price
+      </th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Total
+      </th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Remove
+      </th>
+      <th
+        scope="col"
+        class="px-3.5 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+      >
+        Wishlist
+      </th>
+    </tr>
+  </thead>
+
+  <tbody class="divide-y divide-gray-200 bg-white">
+    {% for item in cart_items %}
+    <tr>
+      <td class="whitespace-nowrap px-3.5 py-4">
+        <div class="flex items-center">
+          <div class="h-10 w-10 flex-shrink-0">
+            <img
+              class="h-10 w-10 rounded-full"
+              src="{{ item.image }}"
+              alt="{{ item.product.name }}"
+            />
+          </div>
+        </div>
+      </td>
+      {# link to product page #}
+      <td class="whitespace-nowrap px-3.5 py-4">
+        <a
+          href="{% url 'product_detail' item.product.slug %}"
+          class="text-sm text-gray-900"
+          >{{ item.product.name }}
+        </a>
+      </td>
+      {# Adjust cart product qty #}
+      <td class="whitespace-nowrap px-3.5 py-4">
+        {% include 'partials/forms/cart_adjust_form.html' %}
+      </td>
+      {# unit product price#}
+      <td class="whitespace-nowrap px-3.5 py-4">
+        <div class="text-sm text-gray-900">€{{ item.price }}</div>
+      </td>
+      {# total price qty * quantity #}
+      <td class="whitespace-nowrap px-3.5 py-4">
+        <div class="text-sm text-gray-900">€{{ item.total }}</div>
+      </td>
+      {# remove from cart #}
+      <td class="whitespace-nowrap px-3.5 py-4">
+        {% include 'partials/forms/product_remove_form.html' %}
+      </td>
+      {# add to wishlist #} {# authenticated users can add to a wishlist #}
+      <td class="absolute whitespace-nowrap px-3.5 py-4">
+        {% if request.user.is_authenticated %}
+        <button
+          onclick="this.nextElementSibling.setAttribute('aria-hidden',
+                           this.nextElementSibling.getAttribute('aria-hidden') === 'true' ? 'false' : 'true')"
+          type="button"
+          class="text-sm"
+        >
+          <img
+            src="{% static 'icons/wishlist.svg' %}"
+            width="26"
+            height="26"
+            alt="wishlist icon"
+          />
+        </button>
+
+        <div
+          aria-hidden="true"
+          class="absolute right-0 z-50 w-60 min-w-max rounded-lg bg-white px-6 py-4 shadow aria-hidden:invisible"
+        >
+          {% include 'partials/forms/wishlist_product_add_form.html' %}
+        </div>
+
+        {% else %} {# sign-in to use wishlist #}
+        <div>
+          <button
+            type="button"
+            aria-label="Please sign-in to use this feature"
+            class="relative"
+            onmouseenter="this.nextElementSibling.setAttribute('aria-hidden', 'false')"
+            onmouseleave="this.nextElementSibling.setAttribute('aria-hidden', 'true')"
+          >
+            <img
+              src="{% static 'icons/wishlist.svg' %}"
+              width="26"
+              height="26"
+              alt="wishlist icon"
+            />
+          </button>
+          <span
+            aria-hidden="true"
+            class="absolute -left-[90px] -top-[20px] z-50 block w-[15ch] rounded bg-slate-700 p-1.5 text-xs text-white shadow [text-wrap:_balance;] aria-hidden:hidden"
+          >
+            Please sign-in to use this feature
+          </span>
+        </div>
+
+        {% endif %}
+      </td>
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
