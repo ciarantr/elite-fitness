@@ -6,11 +6,13 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import DeleteView, FormView, ListView
+from django.views.generic import DeleteView, FormView, ListView, \
+    UpdateView
 
-from .forms import CreateWishlistForm, \
+from .forms import AddProductToWishlistForm, CreateWishlistForm, \
     EditWishlistForm
 from .models import List
+from ..products.models import Product
 
 
 class WishListView(LoginRequiredMixin, ListView):
@@ -90,5 +92,23 @@ class WishListDetailView(LoginRequiredMixin, View):
             return JsonResponse({'description': ''})
         else:
             return JsonResponse({'description': wishlist.description})
+
+
+class WishlistUpdateView(LoginRequiredMixin, UpdateView):
+    """
+    This view handles the editing of a wishlist
+    """
+    model = List
+    fields = ['name', 'description']
+    success_url = reverse_lazy('wishlist')
+    template_name = 'wishlist.html'
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Wishlist successfully updated.')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Wishlist could not be updated.')
+        return super().form_invalid(form)
 
 
