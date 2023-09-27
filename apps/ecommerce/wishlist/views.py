@@ -112,3 +112,47 @@ class WishlistUpdateView(LoginRequiredMixin, UpdateView):
         return super().form_invalid(form)
 
 
+class WishlistAddProductView(LoginRequiredMixin, View):
+    """
+    This view handles the addition of a product to a wishlist
+    """
+
+    def post(self, request, product_id):
+        form = AddProductToWishlistForm(request.POST, user=request.user)
+        if form.is_valid():
+            product = get_object_or_404(Product, pk=product_id)
+
+            selected_wishlists_ids = {
+                wishlist.id for wishlist in form.cleaned_data['wishlist']}
+            user_wishlists = form.fields['wishlist'].queryset
+
+            cart = request.session.get('cart', {})
+
+            for wishlist in user_wishlists:
+                if product in wishlist.products.all():
+                    if wishlist.id in selected_wishlists_ids:
+                        # If the product is in the wishlist and the wishlist
+                        # is selected, do nothing
+                        pass
+                    else:
+                        # If the product is in the wishlist but the wishlist
+                        # is not selected, remove the product from the wishlist
+                        wishlist.products.remove(product)
+                        messages.success(request, 'Product removed from '
+                                                  'wishlist.')
+                else:
+                    if wishlist.id in selected_wishlists_ids:
+                        # If the product is not in the wishlist but the
+                        # wishlist is selected, add the product to the wishlist
+                        wishlist.products.add(product)
+                        # remove the product from the cart
+                        if str(product.id) in cart:
+                            cart.pop(str(product.id))
+                            request.session['cart'] = cart
+                        messages.success(request, 'Product moved to wishlist.')
+
+            return redirect('cart')
+        messages.error(request, 'Failed to update wishlist.', form.errors)
+        return redirect('cart')
+
+
