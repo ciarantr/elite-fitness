@@ -5,7 +5,7 @@ from django.db import models
 from django.db.models import Sum
 from django_countries.fields import CountryField
 
-from apps.accounts.models import CustomerProfile
+from apps.accounts.models import DeliveryDetails
 from apps.ecommerce.products.models import Product
 
 
@@ -25,7 +25,7 @@ class Order(models.Model):
     ]
 
     order_number = models.CharField(max_length=32, unique=True)
-    user_profile = models.ForeignKey(CustomerProfile, null=True, blank=True,
+    user_profile = models.ForeignKey(DeliveryDetails, null=True, blank=True,
                                      on_delete=models.SET_NULL,
                                      related_name='orders')
     full_name = models.CharField(max_length=50)
