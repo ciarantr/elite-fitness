@@ -111,3 +111,22 @@ function hideCartDropdown() {
 cartNavigation?.addEventListener('mouseover', showCartDropdown);
 cartNavigation?.addEventListener('mouseleave', hideCartDropdown);
 cartDropdown?.addEventListener('mouseleave', () => cartDropdown.setAttribute('aria-hidden', 'true'));
+
+setTimeout(() => {
+  const messages = document.querySelectorAll('[data-django-message]');
+  // Apply a fade-out animation using CSS transitions
+  if (messages) {
+  //   loop through all the messages and add the fade-out class
+    messages.forEach((element) => {
+      // Apply a fade-out animation using CSS transitions
+      element.style.transition = 'opacity 0.5s';
+      element.style.opacity = '0';
+
+      // Remove the messages element from the DOM after the animation completes
+      setTimeout(() => {
+        element.parentNode.removeChild(element);
+      }, 500);
+    }
+    );
+  }
+}, 4000);
