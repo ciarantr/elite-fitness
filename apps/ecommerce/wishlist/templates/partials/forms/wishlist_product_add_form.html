@@ -1,0 +1,52 @@
+<form
+  method="post"
+  action="{% url 'wishlist_product_add' item.product.id  %}"
+  class="space-y-6 [&_input]:!border-0 [&_input]:!shadow-none [&_label]:!not-sr-only"
+>
+  {% if wishlist_exists %}
+  <p>Select a wishlist</p>
+  {% endif %} {% csrf_token %} {% if wishlist_exists %}
+  <div class="space-y-1 text-sm">
+    <!-- prettier-ignore -->
+    {% for wishlist in add_to_wishlist_form.fields.wishlist.queryset %}
+    <div>
+      <!-- prettier-ignore -->
+      <input type="checkbox"
+               id="wishlist_{{ wishlist.id }}"
+               name="wishlist"
+               value="{{ wishlist.id }}"
+
+          {% if item.product in wishlist.products.all %}
+               checked
+          {% endif %}
+        >
+      <label for="wishlist_{{ wishlist.id }}">{{ wishlist.name }}</label>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div
+    class="grid gap-y-2 text-sm text-white [&_button]:w-full [&_button]:rounded-md [&_button]:px-3 [&_button]:py-2"
+  >
+    <button
+      type="submit"
+      class="bg-slate-700"
+    >
+      Add / update
+    </button>
+    <button
+      onclick="this.parentElement.parentElement.parentElement.setAttribute('aria-hidden', 'true')"
+      class="bg-slate-700/50"
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+  {% else %}
+  <a
+    href='{% url "wishlist" %}'
+    class="block rounded bg-slate-700 px-4 py-2 text-center text-white"
+    >Create a wishlist</a
+  >
+  {% endif %}
+</form>
