@@ -2,6 +2,7 @@ const stripePublicKeyEl = document.querySelector('#stripe_public_key')
 const clientSecretEl = document.querySelector('#client_secret')
 const cardEl = document.querySelector('#card-element')
 const form = document.querySelector('#payment-form')
+const dialog = document.getElementById('process-order')
 
 // Extract values without surrounding quotes
 const stripePublicKey = stripePublicKeyEl.textContent.trim().slice(1, -1)
@@ -44,7 +45,7 @@ card.addEventListener('change', (event) => {
 form.addEventListener('submit', async function (event) {
   event.preventDefault()
   card.update({ disabled: true })
-  document.querySelector('#submit-button').disabled = true
+  dialog.showModal()
   const saveInfo = Boolean(
     document.querySelector('#id-save-info')?.checked ?? false,
   )
@@ -55,7 +56,7 @@ form.addEventListener('submit', async function (event) {
     save_info: saveInfo,
   }
 
-  const url = '/checkout/cache_checkout_data/'
+  const url = '/checkout/cache-checkout-data/'
 
   const billingDetails = {
     name: form.full_name.value.trim(),
@@ -110,12 +111,13 @@ form.addEventListener('submit', async function (event) {
             } else {
               if (result.paymentIntent.status === 'succeeded') {
                 document.querySelector('#submit-button').disabled = false
+                // close dialog & submit form
+                dialog.close()
                 form.submit()
               }
             }
           })
       } else {
-        console.log('No response')
         location.reload()
       }
     })
