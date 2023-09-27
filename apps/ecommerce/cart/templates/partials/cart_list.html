@@ -1,0 +1,68 @@
+<ul
+  id="cart-list"
+  class="grid gap-4 md:grid-cols-[repeat(auto-fit,_minmax(285px,_1fr))]"
+>
+  {% for item in cart_items %}
+  <li class="grid w-full gap-y-8 rounded-md p-4 shadow">
+    {# product image / name #}
+    <div>
+      <div class="flex flex-wrap items-center gap-6">
+        <img
+          src="{{ item.image }}"
+          alt="{{ item.product.name }}"
+          class="h-10 w-10 rounded-full"
+        />
+        <a
+          href="{% url 'product_detail' item.product.slug %}"
+          class="block text-sm text-gray-900"
+          >{{ item.product.name }}
+        </a>
+      </div>
+    </div>
+
+    {# product price / adjustment #}
+    <div class="flex justify-between gap-x-2">
+      <p>
+        <span class="text-gray-900">€{{ item.product.price }}</span>
+      </p>
+      {% include 'partials/forms/cart_adjust_form.html' %}
+    </div>
+
+    {# remove cart items / add to wishlist#}
+    <div class="flex flex-wrap items-center justify-between gap-4 text-sm">
+      <div
+        class="flex gap-x-2 [&_span]:block [&_span]:text-sm [&_span]:text-slate-500"
+      >
+        <span>Total:</span>
+        <span>€{{ item.total }}</span>
+      </div>
+
+      <div class="flex items-center gap-x-2">
+        {# remove cart item form #}
+        <!-- prettier-ignore -->
+        {% include 'partials/forms/product_remove_form.html' %}
+        <span class="block text-slate-300">|</span>
+        {% if user.is_authenticated %} {# wishlist form #}
+        <button
+          data-popup="wishlist"
+          type="button"
+        >
+          Add to wishlist
+        </button>
+        <div class="hidden">
+          {% include 'partials/forms/wishlist_product_add_form.html' %}
+        </div>
+
+        {% else %} {# Redirect to login if not authenticated user #}
+        <a
+          href="{% url 'login' %}"
+          class="block text-gray-900"
+        >
+          Add to wishlist
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
