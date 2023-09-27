@@ -1,5 +1,8 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+from django.views.generic import FormView, ListView
 
 from .forms import CreateWishlistForm, \
     EditWishlistForm
@@ -27,3 +30,29 @@ class WishListView(LoginRequiredMixin, ListView):
         context['create_wishlist_form'] = CreateWishlistForm()
         context['edit_wishlist_form'] = EditWishlistForm()
         return context
+
+
+class WishlistCreateView(LoginRequiredMixin, FormView):
+    """
+    This view handles the creation of a wishlist
+    """
+    model = List
+    form_class = CreateWishlistForm
+    success_url = reverse_lazy('wishlist')
+    template_name = 'wishlist.html'
+
+    def form_valid(self, form):
+        wishlist = form.save(commit=False)
+        wishlist.user = self.request.user
+        wishlist.save()
+        messages.success(self.request, 'Wishlist successfully created.')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        #  displays all errors in the form
+        for field in form.errors:
+            for error in form.errors[field]:
+                messages.error(self.request, error)
+
+        return redirect('wishlist')
+
