@@ -1,0 +1,17 @@
+<form
+  action="{% url 'remove_from_cart' item.product.id %}"
+  method="POST"
+>
+  {% csrf_token %}
+  <button
+    type="submit"
+    class="text-red-600"
+  >
+    Remove
+  </button>
+  <input
+    type="hidden"
+    name="redirect_path"
+    value="{{ request.path }}"
+  />
+</form>
