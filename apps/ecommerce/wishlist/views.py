@@ -1,8 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import FormView, ListView
+from django.views.generic import DeleteView, FormView, ListView
 
 from .forms import CreateWishlistForm, \
     EditWishlistForm
@@ -55,4 +57,22 @@ class WishlistCreateView(LoginRequiredMixin, FormView):
                 messages.error(self.request, error)
 
         return redirect('wishlist')
+
+
+class WishlistDeleteFormView(LoginRequiredMixin,
+                             SuccessMessageMixin, DeleteView):
+    """
+    This view handles the removal of a wishlist
+    """
+    model = List
+    success_url = reverse_lazy('wishlist')
+    template_name = 'wishlist.html'
+    success_message = 'Wishlist successfully removed.'
+
+    def get_object(self, queryset=None):
+        """Return the wishlist to be deleted."""
+        return get_object_or_404(
+            List, pk=self.kwargs['pk'], user=self.request.user)
+
+
 
