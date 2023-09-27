@@ -1,0 +1,25 @@
+<form
+  data-wishlist-form
+  action="{% url 'wishlist_create' %}"
+  method="POST"
+>
+  {% csrf_token %} {{ create_wishlist_form.as_div }}
+  <div
+    class="flex justify-center gap-3 [&_button]:w-full [&_button]:rounded [&_button]:px-4 [&_button]:py-2 [&_button]:font-semibold"
+  >
+    <button
+      data-close-dialog
+      type="button"
+      class="border"
+    >
+      Cancel
+    </button>
+    <button
+      class="bg-slate-700 text-white disabled:bg-slate-300"
+      disabled
+      type="submit"
+    >
+      Create
+    </button>
+  </div>
+</form>
