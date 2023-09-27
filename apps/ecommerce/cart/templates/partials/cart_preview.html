@@ -1,0 +1,53 @@
+{% load static %}
+<div class="mt-8 max-h-72 w-72 space-y-3 divide-y overflow-y-auto pb-4 pr-4">
+  <p>Total items ({{ cart_total_quantity }})</p>
+  {% for item in cart_items %}
+  <div class="flex items-center justify-between pt-3">
+    <div class="flex items-center">
+      <img
+        src="{{ item.image }}"
+        alt="{{ item.product.name }}"
+        class="h-10 w-10 rounded-full"
+      />
+      <div class="ml-3 text-sm">
+        <div class="font-medium">{{ item.name }}</div>
+
+        <div class="">
+          <div class="text-gray-500">
+            €{{ item.price }} x {{ item.quantity }}
+          </div>
+          <span>Total €{{ item.total }}</span>
+        </div>
+      </div>
+    </div>
+
+    <form
+      action="{% url 'remove_from_cart' item.product.id %}"
+      method="POST"
+    >
+      {% csrf_token %}
+      <button type="submit">
+        <img
+          src="{% static 'icons/close.svg' %}"
+          alt="remove"
+          width="20"
+          height="20"
+        />
+      </button>
+      <input
+        type="hidden"
+        name="redirect_path"
+        value="{{ request.path }}"
+      />
+    </form>
+  </div>
+  {% endfor %}
+
+  <div class="mt-4">
+    <a
+      class="mt-8 block rounded bg-slate-700 px-4 py-2 text-center text-sm text-white"
+      href="{% url 'cart' %}"
+      >View cart &amp; checkout
+    </a>
+  </div>
+</div>
