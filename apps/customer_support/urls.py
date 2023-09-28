@@ -2,7 +2,7 @@ from django.urls import path
 
 from apps.customer_support.views import (
     AboutView, ContactView, FaqsView, PrivacyPolicyView,
-    ShippingAndInformationView)
+    ShippingAndInformationView, TermsAndConditionsView)
 
 app_name = 'customer_support'
 
@@ -14,4 +14,6 @@ urlpatterns = [
          name='privacy-policy'),
     path('shipping-and-information/', ShippingAndInformationView.as_view(),
          name='shipping-and-information'),
+    path('terms-and-conditions/', TermsAndConditionsView.as_view(),
+         name='terms-and-conditions'),
 ]

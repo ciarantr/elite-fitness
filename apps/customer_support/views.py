@@ -116,3 +116,17 @@ class ShippingAndInformationView(TemplateView):
         context['title'] = self.title
         context['free_delivery_threshold'] = settings.FREE_DELIVERY_THRESHOLD
         return context
+
+
+class TermsAndConditionsView(TemplateView):
+    """
+    This view handles the display of the terms and conditions page
+    """
+    template_name = 'terms_conditions.html'
+    title = 'Terms & Conditions'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        return context
+
