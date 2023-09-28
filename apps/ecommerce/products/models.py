@@ -191,34 +191,10 @@ class Product(BaseProduct):
         return self.name
 
 
-class Variant(BaseProduct):
-    """Product variant model"""
-
-    class Meta:
-        verbose_name_plural = 'Product Variants'
-        ordering = ['name']
-
-    attributes = models.ManyToManyField(Attribute,
-                                        related_name='variant_attributes',
-                                        blank=True, )
-
-    product = models.ForeignKey('Product',
-                                related_name='variants',
-                                null=True,
-                                blank=True,
-                                on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
 class Image(models.Model):
     """Product image model"""
     product = models.ForeignKey(Product,
                                 on_delete=models.CASCADE,
-                                related_name='images',
-                                null=True, blank=True)
-    variant = models.ForeignKey(Variant, on_delete=models.CASCADE,
                                 related_name='images',
                                 null=True, blank=True)
 
@@ -246,11 +222,6 @@ def update_slug_and_sku(instance):
 
 @receiver(pre_save, sender=Product)
 def update_product_sku_slug(sender, instance, **kwargs):
-    update_slug_and_sku(instance)
-
-
-@receiver(pre_save, sender=Variant)
-def update_variant_sku_slug(sender, instance, **kwargs):
     update_slug_and_sku(instance)
 
 
