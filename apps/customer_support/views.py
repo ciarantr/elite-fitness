@@ -88,3 +88,17 @@ class FaqsView(TemplateView):
         context['title'] = self.title
         context['faqs'] = faqs
         return context
+
+
+class PrivacyPolicyView(TemplateView):
+    """
+    This view handles the display of the privacy policy page
+    """
+
+    template_name = 'privacy_policy.html'
+    title = 'Privacy Policy'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        return context
