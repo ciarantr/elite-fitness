@@ -6,13 +6,24 @@
   <meta name="description" content="{{ product.description|safe }}" />
   <meta property="og:title" content="{{ product.name|safe }}" />
   <meta property="og:description" content="{{ product.description|safe }}" />
-  <meta property="og:image" content="{{ product.image }}" />
+  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}" />
+  <meta property="og:image:alt" content="{{ product.name|safe }}" />
   <meta property="og:url" content="{{ request.build_absolute_uri|safe }}" />
   <meta property="og:type" content="product" />
   <meta property="product:price:amount" content="{{ product.price }}" />
   <meta property="product:price:currency" content="EUR" />
   <meta property="product:availability" content="in stock" />
   <meta property="product:brand" content="{{ product.brand.name|safe }}" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@elitefitness" />
+  <meta name="twitter:title" content="{{ product.name|safe }}" />
+  <meta name="twitter:description" content="{{ product.description|safe }}" />
+  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}" />
+  <meta name="twitter:image:alt" content="{{ product.name|safe }}" />
+  <meta name="twitter:creator" content="@elitefitness" />
+  <meta name="twitter:domain" content="{{ request.build_absolute_uri|safe }}" />
+
 {% endblock %}
 
 <!-- prettier-ignore -->
@@ -70,8 +81,8 @@
         width="300"
         height="300"
       />
-      {% include 'partials/forms/product_adjust_from.html' %}
-      <div class="space-y-16 md:max-w-2xl">
+      {% include 'partials/forms/product_adjust_form.html' %}
+      <main class="space-y-16 md:max-w-2xl">
         <h2 class="max-w-lg text-sm">{{ product.description }}</h2>
 
         {# Product key benefits #} {% if key_benefits %}
@@ -102,7 +113,7 @@
           </ul>
         </div>
         {% endif %}
-      </div>
+      </main>
     </div>
   </div>
 </section>
