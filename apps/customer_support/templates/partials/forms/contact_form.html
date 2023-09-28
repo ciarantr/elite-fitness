@@ -1,0 +1,25 @@
+{% load static %}
+<form
+  id="contact-form"
+  method="post"
+>
+  {% csrf_token %}
+  <fieldset class="space-y-6">
+    <legend class="text-2xl">Get in touch</legend>
+    {{ form.as_div }}
+
+    <button
+      type="submit"
+      class="bg-slate-600 flex gap-x-8 items-center justify-center space-x-2 rounded-md px-4 py-2 text-white transition-colors duration-300 ease-in-out hover:bg-slate-700"
+    >
+      <span>Send</span>
+      <img
+        aria-hidden="true"
+        src='{% static "icons/arrow-forward.svg" %}'
+        alt="arrow icon"
+        width="16"
+        height="16"
+      />
+    </button>
+  </fieldset>
+</form>
