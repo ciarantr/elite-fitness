@@ -1,0 +1,42 @@
+[
+  {
+    "question": "How do I place an order?",
+    "answer": "By using the www.elitefitness.ie website ('Website') and our services ('Services'), you agree to follow and be bound by these terms and conditions ('Terms & Conditions') and agree to comply with all applicable laws and regulations."
+  },
+  {
+    "question": "Can I change my order after placing it?",
+    "answer": "Yes, you can modify your order within 24 hours of placing it. Please contact us at"
+  },
+  {
+    "question": "What payment methods do you accept?",
+    "answer": "We accept all major credit cards, and Stripe payments."
+  },
+  {
+    "question": "How secure is my personal information?",
+    "answer": "We adhere to highest standards of security. Your personal and payment details are protected by highest level of encryption throughout the checkout process."
+  },
+  {
+    "question": "Do you ship internationally?",
+    "answer": "Yes, we ship worldwide. Delivery times might vary based on location."
+  },
+  {
+    "question": "How long does it take for a product to be delivered?",
+    "answer": "Delivery times vary based on location. Please refer to our Shipping & Information page for more details."
+  },
+  {
+    "question": "How can I track my order?",
+    "answer": "Once your order has been dispatched, you will receive an email containing your tracking number."
+  },
+  {
+    "question": "I received a wrong/damaged product, what should I do?",
+    "answer": "We apologize for the inconvenience. Please contact our support at"
+  },
+  {
+    "question": "What is your return policy?",
+    "answer": "We offer a 30-day return policy for items that are unused, and in the same condition that you received it."
+  },
+  {
+    "question": "Are all your products new?",
+    "answer": "Yes, all our products are new and come in sealed packaging."
+  }
+]

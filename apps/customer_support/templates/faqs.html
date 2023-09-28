@@ -1,0 +1,25 @@
+{% extends 'base_support.html' %}
+
+<!-- Meta data -->
+{% block extra_meta %}
+  <meta
+    name="description"
+    content="Frequently asked questions about our products, ordering, shipping, and returns."
+  />
+{% endblock %}
+
+{% block content %}
+<section class="container lg:max-w-4xl mx-auto mt-12 py-12 px-4">
+  <main class="space-y-6">
+    <h2 class="text-2xl">FAQs</h2>
+    <div class="space-y-6">
+      {% for faq in faqs %}
+      <div>
+        <h3 class="text-lg">{{ faq.question }}</h3>
+        <p>{{ faq.answer }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </main>
+</section>
+{% endblock %}

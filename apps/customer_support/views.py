@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
@@ -67,3 +69,22 @@ class ContactView(FormView):
         messages.error(
             self.request, 'Please correct the errors below.')
         return super().form_invalid(form)
+
+
+class FaqsView(TemplateView):
+    """
+    This view handles the display of the faqs page
+    """
+    template_name = 'faqs.html'
+    title = 'FAQs'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        # Import JSON data from file
+        with open('apps/customer_support/static/data/faqs.json', 'r') as file:
+            faqs = json.load(file)
+
+        context['title'] = self.title
+        context['faqs'] = faqs
+        return context
