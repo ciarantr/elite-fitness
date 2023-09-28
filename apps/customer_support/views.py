@@ -102,3 +102,17 @@ class PrivacyPolicyView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.title
         return context
+
+
+class ShippingAndInformationView(TemplateView):
+    """
+    This view handles the display of the shipping and information page
+    """
+    template_name = 'shipping_information.html'
+    title = 'Shipping & Information'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = self.title
+        context['free_delivery_threshold'] = settings.FREE_DELIVERY_THRESHOLD
+        return context
