@@ -1,0 +1,16 @@
+Hello {{ full_name }}!
+
+We have received your message and will get back to you as soon as possible.
+
+Youre details are as follows:
+
+Name: {{ full_name }}
+Email: {{ email }}
+Phone: {{ phone_number }}
+
+Message: {{ message }}
+
+
+Sincerely,
+
+The Elite Fitness Team
