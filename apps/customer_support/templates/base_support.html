@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+<!-- prettier-ignore -->
+{% block extra_tite %}{{ title }}{% endblock %}
+{% block page_header %}
+
+<div class="my-8 grid h-64 place-items-center bg-slate-100/50">
+  <h1 class="text-center text-4xl text-slate-700">{{ title }}</h1>
+</div>
+
+<div class="container mx-auto overflow-x-auto px-4">
+  <ul
+    class="flex gap-x-6 py-4 lg:justify-center [&_a]:block [&_li:hover]:underline [&_li:hover]:underline-offset-4 [&_li]:min-w-max"
+  >
+    {% for page in customer_support_pages %} {% if page.url == request.path %}
+    <li class="underline underline-offset-4">
+      <a href="{{ page.url }}">{{ page.name }}</a>
+    </li>
+    {% else %}
+    <li>
+      <a href="{{ page.url }}">{{ page.name }}</a>
+    </li>
+
+    {% endif %} {% endfor %}
+  </ul>
+</div>
+<div class="container mx-auto my-8 px-4">
+  <hr />
+</div>
+{% endblock %}
