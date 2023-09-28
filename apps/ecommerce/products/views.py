@@ -2,7 +2,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, TemplateView
 
-from apps.ecommerce.products.models import Brand, Category, Product
+from apps.ecommerce.products.models import (Brand, Category, Product)
 
 
 class AllProductsView(ListView):
@@ -56,7 +56,7 @@ class AllProductsView(ListView):
             elif sort == 'newest':
                 queryset = queryset.order_by('-created')
 
-        return queryset.prefetch_related('images', 'variants__images')
+        return queryset.prefetch_related('images')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -70,21 +70,26 @@ class AllProductsView(ListView):
         context['current_sort'] = self.request.GET.get('sort', '')
 
         # Get all the product categories and add them to the context
-        product_categories = Product.objects.values('category__name', 'category__slug').distinct().order_by('category__name')
-        context['categories'] = {item['category__name']: item['category__slug'] for item in product_categories}
+        product_categories = (
+            Product.objects.values('category__name', 'category__slug')
+            .distinct().order_by('category__name')
+        )
+        context['categories'] = {item['category__name']: item['category__slug']
+                                 for item in product_categories}
 
         # Get all the product brands and add them to the context
-        product_brands = Product.objects.values('brand__name', 'brand__slug').distinct().order_by('brand__name')
-        context['brands'] = {item['brand__name']: item['brand__slug'] for item in product_brands}
+        product_brands = (
+            Product.objects.values('brand__name', 'brand__slug')
+            .distinct().order_by('brand__name')
+        )
+        context['brands'] = {
+            item['brand__name']: item['brand__slug'] for item in product_brands
+        }
 
         # Add the first image of each product to the context
         for product in context[self.context_object_name]:
             if product.images.exists():
                 product.image = product.images.first().image.url
-            #  add variant image if exists
-            elif product.variants.exists():
-                product.image = (product.variants.first()
-                                 .images.first().image.url)
             else:
                 # set the default image
                 product.image = '/media/products/placeholder.svg'
@@ -111,14 +116,11 @@ class ProductDetailView(TemplateView):
 
         # Get the product otherwise return 404
         product = get_object_or_404(
-            Product.objects.prefetch_related('images', 'variants__images'),
+            Product.objects.prefetch_related('images'),
             slug=self.kwargs['slug'])
 
         if product.images.exists():
             product.image = product.images.first().image.url
-        #  add variant image if exists
-        elif product.variants.exists():
-            product.image = product.variants.first().images.first().image.url
         else:
             # set the default image
             product.image = '/media/products/placeholder.svg'
@@ -137,4 +139,3 @@ class ProductDetailView(TemplateView):
                     product_name_parts[1:]).strip()
 
         return context
-    
