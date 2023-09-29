@@ -1,5 +1,5 @@
-import {defineConfig} from 'vite'
-import {resolve} from 'path'
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 export default defineConfig({
   root: resolve('./static/'),
@@ -15,6 +15,7 @@ export default defineConfig({
         css: resolve('./static/js/css-import.js'),
         main: resolve('./static/js/main.js'),
         stripe: resolve('./static/js/stripe.js'),
+        wishlist: resolve('./static/js/wishlist.js'),
       },
     },
   },
