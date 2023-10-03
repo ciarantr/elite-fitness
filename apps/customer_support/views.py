@@ -108,7 +108,7 @@ class ShippingAndInformationView(TemplateView):
     """
     This view handles the display of the shipping and information page
     """
-    template_name = 'shipping_information.html'
+    template_name = 'shipping_and_information.html'
     title = 'Shipping & Information'
 
     def get_context_data(self, **kwargs):
@@ -122,7 +122,7 @@ class TermsAndConditionsView(TemplateView):
     """
     This view handles the display of the terms and conditions page
     """
-    template_name = 'terms_conditions.html'
+    template_name = 'terms_and_conditions.html'
     title = 'Terms & Conditions'
 
     def get_context_data(self, **kwargs):
