@@ -1,24 +1,29 @@
 {
   "js/css-import.css": {
-    "file": "css-import-c90a308f.css",
+    "file": "css-import-fe40915b.css",
     "src": "js/css-import.css"
   },
   "js/css-import.js": {
     "css": [
-      "css-import-c90a308f.css"
+      "css-import-fe40915b.css"
     ],
-    "file": "css-3139381b.js",
+    "file": "css-0bfc80dd.js",
     "isEntry": true,
     "src": "js/css-import.js"
   },
   "js/main.js": {
-    "file": "main-f7e98cdc.js",
+    "file": "main-cee90f99.js",
     "isEntry": true,
     "src": "js/main.js"
   },
   "js/stripe.js": {
-    "file": "stripe-4508a2b4.js",
+    "file": "stripe-0d02ec42.js",
     "isEntry": true,
     "src": "js/stripe.js"
+  },
+  "js/wishlist.js": {
+    "file": "wishlist-f340f9e3.js",
+    "isEntry": true,
+    "src": "js/wishlist.js"
   }
 }
