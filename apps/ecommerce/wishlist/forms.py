@@ -17,11 +17,12 @@ class CreateWishlistForm(forms.ModelForm):
             'description': Textarea(attrs={'cols': 20, 'rows': 5})
         }
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user, *args, **kwargs):
         """
         Add placeholders and classes, remove auto-generated
         labels and set autofocus on first field
         """
+        self.user = user
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['autofocus'] = True
         placeholders = {field: self.Meta.model._meta.get_field(
@@ -37,9 +38,10 @@ class CreateWishlistForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data.get('name').lower()
-        if List.objects.filter(name__iexact=name).exists():
-            raise ValidationError('A wishlist with this name already exists.'
-                                  ' Please choose another.')
+
+        if List.objects.filter(user=self.user, name=name).exists():
+            raise ValidationError('You already have a wishlist with this name.')
+
         return name
 
 

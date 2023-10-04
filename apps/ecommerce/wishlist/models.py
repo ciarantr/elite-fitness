@@ -11,9 +11,7 @@ class List(models.Model):
     user = models.ForeignKey(User,
                              on_delete=models.CASCADE,
                              related_name='wishlist')
-    name = models.CharField(max_length=100,
-                            unique=True,
-                            verbose_name='List name')
+    name = models.CharField(max_length=100, verbose_name='List name')
     description = models.TextField(max_length=150,
                                    null=True,
                                    blank=True,

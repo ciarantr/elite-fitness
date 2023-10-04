@@ -33,7 +33,9 @@ class WishListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['create_wishlist_form'] = CreateWishlistForm()
+        context['create_wishlist_form'] = CreateWishlistForm(
+            user=self.request.user
+        )
         context['edit_wishlist_form'] = EditWishlistForm()
         return context
 
@@ -46,6 +48,14 @@ class WishlistCreateView(LoginRequiredMixin, FormView):
     form_class = CreateWishlistForm
     success_url = reverse_lazy('wishlist')
     template_name = 'wishlist.html'
+
+    # Override get_form_kwargs to include user
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'user': self.request.user  # pass the user to your form
+        })
+        return kwargs
 
     def form_valid(self, form):
         wishlist = form.save(commit=False)
