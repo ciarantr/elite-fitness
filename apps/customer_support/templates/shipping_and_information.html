@@ -2,31 +2,43 @@
 
 <!-- Meta data -->
 {% block extra_meta %}
-  <meta
-    name="description"
-    content="Elite Fitness shipping and returns information. We offer worldwide shipping with free delivery over €{{ free_delivery_threshold }}">
-  />
-{% endblock %}
+<meta
+  name="description"
+  content="Elite Fitness shipping and returns information. We offer worldwide shipping with free delivery over €{{ free_delivery_threshold }}"
+/>
+{% endblock %} {% block content %}
+<section class="container mx-auto mt-12 px-4 py-12 lg:max-w-4xl">
+  <main class="space-y-6">
+    <h2 class="text-2xl">Shipping & Information</h2>
+    <p>
+      At Elite Fitness, we work hard to ensure your orders get to you as quickly
+      as possible. We ship all over the world with reliable delivery partners to
+      guarantee your products to arrive securely. Please allow 1-2 business days
+      for processing and 3-7 business days for shipping within the Ireland. For
+      international shipping, it may take 7-14 business days. Note that delivery
+      times may vary during holiday periods and sales. You'll be notified via
+      email with your tracking number once your order has been shipped.
+      <br /><br />
+      If you have any questions about your order, please
+      <a href="{% url 'customer_support:contact' %}">contact us</a> and we'll be
+      happy to help.
+    </p>
 
-{% block content %}
-  <section class='container lg:max-w-4xl mx-auto mt-12 py-12 px-4'>
-    <main class='space-y-6'>
-      <h2 class='text-2xl'>Shipping & Information </h2>
-      <p>
-        At Elite Fitness, we work hard to ensure your orders get to you as quickly as possible. We ship all over the world with reliable delivery partners to guarantee your products to arrive securely.
-        Please allow 1-2 business days for processing and 3-7 business days for shipping within the Ireland. For international shipping, it may take 7-14 business days. Note that delivery times may vary during holiday periods and sales.
-        You'll be notified via email with your tracking number once your order has been shipped.
-        <br><br>
-        If you have any questions about your order, please <a href='{% url 'customer_support:contact' %}'>contact us</a> and we'll be happy to help.
-      </p>
-
-      <h2 class='text-2xl'>Refunds & Returns</h2>
-      <p>
-        We strive for complete customer satisfaction at Elite Fitness. If you're not entirely happy with your purchase, you can return it within 30 days of receipt for a full refund, provided the item is unused and in the same condition that you received it.
-        <br><br>
-        To start a return, please contact us first at <a class='underline font-semibold' href="mailto:support@example.com?subject=Returns&body=Hi, I would like to return a purchase">support@elitefitness.ie</a>. Once we receive and inspect the returned item, we'll notify you of your refund.
-      </p>
-    </main>
-
-  </section>
+    <h2 class="text-2xl">Refunds & Returns</h2>
+    <p>
+      We strive for complete customer satisfaction at Elite Fitness. If you're
+      not entirely happy with your purchase, you can return it within 30 days of
+      receipt for a full refund, provided the item is unused and in the same
+      condition that you received it.
+      <br /><br />
+      To start a return, please contact us first at
+      <a
+        href="mailto:support@example.com?subject=Returns&body=Hi, I would like to return a purchase"
+        class="font-semibold underline"
+        >support@elitefitness.ie</a
+      >.Once we receive and inspect the returned item, we'll notify you of your
+      refund.
+    </p>
+  </main>
+</section>
 {% endblock %}
