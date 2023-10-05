@@ -66,13 +66,13 @@
 
 /* Mobile/ Desktop menu animations*/
 /* used to set opacity on hidden elements (mobile / desktop menu)*/
-#menu-content,
+#navbar-menu,
 .desktop-nav-menu + div {
   opacity: 0;
   visibility: hidden;
 }
 
-#menu-content.open,
+#navbar-menu.open,
 .desktop-nav-menu + div.open,
 #search-container.open {
   opacity: 1;

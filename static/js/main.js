@@ -1,5 +1,5 @@
 const mobileMenuBtn = document.querySelector('#toggle-nav-sidebar')
-const mobileMenu = document.querySelector('#menu-content')
+const mobileMenu = document.querySelector('#navbar-menu')
 const closeMobileMenuBtn = mobileMenu.querySelector('button')
 const desktopMenu = document.querySelectorAll('.desktop-nav-menu')
 const desktopSearchBtn = document.querySelector('#toggle-search-form')

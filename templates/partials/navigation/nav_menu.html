@@ -3,7 +3,7 @@
   <div class="flex flex-wrap items-center">
     <button
       aria-haspopup="true"
-      aria-controls="menu-content"
+      aria-controls="navbar-menu"
       id="toggle-nav-sidebar"
       type="button"
       class="lg:hidden"
@@ -12,7 +12,6 @@
         src="{% static 'icons/mobile-menu.svg' %}"
         height="32"
         width="32"
-        aria-controls="mobile-menu"
         alt="menu icon"
       />
     </button>
@@ -101,7 +100,7 @@
         {# Cart preview #}
       <div
         id="cart-navigation"
-        class="hidden lg:block lg:relative lg:self-end"
+        class="hidden lg:relative lg:block lg:self-end"
         aria-controls="cart-dropdown"
         aria-expanded="false"
       >
@@ -129,7 +128,7 @@
           id="cart-dropdown"
           aria-label="cart preview"
           aria-hidden="true"
-          class="lg:absolute lg:right-0 lg:top-[1.5rem] lg:z-50 lg:px-2 lg:t-4 lg:aria-hidden:invisible"
+          class="lg:t-4 lg:absolute lg:right-0 lg:top-[1.5rem] lg:z-50 lg:px-2 lg:aria-hidden:invisible"
         >
           <div class="lg:rounded lg:bg-white lg:px-4 lg:pt-2 lg:shadow">
             <div class="lg:flex lg:w-full">
@@ -149,8 +148,8 @@
             {% include 'partials/cart_preview.html' %}
           </div>
         </div>
-        {% endif %}
       </div>
+      {% endif %}
     </div>
     {# Search form mobile #}
     <div
@@ -163,13 +162,16 @@
   </div>
 
   {# Desktop menu and submenu #}
-  <div class="hidden lg:mx-auto lg:mt-8 lg:flex lg:max-w-4xl lg:justify-evenly">
+  <div
+    role='menu'
+    class="hidden lg:mx-auto lg:mt-8 lg:flex lg:max-w-4xl lg:justify-evenly">
     {# menu 1 health #}
     <div
       class="desktop-nav-menu"
       aria-haspopup="true"
       aria-controls="submenu-1"
       aria-expanded="false"
+      role='menuitem'
     >
       Health
     </div>
@@ -215,6 +217,7 @@
       aria-haspopup="true"
       aria-expanded="false"
       aria-controls="submenu-2"
+      role='menuitem'
     >
       Fitness
     </div>
@@ -283,6 +286,7 @@
       aria-controls="submenu-3"
       aria-expanded="false"
       class="desktop-nav-menu"
+      role='menuitem'
     >
       Bestsellers
     </div>
