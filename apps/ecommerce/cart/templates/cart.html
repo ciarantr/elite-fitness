@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block extra_tite %}Shopping
 cart{% endblock %} {% block extra_js %}
-<script defer>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const wishlistDialog = document.getElementById('wishlist')
     const wishlistButtons = document.querySelectorAll('[data-popup="wishlist"]')
@@ -100,6 +100,7 @@ cart{% endblock %} {% block extra_js %}
     {% endif %}
   </main>
 </div>
+{# wishlist dialog #}
 <dialog
   class="w-[min(90vw,_500px)] space-y-4 rounded-md bg-white p-10 shadow"
   id="wishlist"
