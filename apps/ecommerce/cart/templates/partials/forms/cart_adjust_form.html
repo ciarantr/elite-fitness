@@ -5,12 +5,12 @@
   {% csrf_token %}
   <div class="flex items-center space-x-2">
     <label
-      for="quantity"
+      for="quantity-product-{{ forloop.counter }}"
       class="text-sm"
       >Qty:</label
     >
     <input
-      id="quantity"
+      id="quantity-product-{{ forloop.counter }}"
       name="quantity"
       type="number"
       min="1"
