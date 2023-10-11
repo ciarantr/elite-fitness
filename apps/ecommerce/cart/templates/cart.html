@@ -1,27 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block extra_tite %}Shopping
-cart{% endblock %} {% block extra_js %}
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const wishlistDialog = document.getElementById('wishlist')
-    const wishlistButtons = document.querySelectorAll('[data-popup="wishlist"]')
-
-    const closeHandler = function (event) {
-      wishlistDialog.removeChild(event.target.form)
-      wishlistDialog.removeEventListener('close', closeHandler, false)
-    }
-
-    wishlistButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const form = button.nextElementSibling.firstElementChild.cloneNode(true)
-        wishlistDialog.form = form
-        wishlistDialog.appendChild(form)
-        wishlistDialog.showModal()
-        wishlistDialog.addEventListener('close', closeHandler, false)
-      })
-    })
-  })
-</script>
-{% endblock %} {% block content %}
+cart{% endblock %}
+{% block extra_js %}
+    <script src="{% static 'js/wishlist_append_to_dialog.js' %}"></script>
+  {% endblock %}
+{% block content %}
 
 <div class="container mx-auto mt-12 space-y-12 px-4">
   <h1 class="text-center text-2xl">Shopping Cart</h1>
@@ -101,22 +83,5 @@ cart{% endblock %} {% block extra_js %}
   </main>
 </div>
 {# wishlist dialog #}
-<dialog
-  class="w-[min(90vw,_500px)] space-y-4 rounded-md bg-white p-10 shadow"
-  id="wishlist"
->
-  <div class="flex justify-between">
-    <h2 class="text-lg font-semibold">Create or update your wishlists</h2>
-    <button
-      data-close-dialog
-      type="button"
-      onclick='this.closest("dialog").close()'
-    >
-      <img
-        src="{% static 'icons/close.svg' %}"
-        alt=""
-      />
-    </button>
-  </div>
-</dialog>
+{% include 'partials/dialogs/wishlist_update_dialog.html' %}
 {% endblock %}

@@ -1,0 +1,21 @@
+{% load static %}
+<dialog
+  class="rounded-md bg-white w-11/12 !p-5 md:p-10 md:w-[min(90vw,_500px)] shadow"
+  id="wishlist"
+>
+  <div class="flex justify-between">
+    <h2 class="text-lg font-semibold">Create or update your wishlists</h2>
+    <button
+      data-close-dialog
+      type="button"
+      onclick='this.closest("dialog").close()'
+    >
+      <img
+        src="{% static 'icons/close.svg' %}"
+        alt="close icon"
+        width='20'
+        height='20'
+      />
+    </button>
+  </div>
+</dialog>
