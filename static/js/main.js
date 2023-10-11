@@ -92,8 +92,8 @@ desktopSearchBtn.addEventListener('click', () => {
 })
 
 function disableMenuNav() {
+  // disable all nav submenu popover
   const isOpen = desktopSearchContainer.classList.contains('open')
-
   desktopMenu.forEach((element) => {
     element.setAttribute('aria-hidden', isOpen ? 'true' : 'false')
     if (isOpen) {
@@ -140,7 +140,7 @@ function closeSearchOnScroll() {
 desktopSearchCloseBtn.addEventListener('click', () => {
   desktopSearchContainer.classList.toggle('open')
   desktopSearchContainer.setAttribute('aria-hidden', 'true')
-  desktopSearchBtn.setAttribute('aria-expanded', 'false')
+  disableMenuNav()
 })
 
 const cartNavigation = document.querySelector('#cart-navigation')
