@@ -37,6 +37,7 @@ class WishListView(LoginRequiredMixin, ListView):
             user=self.request.user
         )
         context['edit_wishlist_form'] = EditWishlistForm()
+        context['cart'] = self.request.session.get('cart', {})
         return context
 
 
@@ -61,7 +62,8 @@ class WishlistCreateView(LoginRequiredMixin, FormView):
         wishlist = form.save(commit=False)
         wishlist.user = self.request.user
         wishlist.save()
-        messages.success(self.request, 'Wishlist successfully created.')
+        messages.success(self.request,
+                         'Wishlist successfully created.')
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -114,11 +116,13 @@ class WishlistUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'wishlist.html'
 
     def form_valid(self, form):
-        messages.success(self.request, 'Wishlist successfully updated.')
+        messages.success(self.request,
+                         'Wishlist successfully updated.')
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        messages.error(self.request, 'Wishlist could not be updated.')
+        messages.error(self.request,
+                       'Wishlist could not be updated.')
         return super().form_invalid(form)
 
 
@@ -129,6 +133,8 @@ class WishlistAddProductView(LoginRequiredMixin, View):
 
     def post(self, request, product_id):
         form = AddProductToWishlistForm(request.POST, user=request.user)
+        referring_url = request.POST.get('referring_url')
+
         if form.is_valid():
             product = get_object_or_404(Product, pk=product_id)
 
@@ -148,22 +154,32 @@ class WishlistAddProductView(LoginRequiredMixin, View):
                         # If the product is in the wishlist but the wishlist
                         # is not selected, remove the product from the wishlist
                         wishlist.products.remove(product)
-                        messages.success(request, 'Product removed from '
-                                                  'wishlist.')
+                        messages.success(request,
+                                         'Product removed from '
+                                         'wishlist.')
                 else:
                     if wishlist.id in selected_wishlists_ids:
                         # If the product is not in the wishlist but the
                         # wishlist is selected, add the product to the wishlist
                         wishlist.products.add(product)
                         # remove the product from the cart
-                        if str(product.id) in cart:
+                        if (str(product.id) in cart
+                                and referring_url == '/cart/'):
                             cart.pop(str(product.id))
                             request.session['cart'] = cart
-                        messages.success(request, 'Product moved to wishlist.')
+                        messages.success(request,
+                                         'Product added to wishlist.')
+            if referring_url:
+                return redirect(referring_url)
+            else:
+                return redirect('wishlist')
 
-            return redirect('cart')
-        messages.error(request, 'Failed to update wishlist.', form.errors)
-        return redirect('cart')
+        messages.error(request, 'Failed to update wishlist.',
+                       form.errors)
+        if referring_url:
+            return redirect(referring_url)
+        else:
+            return redirect('wishlist')
 
 
 class WishlistRemoveProductView(LoginRequiredMixin, View):
