@@ -1,10 +1,9 @@
 <form
-  action="{% url 'adjust_cart' product.id %}"
+  action="{% url 'add_to_cart' product.id %}"
   method="POST"
-  class="lg:max-w-lg"
 >
   {% csrf_token %}
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center gap-x-4">
     <label
       for="quantity"
       class="text-sm"
@@ -21,7 +20,7 @@
     />
     <button
       type="submit"
-      class="w-full rounded bg-slate-700 px-4 py-2 text-sm text-white"
+      class="w-full rounded bg-slate-700 px-2 py-3 text-sm text-white"
     >
       Add to Cart
     </button>
