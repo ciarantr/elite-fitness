@@ -3,6 +3,8 @@ const closeDialogButtons = document.querySelectorAll('[data-close-dialog]')
 const wishListForms = document.querySelectorAll('[data-wishlist-form]')
 let initialWishlistName = ''
 let initialWishlistDescription = ''
+const paragraphElement = document.createElement('p')
+
 // Disable the submit button if name input is empty or hasn't been changed
 // Enable if the text area has been changed
 const manageSubmitButtonState = (e) => {
@@ -49,12 +51,23 @@ const handleEditList = async (button) => {
     console.error('There has been a problem with your fetch operation:', error)
   }
 }
-// Open dialog & add list details to edit form
+
+const handleDeleteList = (button) => {
+  const listId = button.getAttribute('data-list-id')
+  const listName = button.parentElement.previousElementSibling.textContent
+  const listForm = document.querySelector('#delete-list form')
+  let confirmMessage = `Are you sure you want to delete ${listName}? <br>  This action cannot be undone. All items in this list will be deleted.`
+  listForm.setAttribute('action', `/wishlist/delete/${listId}/`)
+  paragraphElement.innerHTML = confirmMessage
+  // append listForm as first child of paragraphElement
+  listForm.prepend(paragraphElement)
+}
+
+// Open dialog & add list details to edit/delete form
 openDialogButtons.forEach((button) => {
   button.addEventListener('click', async () => {
     initialWishlistName =
       button.parentElement.previousElementSibling.textContent
-    console.log(initialWishlistName)
     const dialogId = button.getAttribute('id')
     const dialog = document.querySelector(`dialog#${dialogId}`)
     dialog.showModal()
@@ -64,6 +77,10 @@ openDialogButtons.forEach((button) => {
 
     if (dialogId === 'edit-list') {
       await handleEditList(button)
+    }
+
+    if (dialogId === 'delete-list') {
+      handleDeleteList(button)
     }
   })
 })
