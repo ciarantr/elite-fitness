@@ -108,6 +108,7 @@ form.addEventListener('submit', async function (event) {
               displayError.textContent = result.error.message
               card.update({ disabled: false })
               document.querySelector('#submit-button').disabled = false
+              dialog.close()
             } else {
               if (result.paymentIntent.status === 'succeeded') {
                 document.querySelector('#submit-button').disabled = false
