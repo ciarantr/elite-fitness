@@ -61,20 +61,26 @@
 
     {% else %}
     <!-- prettier-ignore -->
-    <a href="{% url 'login' %}" class=" text-sm hidden lg:block">Sign-in / Register </a>
+    <div class=' text-sm hidden lg:inline-block'>
+      <a href="{% url 'login' %}" class="">Sign-in</a>
+      <span> / </span>
+      <a href="{% url 'register' %}" class="">Register</a>
+    </div>
     {% endif %}
-    <a
-      class="flex grow justify-center gap-x-2"
-      href="{% url 'home' %}"
-    >
-      <img
-        src="{% static 'icons/elite-fitness-icon.svg' %}"
-        height="26"
-        width="26"
-        alt="home icon"
-      />
-      <span class="text-lg lg:text-xl">Elite Fitness</span>
-    </a>
+    <div class="flex grow justify-center">
+      <a
+        class="flex w-max gap-x-2"
+        href="{% url 'home' %}"
+      >
+        <img
+          src="{% static 'icons/elite-fitness-icon.svg' %}"
+          height="26"
+          width="26"
+          alt="home icon"
+        />
+        <span class="text-lg lg:text-xl">Elite Fitness</span>
+      </a>
+    </div>
 
     <div class="flex items-center justify-end gap-x-6">
       {# Search button for desktop #}
@@ -83,7 +89,6 @@
         aria-haspopup="true"
         aria-controls="search-container"
         class="hidden lg:flex lg:gap-x-2"
-        aria-expanded="false"
       >
         <img
           src="{% static 'icons/search.svg' %}"
@@ -101,8 +106,8 @@
       <div
         id="cart-navigation"
         class="hidden lg:relative lg:block lg:self-end"
-        aria-controls="cart-dropdown"
-        aria-expanded="false"
+        aria-haspopup="true"
+        aria-controls="cart-popover"
       >
         <a
           class="lg:flex lg:items-center lg:gap-x-1"
@@ -125,9 +130,10 @@
           </div>
         </a>
         <div
-          id="cart-dropdown"
+          id="cart-popover"
           aria-label="cart preview"
           aria-hidden="true"
+          role="dialog"
           class="lg:t-4 lg:absolute lg:right-0 lg:top-[1.5rem] lg:z-50 lg:px-2 lg:aria-hidden:invisible"
         >
           <div class="lg:rounded lg:bg-white lg:px-4 lg:pt-2 lg:shadow">
@@ -135,7 +141,7 @@
               <button
                 type="button"
                 class="lg:ml-auto lg:mt-2"
-                onclick="this.closest('#cart-dropdown').setAttribute('aria-hidden', 'true')"
+                onclick="this.closest('#cart-popover').setAttribute('aria-hidden', 'true')"
               >
                 <img
                   src="{% static 'icons/close.svg' %}"
@@ -155,7 +161,7 @@
     <div
       id="search-container"
       aria-hidden="true"
-      class="mt-6 w-full lg:absolute lg:inset-x-0 lg:top-[65px] lg:px-8"
+      class="z-40 mt-6 w-full lg:absolute lg:inset-x-0 lg:top-[65px] lg:px-8"
     >
       {% include 'partials/forms/search_form.html' %}
     </div>
@@ -163,15 +169,15 @@
 
   {# Desktop menu and submenu #}
   <div
-    role='menu'
-    class="hidden lg:mx-auto lg:mt-8 lg:flex lg:max-w-4xl lg:justify-evenly">
+    role="menu"
+    class="hidden lg:mx-auto lg:mt-8 lg:flex lg:max-w-4xl lg:justify-evenly"
+  >
     {# menu 1 health #}
     <div
       class="desktop-nav-menu"
       aria-haspopup="true"
       aria-controls="submenu-1"
-      aria-expanded="false"
-      role='menuitem'
+      role="menuitem"
     >
       Health
     </div>
@@ -215,9 +221,8 @@
     <div
       class="desktop-nav-menu"
       aria-haspopup="true"
-      aria-expanded="false"
       aria-controls="submenu-2"
-      role='menuitem'
+      role="menuitem"
     >
       Fitness
     </div>
@@ -284,9 +289,8 @@
     <div
       aria-haspopup="true"
       aria-controls="submenu-3"
-      aria-expanded="false"
       class="desktop-nav-menu"
-      role='menuitem'
+      role="menuitem"
     >
       Bestsellers
     </div>
