@@ -34,22 +34,33 @@ class AddToCartView(View):
 
     def post(self, request, item_id):
         product = Product.objects.get(pk=item_id)
+        product_stock = product.stock
         quantity = int(request.POST.get('quantity')) if request.POST.get(
             'quantity') else 1
         redirect_url = request.POST.get('redirect_url')
 
         cart = request.session.get('cart', {})
 
-        if item_id in list(cart.keys()):
-            cart[item_id] += quantity
+        for cart_item_id, count in cart.items():
+            if cart_item_id == str(product.id):
+                if count + quantity > product_stock:
+                    messages.error(request,
+                                   f'We apologize, but we only have '
+                                   f'{product_stock} {product.name} left in '
+                                   f'stock right now.')
+                    return redirect(redirect_url)
+
+        if str(product.id) in cart:
+            cart[str(product.id)] += quantity
             messages.success(request,
                              f'Updated {product.name} quantity to '
-                             f'{cart[item_id]}')
+                             f'{cart[str(product.id)]}')
         else:
-            cart[item_id] = quantity
+            cart[str(product.id)] = quantity
             messages.success(request, f'Added {product.name} to your cart')
 
         request.session['cart'] = cart
+
         return redirect(redirect_url)
 
 
