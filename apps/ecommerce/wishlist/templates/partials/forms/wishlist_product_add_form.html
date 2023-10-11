@@ -3,6 +3,11 @@
   action="{% url 'wishlist_product_add' item.product.id  %}"
   class="space-y-6 [&_input]:!border-0 [&_input]:!shadow-none [&_label]:!not-sr-only"
 >
+  <input
+    type="hidden"
+    name="referring_url"
+    value="{{ request.path }}"
+  />
   {% if wishlist_exists %}
   <p>Select a wishlist</p>
   {% endif %} {% csrf_token %} {% if wishlist_exists %}
