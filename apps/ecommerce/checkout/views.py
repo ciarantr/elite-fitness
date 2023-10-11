@@ -132,52 +132,63 @@ class CheckoutSuccessView(DetailView):
     template_name = 'checkout_success.html'
     context_object_name = 'order'
 
-    def dispatch(self, request, *args, **kwargs):
-        """Process the order before rendering the template."""
-        order_number = kwargs.get('order_number')
-        save_info = self.request.session.get('save_info')
-        order = get_object_or_404(Order, order_number=order_number)
-        from_checkout = request.session.pop('from_checkout', False)
-
-        if request.user.is_authenticated:
-            profile = DeliveryDetails.objects.get(user=request.user)
-            order.user_profile = profile
-            order.save()
-
-            if save_info:
-                profile_data = {
-                    'default_full_name': order.full_name,
-                    'default_email': order.email,
-                    'default_phone_number': order.phone_number,
-                    'default_country': order.country,
-                    'default_postcode': order.postcode,
-                    'default_town_or_city': order.town_or_city,
-                    'default_street_address1': order.street_address1,
-                    'default_street_address2': order.street_address2,
-                    'default_county': order.county,
-                }
-                user_profile_form = CustomerDeliveryForm(profile_data,
-                                                         instance=profile)
-                if user_profile_form.is_valid():
-                    user_profile_form.save()
-        else:
-            if from_checkout:
-                messages.info(request, "Order placed as guest.")
-
-        if from_checkout:
-            messages.success(request, f'Order successfully processed! \
-                    Your order number is {order_number}. A confirmation \
-                    email will be sent to {order.email}.')
-
-        if 'cart' in request.session and from_checkout:
-            del request.session['cart']
-
-        return super().dispatch(request, *args, **kwargs)
-
     def get_object(self, queryset=None):
         """Get the Order object based on order_number."""
         order_number = self.kwargs.get('order_number')
         return get_object_or_404(Order, order_number=order_number)
+
+    def dispatch(self, request, *args, **kwargs):
+        save_info = self.request.session.get('save_info')
+        order_number = self.kwargs.get('order_number')
+        order = get_object_or_404(Order, order_number=order_number)
+        order_email = Order.objects.get(order_number=order_number).email
+
+        if self.request.session.pop('from_checkout', False):
+            if request.user.is_authenticated:
+                profile = DeliveryDetails.objects.get(user=request.user)
+                order.user_profile = profile
+                order.save()
+
+                if save_info:
+                    profile_data = {
+                        'default_full_name': order.full_name,
+                        'default_email': order.email,
+                        'default_phone_number': order.phone_number,
+                        'default_country': order.country,
+                        'default_postcode': order.postcode,
+                        'default_town_or_city': order.town_or_city,
+                        'default_street_address1': order.street_address1,
+                        'default_street_address2': order.street_address2,
+                        'default_county': order.county,
+                    }
+                    user_profile_form = CustomerDeliveryForm(profile_data,
+                                                             instance=profile)
+                    if user_profile_form.is_valid():
+                        user_profile_form.save()
+            else:
+                messages.info(request, "Order placed as guest.")
+
+            messages.success(request,
+                             f'Order successfully processed! Your order '
+                             f'number is {order_number}. A confirmation '
+                             f'email will be sent to {order_email}.')
+
+            if 'cart' in request.session:
+                del request.session['cart']
+        else:
+            if request.user.is_authenticated:
+                messages.error(request,
+                               f"""Please view your past order history 
+                                                in your profile order details
+                                                section.
+                                                """)
+            else:
+                messages.error(request,
+                               'Please login to view past orders.'
+                               )
+            return redirect('home')
+
+        return super().dispatch(request, *args, **kwargs)
 
 
 class CacheCheckoutDataView(View):

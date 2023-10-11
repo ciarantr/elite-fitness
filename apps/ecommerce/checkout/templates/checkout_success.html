@@ -23,13 +23,17 @@ Information{%endblock %} {% block content %}
 <main>
   <div class="container mx-auto mt-24 px-4">
     <div class="mx-auto rounded-lg p-4 shadow lg:w-7/12">
+      {# Only display h2/p if django message (on checkout success page) #}
+      <!-- prettier-ignore -->
+      {% if messages %}
       <h2 class="mb-4 text-xl">
         Thank you for your order {{ order.full_name }}
       </h2>
-      <p class="">
+      <p>
         We have successfully received your order.<br />
         You will receive an email to <strong>{{ order.email }}</strong>.
       </p>
+      {% endif %}
 
       <div class="mt-4 p-4">
         <div class="mb-2">
