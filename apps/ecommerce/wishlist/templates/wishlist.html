@@ -84,25 +84,30 @@
               <button
                 data-open-dialog
                 id="edit-list"
-                class="rounded bg-slate-700 px-4 py-2 text-center text-sm text-white"
                 data-list-id="{{ wishlist.id }}"
+                title="Edit list"
               >
-                Edit list
+                <img
+                  src='{% static "icons/update.svg" %}'
+                  alt="update list icon"
+                  width="24"
+                  height="24"
+                />
               </button>
               {# delete from #}
-              <form
-                action="{% url 'wishlist_delete' wishlist.id %}"
-                method="POST"
-                class="inline"
+              <button
+                data-open-dialog
+                id="delete-list"
+                data-list-id="{{ wishlist.id }}"
+                title="Delete list"
               >
-                {% csrf_token %}
-                <button
-                  type="submit"
-                  class="rounded bg-red-600 px-4 py-2 text-center text-sm text-white"
-                >
-                  Delete list
-                </button>
-              </form>
+                <img
+                  src='{% static "icons/trash.svg" %}'
+                  alt="trash icon"
+                  width="24"
+                  height="24"
+                />
+              </button>
             </div>
           </div>
           {# Wishlist products, image, price #} {% if wishlist.products.count %}
@@ -110,15 +115,15 @@
             data-list-id="{{ wishlist.id }}"
             class="grid grid-flow-col justify-start gap-x-8 overflow-x-auto py-4"
           >
-            {% for item in wishlist.get_all_products %}
+            {% for product in wishlist.get_all_products %}
             <li class="h-full w-64 space-y-4 rounded-md pb-4 shadow">
               <div class="flex h-full flex-col space-y-3">
-                {% if item.images.all.0 %}
+                {% if product.images.all.0 %}
                 <img
-                  src="{{ item.images.all.0.image.url }}"
+                  src="{{ product.images.all.0.image.url }}"
                   width="225"
                   height="225"
-                  alt="{{ item.name }}"
+                  alt="{{ product.name }}"
                   class="h-full w-full rounded-t-md object-cover"
                 />
                 {% else %}
@@ -126,46 +131,41 @@
                   src="{{ MEDIA_URL }}products/placeholder.svg"
                   width="225"
                   height="225"
-                  alt="{{ item.name }}"
+                  alt="{{ product.name }}"
                   class="h-full w-full rounded-t-md object-cover"
                 />
                 {% endif %}
                 <div class="space-y-6 px-4">
                   <div class="space-y-3 text-sm">
-                    <h3>{{ item.name }}</h3>
-                    <p>€{{ item.price }}</p>
-                  </div>
-                  <div class="space-y-2">
-                    {# add wishlist product to cart #}
-                    <form
-                      action="{% url 'add_to_cart' item.id %}"
-                      method="post"
-                    >
-                      {% csrf_token %}
-                      <button
-                        class="w-full rounded bg-slate-700 px-4 py-2 text-center text-sm text-white"
-                        type="submit"
+                    <h3>
+                      <a href="{% url 'product_detail' product.slug %}"
+                        >{{ product.name }}</a
                       >
-                        Add to cart
-                      </button>
-                      <input
-                        type="hidden"
-                        name="redirect_url"
-                        value="{{ request.path }}"
-                      />
-                    </form>
-                    {# remove product from wishlist #}
-                    <form
-                      method="post"
-                      action="{% url 'wishlist_product_remove' list_id=wishlist.id product_id=item.id %}"
+                    </h3>
+                    <p>€{{ product.price }}</p>
+                  </div>
+                  <!-- prettier-ignore -->
+                  {# add wishlist product to cart / remove product from wishlist #}
+                  <div class="space-y-2">
+                    <!-- prettier-ignore -->
+                    {% if product.stock > 1 %} {% if product.id|stringformat:"s" in cart.keys %}
+                    <p
+                      class="w-full rounded bg-slate-700/90 px-4 py-2 text-center text-sm text-white"
                     >
-                      {% csrf_token %}
-                      <input
-                        class="w-full cursor-pointer rounded bg-red-600 px-4 py-2 text-center text-sm text-white"
-                        type="submit"
-                        value="Remove"
-                      />
-                    </form>
+                      Added to cart
+                    </p>
+                    {% else %}
+                    <!-- prettier-ignore -->
+                    {# Add product to cart form #}
+                      {% include 'partials/forms/cart_add_from_wishlist_form.html' %}
+                    {%endif %}
+
+                    {% else %}
+                    <p class="text-sm text-red-600">Out of stock</p>
+                    {% endif %}
+                    <!-- prettier-ignore -->
+                    {# remove product from wishlist #}
+                    {% include 'partials/forms/wishlist_product_remove_form.html' %}
                   </div>
                 </div>
               </div>
@@ -186,43 +186,12 @@
   </main>
 </div>
 {# create wishlist dialog #}
-<dialog
-  id="create-list"
-  class="space-y-8 rounded-md bg-white p-10 shadow"
->
-  <div class="flex w-[min(90vw,_500px)] justify-between">
-    <h2 class="text-lg font-medium">Create a new list</h2>
-    <button
-      data-close-dialog
-      type="button"
-    >
-      <img
-        src="{% static 'icons/close.svg' %}"
-        alt=""
-      />
-    </button>
-  </div>
-  {% include 'partials/forms/wishlist_create_form.html' %}
-</dialog>
-
+<!-- prettier-ignore -->
+{% include 'partials/dialogs/wishlist_create_dialog.html' %}
 {# edit wishlist dialog#}
-<dialog
-  id="edit-list"
-  class="space-y-8 rounded-md bg-white p-10 shadow"
->
-  <div class="flex w-[min(90vw,_500px)] justify-between">
-    <h2 class="text-lg font-medium">Edit List</h2>
-    <button
-      data-close-dialog
-      type="button"
-    >
-      <img
-        src="{% static 'icons/close.svg' %}"
-        alt=""
-      />
-    </button>
-  </div>
-  {% include 'partials/forms/wishlist_update_form.html' %}
-</dialog>
-
+<!-- prettier-ignore -->
+{%include 'partials/dialogs/wishlist_edit_dialog.html' %}
+{# delete wishlist dialog#}
+<!-- prettier-ignore -->
+{%include 'partials/dialogs/wishlist_delete_dialog.html' %}
 {% endblock %}
