@@ -64,6 +64,17 @@
   }
 }
 
+/* body overlay when searchbar focused*/
+.overlay {
+  @apply absolute
+  h-[100lvh]
+  w-full
+  bg-black/60
+  top-0
+  z-30;
+  top: 132px; /* 132px is the height of the navbar */
+}
+
 /* Mobile/ Desktop menu animations*/
 /* used to set opacity on hidden elements (mobile / desktop menu)*/
 #navbar-menu,

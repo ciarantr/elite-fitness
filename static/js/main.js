@@ -7,6 +7,7 @@ const desktopSearchContainer = document.querySelector('#search-container')
 const desktopSearchCloseBtn = desktopSearchContainer.querySelector(
   'button[type="reset"]',
 )
+const overlay = document.createElement('div')
 
 // Helper methods to control ARIA attributes and class
 const setAria = (element, elementTwo, expanded, hidden) => {
@@ -82,7 +83,58 @@ desktopSearchBtn.addEventListener('click', () => {
   )
   // add focus to the search input
   desktopSearchContainer.querySelector('input').focus()
+  // add overlay to the page
+  document.body.appendChild(overlay)
+  disableMenuNav()
+
+  window.addEventListener('scroll', closeSearchOnScroll)
+  removeOverlay()
 })
+
+function disableMenuNav() {
+  const isOpen = desktopSearchContainer.classList.contains('open')
+
+  desktopMenu.forEach((element) => {
+    element.setAttribute('aria-hidden', isOpen ? 'true' : 'false')
+    if (isOpen) {
+      element.setAttribute('inert', 'true')
+    } else {
+      element.removeAttribute('inert')
+    }
+  })
+
+  overlay.classList.toggle('overlay', isOpen)
+}
+
+function removeOverlay() {
+  document.body.addEventListener('click', (event) => {
+    if (event.target === overlay) {
+      desktopSearchContainer.classList.toggle('open')
+      desktopSearchContainer.setAttribute('aria-hidden', 'true')
+      disableMenuNav()
+    }
+  })
+
+  // listen for the escape key to close the search form
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape' &&
+      desktopSearchContainer.classList.contains('open')
+    ) {
+      desktopSearchContainer.classList.toggle('open')
+      desktopSearchContainer.setAttribute('aria-hidden', 'true')
+      disableMenuNav()
+    }
+  })
+}
+
+function closeSearchOnScroll() {
+  if (window.scrollY > 150) {
+    desktopSearchContainer.classList.remove('open')
+    desktopSearchContainer.setAttribute('aria-hidden', 'true')
+    disableMenuNav()
+  }
+}
 
 // close the search form on desktop & set aria-attributes
 desktopSearchCloseBtn.addEventListener('click', () => {
