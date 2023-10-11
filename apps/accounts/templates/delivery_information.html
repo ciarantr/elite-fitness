@@ -67,7 +67,7 @@
               <td class="px-4 py-3">
                 <a
                   class="text-blue-500"
-                  href=" {% url 'checkout_success' order.order_number %}"
+                  href=" {% url 'order_history_view' order.order_number %}"
                 >
                   {{ order.order_number|truncatechars:8 }}
                 </a>
@@ -81,8 +81,8 @@
         </table>
         {% else %}
         <h3 class="text-lg">No orders made.</h3>
-        {% endif %}
       </div>
+    {% endif %}
     </section>
   </main>
 </div>

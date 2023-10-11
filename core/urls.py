@@ -32,6 +32,7 @@ urlpatterns = [
     path('checkout/', include('apps.ecommerce.checkout.urls')),
     path('support/', include('apps.customer_support.urls')),
     path('subscriptions/', include('apps.subscriptions.urls')),
+    path('', include('apps.ecommerce.orders.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler500 = Handler500View.as_view()
