@@ -1,29 +1,89 @@
 {% extends 'base.html' %} {% load static %}
-
-{# Meta information#}
+<!-- prettier-ignore -->
+{# Meta information #}
 {% block extra_tite %}{{ product.name|safe }}{% endblock %}
+
 {% block extra_meta %}
-  <meta name="description" content="{{ product.description|safe }}" />
-  <meta property="og:title" content="{{ product.name|safe }}" />
-  <meta property="og:description" content="{{ product.description|safe }}" />
-  <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}" />
-  <meta property="og:image:alt" content="{{ product.name|safe }}" />
-  <meta property="og:url" content="{{ request.build_absolute_uri|safe }}" />
-  <meta property="og:type" content="product" />
-  <meta property="product:price:amount" content="{{ product.price }}" />
-  <meta property="product:price:currency" content="EUR" />
-  <meta property="product:availability" content="in stock" />
-  <meta property="product:brand" content="{{ product.brand.name|safe }}" />
+<meta
+  name="description"
+  content="{{ product.description|safe }}"
+/>
+<meta
+  property="og:title"
+  content="{{ product.name|safe }}"
+/>
+<meta
+  property="og:description"
+  content="{{ product.description|safe }}"
+/>
+<meta
+  property="og:image"
+  content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}"
+/>
+<meta
+  property="og:image:alt"
+  content="{{ product.name|safe }}"
+/>
+<meta
+  property="og:url"
+  content="{{ request.build_absolute_uri|safe }}"
+/>
+<meta
+  property="og:type"
+  content="product"
+/>
+<meta
+  property="product:price:amount"
+  content="{{ product.price }}"
+/>
+<meta
+  property="product:price:currency"
+  content="EUR"
+/>
+<meta
+  property="product:availability"
+  content="in stock"
+/>
+<meta
+  property="product:brand"
+  content="{{ product.brand.name|safe }}"
+/>
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@elitefitness" />
-  <meta name="twitter:title" content="{{ product.name|safe }}" />
-  <meta name="twitter:description" content="{{ product.description|safe }}" />
-  <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}" />
-  <meta name="twitter:image:alt" content="{{ product.name|safe }}" />
-  <meta name="twitter:creator" content="@elitefitness" />
-  <meta name="twitter:domain" content="{{ request.build_absolute_uri|safe }}" />
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+/>
+<meta
+  name="twitter:site"
+  content="@elitefitness"
+/>
+<meta
+  name="twitter:title"
+  content="{{ product.name|safe }}"
+/>
+<meta
+  name="twitter:description"
+  content="{{ product.description|safe }}"
+/>
+<meta
+  name="twitter:image"
+  content="{{ request.scheme }}://{{ request.get_host }}{{ product.image }}"
+/>
+<meta
+  name="twitter:image:alt"
+  content="{{ product.name|safe }}"
+/>
+<meta
+  name="twitter:creator"
+  content="@elitefitness"
+/>
+<meta
+  name="twitter:domain"
+  content="{{ request.build_absolute_uri|safe }}"
+/>
 
+{% endblock %} {% block extra_js %}
+<script src="{% static 'js/wishlist_append_to_dialog.js' %}"></script>
 {% endblock %}
 
 <!-- prettier-ignore -->
@@ -45,12 +105,20 @@
   <div class="mt-8 md:grid md:grid-cols-2 md:gap-x-32 lg:grid-cols-[2fr,1fr]">
     <div class="space-y-8 md:col-start-2 md:row-start-1">
       <div class="space-y-2">
-        <h1 id="product-name" class="text-lg text-slate-500">
+        <h1
+          id="product-name"
+          class="text-lg text-slate-500"
+        >
           {% if product.brand and not product_brand_name %}
           <span class="text-sm font-light">{{ product.brand.name }}</span><br />
           {% endif %} {{ product.name }}
         </h1>
-        <p id="product-price" class="text-lg">€{{ product.price }}</p>
+        <p
+          id="product-price"
+          class="text-lg"
+        >
+          €{{ product.price }}
+        </p>
       </div>
       {# Product key benefits #} {% if key_benefits %}
       <ul class="hidden md:grid md:grid-cols-2 md:gap-x-2 md:gap-y-6">
@@ -81,7 +149,48 @@
         width="300"
         height="300"
       />
-      {% include 'partials/forms/product_adjust_form.html' %}
+      <div class="space-y-4 lg:max-w-lg ">
+        <p class="text-sm">
+          {% if product.stock %} In stock {{ product.stock }} available {% else %}
+          This product is out of stock {% endif %}
+        </p>
+        <div>{% include 'partials/forms/product_adjust_form.html' %}</div>
+
+        {% if user.is_authenticated %}
+        <button
+          data-popup="wishlist"
+          type="button"
+          class="flex w-full items-center justify-center space-x-4 rounded border border-slate-700 px-2 py-3 text-center text-sm"
+        >
+          <span class="">Add to wishlist</span>
+          <img
+            src="{% static 'icons/favourite.svg' %}"
+            alt="wishlist icon"
+            height="20"
+            width="20"
+          />
+        </button>
+        {# wishlist form appended to dialog when #}
+        <div class="hidden">
+          {% include 'partials/forms/wishlist_product_detail_add_form.html' %}
+        </div>
+
+        {% else %} {# Redirect to login if not authenticated user #}
+        <a
+          href="{% url 'login' %}"
+          class="flex w-full items-center justify-center space-x-4 rounded border border-slate-700 px-2 py-3 text-center text-sm lg:max-w-lg"
+        >
+          <span class="">Add to wishlist</span>
+          <img
+            src="{% static 'icons/favourite.svg' %}"
+            alt="wishlist icon"
+            height="20"
+            width="20"
+          />
+        </a>
+        {% endif %}
+      </div>
+
       <main class="space-y-16 md:max-w-2xl">
         <h2 class="max-w-lg text-sm">{{ product.description }}</h2>
 
@@ -117,5 +226,5 @@
     </div>
   </div>
 </section>
-
-{% endblock %}
+{# wishlist dialog #}
+{% include 'partials/dialogs/wishlist_update_dialog.html' %} {% endblock %}

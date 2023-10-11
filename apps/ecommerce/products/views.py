@@ -3,6 +3,8 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, TemplateView
 
 from apps.ecommerce.products.models import (Brand, Category, Product)
+from apps.ecommerce.wishlist.forms import AddProductToWishlistForm
+from apps.ecommerce.wishlist.models import List
 
 
 class AllProductsView(ListView):
@@ -137,5 +139,11 @@ class ProductDetailView(TemplateView):
             if product_name_parts[0].lower() == product_brand_name[0].lower():
                 context['product_brand_name'] = ' '.join(
                     product_name_parts[1:]).strip()
+
+        if self.request.user.is_authenticated:
+            context['wishlist_exists'] = List.objects.filter(
+                user=self.request.user).exists()
+            context['add_to_wishlist_form'] = AddProductToWishlistForm(
+                user=self.request.user)
 
         return context
