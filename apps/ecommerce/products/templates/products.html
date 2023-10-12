@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block extra_js %}
-<script defer>
-  window.onload = function () {
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
     const selectForms = document.querySelectorAll('form.sort-form')
     {# submit any for the filter category/brand/options forms #}
     selectForms.forEach((form) => form.addEventListener('change', () => form.submit()))
-  }
+  })
 </script>
 {% endblock %}
 
@@ -90,11 +90,11 @@
   {% endif %} {# filter category/brand/options #}
   <div class="mt-12 flex flex-wrap gap-4">
     <!-- prettier-ignore -->
-    {% include "partials/forms/product_sort_form.html" with data_choices=categories current_choice=category  label="Choose Category" name='category' %}
+    {% include "partials/forms/product_sort_form.html" with data_choices=categories current_choice=category  label="category" name='category' %}
     <!-- prettier-ignore -->
-    {% include "partials/forms/product_sort_form.html" with data_choices=brands current_choice=brand  label="Choose Brand" name='brand' %}
+    {% include "partials/forms/product_sort_form.html" with data_choices=brands current_choice=brand  label="brand" name='brand' %}
     <!-- prettier-ignore -->
-    {% include "partials/forms/product_sort_form.html" with data_choices=sort_options current_choice=current_sort  label="Choose Option" name='sort' %}
+    {% include "partials/forms/product_sort_form.html" with data_choices=sort_options current_choice=current_sort  label="sorting" name='sort' %}
   </div>
 
   {# all product data (name, image, price) #}
