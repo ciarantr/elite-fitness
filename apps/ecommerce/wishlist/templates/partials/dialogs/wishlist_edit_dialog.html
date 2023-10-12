@@ -1,0 +1,23 @@
+{% load static %}
+<dialog
+  id="edit-list"
+  class="rounded-md bg-white w-11/12 !p-5 md:p-10 md:w-[min(90vw,_500px)] shadow"
+>
+  <div class="space-y-12">
+    <div class="flex justify-between">
+      <h2 class="text-lg font-medium">Edit wishlist</h2>
+      <button
+        data-close-dialog
+        type="button"
+      >
+        <img
+          src="{% static 'icons/close.svg' %}"
+          alt="close icon"
+          width="32"
+          height="32"
+        />
+      </button>
+    </div>
+    {% include 'partials/forms/wishlist_update_form.html' %}
+  </div>
+</dialog>
