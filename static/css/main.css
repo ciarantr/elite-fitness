@@ -331,6 +331,7 @@ select {
   bg-[length:25px_25px]
   bg-right
   bg-no-repeat
+  bg-inherit
   pr-10
   focus:outline-none
   sm:text-sm;
