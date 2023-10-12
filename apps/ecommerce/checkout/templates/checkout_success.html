@@ -40,20 +40,20 @@ Information{%endblock %} {% block content %}
           <span class="text-gray-500">Order Info</span>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Order Number</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Order Number</p>
           </div>
-          <div class="w-8/12 text-right">
-            <p>{{ order.order_number }}</p>
+          <div>
+            <p class="break-all md:break-normal">{{ order.order_number }}</p>
           </div>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Order Date</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Order Date</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.date }}</p>
           </div>
         </div>
@@ -63,11 +63,11 @@ Information{%endblock %} {% block content %}
           <span class="text-gray-500">Order Details</span>
         </div>
         {% for item in order.line_items.all %}
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">{{ item.product.name }}</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>{{ item.product.name }}</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ item.quantity }} @ €{{ item.product.price }} each</p>
           </div>
         </div>
@@ -78,82 +78,82 @@ Information{%endblock %} {% block content %}
           <span class="text-gray-500">Delivering To</span>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Full Name</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Full Name</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.full_name }}</p>
           </div>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Address 1</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Address 1</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.street_address1 }}</p>
           </div>
         </div>
 
         {% if order.street_address2 %}
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Address 2</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Address 2</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.street_address1 }}</p>
           </div>
         </div>
 
         {% endif %} {% if order.county %}
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">County</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>County</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.county }}</p>
           </div>
         </div>
 
         {% endif %}
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Town or City</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Town or City</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.town_or_city }}</p>
           </div>
         </div>
 
         {% if order.postcode %}
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Postal Code</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Postal Code</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.postcode }}</p>
           </div>
         </div>
         {% endif %}
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Country</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Country</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.country }}</p>
           </div>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Phone Number</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Phone Number</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.phone_number }}</p>
           </div>
         </div>
@@ -163,29 +163,29 @@ Information{%endblock %} {% block content %}
           <span class="text-gray-500">Billing info</span>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Order Total</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Order Total</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.order_total }}</p>
           </div>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Delivery</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Delivery</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.delivery_cost }}</p>
           </div>
         </div>
 
-        <div class="mb-2 flex items-center">
-          <div class="w-4/12">
-            <p class="">Grand Total</p>
+        <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3">
+          <div>
+            <p>Grand Total</p>
           </div>
-          <div class="w-8/12 text-right">
+          <div>
             <p>{{ order.grand_total }}</p>
           </div>
         </div>
