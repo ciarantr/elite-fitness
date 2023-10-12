@@ -2,30 +2,36 @@
 
 <!-- Meta data -->
 {% block extra_meta %}
-  <meta
-    name="description"
-    content="We value your feedback and queries. Connect with us, and we'll make sure to respond as quickly as possible."
-  />
-{% endblock %}
-
-{% block content %}
-  <section class='container lg:max-w-4xl mx-auto mt-12 py-12 px-4'>
-  <main class='space-y-6'>
-    <h2 class='text-2xl'>We'd love to hear form you</h2>
+<meta
+  name="description"
+  content="We value your feedback and queries. Connect with us, and we'll make sure to respond as quickly as possible."
+/>
+{% endblock %} {% block content %}
+<div class="container mx-auto mt-12 px-4 py-12 lg:max-w-4xl">
+  <main class="space-y-6">
+    <h2 class="text-2xl">We'd love to hear form you</h2>
     <p>
-      We value your feedback and queries. Connect with us, and we'll make sure to respond as quickly as possible.
-      For direct communications, you can reach us via email at <a class='underline font-semibold' href="mailto:support@example.com?subject=Inquiry&body=Hello, I have a question">support@elitefitness.ie</a>.
-      <br><br>
-      We are available to read and respond to your emails during normal business hours (9:00 A.M - 5:00 P.M EST) from Monday to Friday.
-      Alternatively, you can use the contact form below to reach us anytime, and we'll get back to you at our earliest convenience.
-      Fill in the information needed and ensure to give a detailed description of your inquiry or feedback for a more efficient response. Thank you!
+      We value your feedback and queries. Connect with us, and we'll make sure
+      to respond as quickly as possible. For direct communications, you can
+      reach us via email at
+      <a
+        class="font-semibold underline"
+        href="mailto:support@example.com?subject=Inquiry&body=Hello%20I%20have%20a%20question"
+        >support@elitefitness.ie</a
+      >. <br /><br />
+      We are available to read and respond to your emails during normal business
+      hours (9:00 A.M - 5:00 P.M EST) from Monday to Friday. Alternatively, you
+      can use the contact form below to reach us anytime, and we'll get back to
+      you at our earliest convenience. Fill in the information needed and ensure
+      to give a detailed description of your inquiry or feedback for a more
+      efficient response. Thank you!
     </p>
   </main>
 
-    <div class='mt-16'>
-      <div class='shadow rounded p-8 '>
-        {% include 'partials/forms/contact_form.html' %}
-      </div>
+  <div class="mt-16">
+    <div class="rounded p-8 shadow">
+      {% include 'partials/forms/contact_form.html' %}
     </div>
-  </section>
+  </div>
+</div>
 {% endblock %}
