@@ -9,19 +9,24 @@ class UserUpdateForm(forms.ModelForm):
     """
     A customer profile model for maintaining default
     """
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['email'].initail = self.instance.email
 
         for field in self.fields.values():
             # Adding placeholder
             field.widget.attrs['placeholder'] = field.label
             # Hiding initial help_text
             field.help_text = ''
-
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'first_name', 'last_name')
+            # Ensure the email field is required
+            self.fields['email'].required = True
+            # Add * to required placeholder
+            if field.required:
+                field.widget.attrs['placeholder'] = f'{field.label} *'
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -43,32 +48,25 @@ class CustomerDeliveryForm(forms.ModelForm):
     class Meta:
         model = DeliveryDetails
         exclude = ('user',)
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated labels
-        """
-
         super().__init__(*args, **kwargs)
 
-        placeholders = {
-            'default_full_name': 'Full Name',
-            'default_email': 'Email Address',
-            'default_phone_number': 'Phone Number',
-            'default_country': 'Country',
-            'default_postcode': 'Postal Code',
-            'default_town_or_city': 'Town or City',
-            'default_street_address1': 'Street Address 1',
-            'default_street_address2': 'Street Address 2',
-            'default_county': 'County, State or Locality',
-        }
-
-        self.fields['default_phone_number'].widget.attrs['autofocus'] = True
+        non_required_fields = ('default_phone_number',
+                               'default_street_address2',
+                               'default_postcode',
+                               'default_county')
+        # Replace underscores with spaces and title case field names
+        placeholders = {field: field.replace("_", " ").title() for field in
+                        self.fields}
+        # Update placeholders and set autofocus on first field
         for field in self.fields:
-            if field != 'default_country':
-                self.fields[field].required = \
-                    True if field == 'username' else False
-                placeholder = f'{placeholders[field]} *' \
-                    if self.fields[field].required else placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].label = False
+            self.fields[field].widget.attrs.update({
+                'placeholder': placeholders[field],
+            })
+            # Set required fields to True and add * to placeholder
+            # if field is not in non_required_fields
+            if field not in non_required_fields:
+                self.fields[field].required = True
+                self.fields[field].widget.attrs['placeholder'] += ' *'

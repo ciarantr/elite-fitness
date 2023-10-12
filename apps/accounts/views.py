@@ -44,6 +44,12 @@ class OrderProfileView(LoginRequiredMixin, UpdateView):
                          'Delivery information updated successfully')
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        messages.error(self.request,
+                       'Delivery information update failed.'
+                       'Please ensure the form is valid.')
+        return super().form_invalid(form)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['orders'] = self.object.orders.all()
