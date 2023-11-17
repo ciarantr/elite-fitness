@@ -467,3 +467,299 @@ It helped to maintain a steady flow in the project by keeping focus on high-valu
 The combination of Agile Development practices, GitHub Project Boards, GitHub Issues, and MoSCoW Prioritization led to 
 a successful and effective project. By continuously iterating, I maintained a high level of quality while rapidly
 delivering working software.
+
+## 💾 Database Design & Schema
+
+The Database schema was created using [draw.io](https://www.drawio.com/)
+Download the [drawsql file](../docs/design/database/database-schema.drawio) to view or edit the schema.
+
+![screenshot](../docs/design/database/database-schema.png)
+
+### Database Models
+
+> [!NOTE] Note
+>
+> Please note that in the formulated table, the "PK" and "FK" annotations indicate the primary key and foreign key
+> constraints, respectively.
+> The user_id column is a foreign key referencing auth_user(id).
+> The data types and additional notes for each column are also provided.
+> Please refer to the table definitions below for more information.
+> Click on `▶︎ View the database schema table definitions ` dropdown menu to expand the table definitions.
+
+---
+
+- [account_email_address](#accountemailaddress)
+- [account_email_confirmation ](#accountemailconfirmation)
+- [accounts_deliverydetails ](#accountsdeliverydetails)
+
+---
+
+- [auth_group ](#authgroup)
+- [auth_group_permissions ](#authgrouppermissions)
+- [auth_permission ](#authpermission)
+- [auth_user ](#authuser)
+- [auth_user_groups ](#authusergroups)
+- [auth_user_user_permissions ](#authuseruserpermissions)
+
+---
+
+- [django_site ](#djangosite)
+
+---
+
+- [orders_order ](#ordersorder)
+- [orders_orderlineitem ](#ordersorderlineitem)
+
+---
+
+- [products_attribute ](#productsattribute)
+- [products_benefit ](#productsbenefit)
+- [products_brand ](#productsbrand)
+- [products_category ](#productscategory)
+- [products_image ](#productsimage)
+- [products_keybenefit ](#productskeybenefit)
+- [products_product ](#productsproduct)
+- [products_product_attributes ](#productsproductattributes)
+- [products_product_category ](#productsproductcategory)
+
+---
+
+- [subscriptions_subscription ](#subscriptionssubscription)
+
+---
+
+- [wishlist_list ](#wishlistlist)
+- [wishlist_list_products ](#wishlistlistproducts)
+
+---
+
+<details>
+  <summary> View the database schema table definitions </summary>
+
+#### `account_emailaddress`
+
+| PK | id (unique) | Type         | Notes                        |
+|----|-------------|--------------|------------------------------|
+| FK | user_id     | Integer      | FK, references auth_user(id) |
+|    | email       | Varchar(254) |                              |
+|    | primary     | Boolean      |                              |
+|    | verified    | Boolean      |                              |
+
+#### `account_emailconfirmation`
+
+| PK | id (unique)      | Type        | Notes                                   |
+|----|------------------|-------------|-----------------------------------------|
+| FK | email_address_id | Integer     | FK, references account_emailaddress(id) |
+|    | created          | Datetime    |                                         |
+|    | sent             | Datetime    |                                         |
+|    | key              | Varchar(64) |                                         |
+
+#### `accounts_deliverydetails`
+
+| PK | id (unique)             | Type         | Notes                  |
+|----|-------------------------|--------------|------------------------|
+| FK | user_id                 | Integer      |                        |
+|    | default_full_name       | Varchar(50)  |                        |
+|    | default_email           | Varchar(254) |                        |
+|    | default_phone_number    | Varchar(20)  | max_len=20, blank=true |
+|    | default_country         | Varchar(2)   |                        |
+|    | default_postcode        | Varchar(20)  |                        |
+|    | default_town_or_city    | Varchar(40)  |                        |
+|    | default_street_address1 | Varchar(80)  |                        |
+|    | default_street_address2 | Varchar(80)  |                        |
+|    | default_county          | Varchar(80)  |                        |
+
+#### `auth_group`
+
+| PK | id (unique) | Type         | Notes |
+|----|-------------|--------------|-------|
+|    | name        | Varchar(150) |       |
+
+#### `auth_group_permissions`
+
+| PK | id (unique)   | Type    | Notes                              |
+|----|---------------|---------|------------------------------------|
+| FK | group_id      | Integer | FK, references auth_group(id)      |
+| FK | permission_id | Integer | FK, references auth_permission(id) |
+
+#### `auth_permission`
+
+| PK | id (unique)     | Type         | Notes                                  |
+|----|-----------------|--------------|----------------------------------------|
+| FK | content_type_id | Integer      | FK, references django_content_type(id) |
+|    | codename        | Varchar(100) |                                        |
+|    | name            | Varchar(255) |                                        |
+
+#### `auth_user`
+
+| PK | id (unique)  | Type         | Notes |
+|----|--------------|--------------|-------|
+|    | password     | Varchar(128) |       |
+|    | last_login   | Datetime     |       |
+|    | is_superuser | Boolean      |       |
+|    | username     | Varchar(150) |       |
+|    | last_name    | Varchar(150) |       |
+|    | email        | Varchar(254) |       |
+|    | is_staff     | Boolean      |       |
+|    | is_active    | Boolean      |       |
+|    | date_joined  | Datetime     |       |
+|    | first_name   | Varchar(150) |       |
+
+#### `auth_user_groups`
+
+| PK | id (unique) | Type    | Notes                         |
+|----|-------------|---------|-------------------------------|
+| FK | user_id     | Integer | FK, references auth_user(id)  |
+| FK | group_id    | Integer | FK, references auth_group(id) |
+
+#### `auth_user_user_permissions`
+
+| PK | id (unique)   | Type    | Notes                              |
+|----|---------------|---------|------------------------------------|
+| FK | user_id       | Integer | FK, references auth_user(id)       |
+| FK | permission_id | Integer | FK, references auth_permission(id) |
+
+#### `django_site`
+
+| PK | id (unique) | Type         | Notes |
+|----|-------------|--------------|-------|
+|    | name        | Varchar(50)  |       |
+|    | domain      | Varchar(100) |       |
+
+#### `orders_order`
+
+| PK | id (unique)     | Type         | Notes                                            |
+|----|-----------------|--------------|--------------------------------------------------|
+| FK | user_profile_id | Bigint       | FK, references accounts_deliverydetails(user_id) |
+|    | order_number    | Varchar(32)  |                                                  |
+|    | full_name       | Varchar(50)  |                                                  |
+|    | email           | Varchar(254) |                                                  |
+|    | phone_number    | Varchar(20)  | max_len=20, blank=true                           |
+|    | country         | Varchar(2)   |                                                  |
+|    | postcode        | Varchar(20)  |                                                  |
+|    | town_or_city    | Varchar(40)  |                                                  |
+|    | street_address1 | Varchar(80)  |                                                  |
+|    | street_address2 | Varchar(80)  |                                                  |
+|    | county          | Varchar(80)  |                                                  |
+|    | date            | Datetime     |                                                  |
+|    | delivery_cost   | Decimal      |                                                  |
+|    | order_total     | Decimal      |                                                  |
+|    | grand_total     | Decimal      |                                                  |
+|    | original_cart   | Text         |                                                  |
+|    | stripe_pid      | Varchar(254) |                                                  |
+|    | status          | Varchar(20)  |                                                  |
+
+#### `orders_orderlineitem`
+
+| PK | id (unique)    | Type    | Notes                               |
+|----|----------------|---------|-------------------------------------|
+| FK | order_id       | Bigint  | FK, references orders_order(id)     |
+| FK | product_id     | Bigint  | FK, references products_product(id) |
+|    | quantity       | Integer |                                     |
+|    | lineitem_total | Decimal |                                     |
+
+#### `products_attribute`
+
+| PK | id (unique) | Type        | Notes |
+|----|-------------|-------------|-------|
+|    | type        | Varchar(50) |       |
+|    | name        | Varchar(50) |       |
+
+#### `products_benefit`
+
+| PK | id (unique) | Type         | Notes                               |
+|----|-------------|--------------|-------------------------------------|
+| FK | product_id  | Bigint       | FK, references products_product(id) |
+|    | title       | Varchar(100) |                                     |
+|    | description | Text         |                                     |
+
+#### `products_brand`
+
+| PK | id (unique) | Type         | Notes |
+|----|-------------|--------------|-------|
+|    | name        | Varchar(50)  |       |
+|    | slug        | Varchar(100) |       |
+
+#### `products_category`
+
+| PK | id (unique) | Type         | Notes |
+|----|-------------|--------------|-------|
+|    | name        | Varchar(100) |       |
+|    | slug        | Varchar(150) |       |
+
+#### `products_image`
+
+| PK | id (unique) | Type          | Notes                               |
+|----|-------------|---------------|-------------------------------------|
+| FK | product_id  | Bigint        | FK, references products_product(id) |
+|    | image       | Varchar(100)  |                                     |
+|    | alt_text    | Varchar(200)  |                                     |
+|    | img_url     | Varchar(1024) |                                     |
+
+#### `products_keybenefit`
+
+| PK | id (unique) | Type         | Notes                               |
+|----|-------------|--------------|-------------------------------------|
+| FK | product_id  | Bigint       | FK, references products_product(id) |
+|    | title       | Varchar(250) |                                     |
+
+#### `products_product`
+
+| PK | id (unique) | Type         | Notes                             |
+|----|-------------|--------------|-----------------------------------|
+| FK | brand_id    | Bigint       | FK, references products_brand(id) |
+|    | created     | Datetime     |                                   |
+|    | updated     | Datetime     |                                   |
+|    | sku         | Varchar(15)  |                                   |
+|    | slug        | Varchar(200) |                                   |
+|    | description | Text         |                                   |
+|    | name        | Varchar(150) |                                   |
+|    | is_active   | Boolean      |                                   |
+|    | is_reviewed | Boolean      |                                   |
+|    | price       | Decimal      |                                   |
+|    | stock       | Integer      |                                   |
+
+#### `products_product_attributes`
+
+| PK | id (unique)  | Type   | Notes                                 |
+|----|--------------|--------|---------------------------------------|
+| FK | product_id   | Bigint | FK, references products_product(id)   |
+| FK | attribute_id | Bigint | FK, references products_attribute(id) |
+
+#### `products_product_category`
+
+| PK | id (unique) | Type   | Notes                                |
+|----|-------------|--------|--------------------------------------|
+| FK | product_id  | Bigint | FK, references products_product(id)  |
+| FK | category_id | Bigint | FK, references products_category(id) |
+
+#### `subscriptions_subscription`
+
+| PK | id (unique)        | Type         | Notes |
+|----|--------------------|--------------|-------|
+|    | first_name         | Varchar(100) |       |
+|    | last_name          | Varchar(100) |       |
+|    | email              | Varchar(254) |       |
+|    | created            | Datetime     |       |
+|    | updated            | Datetime     |       |
+|    | confirmation_token | Char(32)     |       |
+|    | confirmed_at       | Datetime     |       |
+|    | is_verified        | Boolean      |       |
+
+#### `wishlist_list`
+
+| PK | id (unique) | Type         | Notes                        |
+|----|-------------|--------------|------------------------------|
+| FK | user_id     | Integer      | FK, references auth_user(id) |
+|    | name        | Varchar(100) |                              |
+|    | description | Text         |                              |
+|    | created     | Datetime     |                              |
+
+#### `wishlist_list_products`
+
+| PK | id (unique) | Type   | Notes                               |
+|----|-------------|--------|-------------------------------------|
+| FK | list_id     | Bigint | FK, references wishlist_list(id)    |
+| FK | product_id  | Bigint | FK, references products_product(id) |
+
+</details>
