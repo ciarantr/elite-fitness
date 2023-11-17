@@ -1,48 +1,60 @@
 # Features ✨
 
+The feature documentation provides a comprehensive and detailed explanation of the website's features and functionality.
+It incorporates screenshots of the website for visual reference.
+This documentation serves as a valuable resource for individuals seeking to deepen their understanding of the website. It is organised into sections, each focusing on a distinct aspect of the website.
+The following sections are included:
+
 [Navigate back to README Documentation](./README.md)
 
-TThe features documentation provides a comprehensive and detailed explanation of the website's features and functionality. It incorporates screenshots of the website for visual reference. This documentation serves as a valuable resource for individuals seeking to deepen their understanding of the website. It is organised into sections, each focusing on a distinct aspect of the website. The following sections are included:
-
-- [Existing Features](#existing-features)
-- [Future Features](#future-features)
+- **Existing Features**
+  - Key Features
+  - Supporting Features
+- [**Future Features**](#future-features)
 
 ## Existing features:
 
 ### 🔑 Key features:
 
-- Users can register for an account.
-- Users can log in to view their account.
-- Users can change reset their password.
-- Users can change their account information & delivery information details.
-- Users can view their order history.
-- Users can view store products with detailed information.
-- Users can sort products by category, brand, price & the newest product.
-- Users can search for products by name or description.
-- Users can add products to their cart.
-- Users can update the quantity of products in their cart.
-- Users can create wishlists & add products to their wishlist.
-- Users can view their wishlist & add products to their cart from their wishlist.
-- Users can make changes to their wishlist name & description & delete their wishlist.
-- Users can choose which wishlist to add products to.
-- User can view an order summary before placing an order.
-- Users can easily navigate to the cart page from the checkout page.
-- Registered Users can update their address details at checkout.
-- Users can subscribe to the newsletter.
-- Users can easily navigate to the store page from the mobile flout menu, the desktop dropdown menu or the footer.
+- [Users can register for an account.](#account-registration)
+- [Users can log in to view their account.](#account-login)
+- [Users can change reset their password.](#account-password-reset)
+- [Users can view store products with detailed information.](#store-products)
+- [Users can sort products by category, brand, price & the newest product.](#store-products)
+- [Users can search for products by name or description.](#store-products)
+- [Users can add products to their cart.](#shopping-cart)
+- [Users can update the quantity of products in their cart.](#shopping-cart)
+- [Users can view an order summary before placing an order.](#checkout)
+- [Users can easily navigate to the cart page from the checkout page.](#checkout)
+- [Users can subscribe to the newsletter.](#newsletter)
+- [Users can easily navigate to the store page from the mobile flout menu, the desktop dropdown menu or the footer.](#navigation)
 
 
-- Admins can add/update/delete products to the store via the admin panel.
-- Admins can add product categories/brands/colours/sizes to the store via the admin panel.
-- Admins can view & update all orders placed by users via the admin panel.
-- Admins can view subscribers via the admin panel.
-- Admins can add/update/delete users delivery information via the admin panel.
+- [Admins can add/update/delete products to the store via the admin panel.](#admin-panel)
+- [Admins can add product categories/brands/colours/sizes to the store via the admin panel.](#admin-panel)
+- [Admins can view & update all orders placed by users via the admin panel.](#admin-panel)
+- [Admins can view subscribers via the admin panel.](#admin-panel)
+- [Admins can add/update/delete users delivery information via the admin panel.](#admin-panel)
 
-**Account registration**
+### 🫶 Supporting features:
+
+- [Users can view their order history.](#account-profile)
+- [Users can update their account information & delivery information details.](#account-profile)
+- [Users can choose which wishlist to add products to.](#wishlist)
+- [Users can create wishlists & add products to their wishlist.](#wishlist)
+- [Users can view their wishlist & add products to their cart from their wishlist.](#wishlist)
+- [Users can make changes to their wishlist name & description & delete their wishlist.](#wishlist)
+- [Registered Users can update their default shipping address details at checkout.](#checkout)
+- [Users can view helpful information such as delivery information, returns & refunds, terms & conditions & privacy policy via the footer.](#additional-features)
+- [Users can view the store's social media links via the footer.](#additional-features)
+- [User can send a message to the store via the contact form.](#additional-features)
+- [User will receive a confirmation message once they have sent a message to the store.](#additional-features)
+
+#### Account registration
 
 - Users can register for an account by clicking the register link in the navbar. or by clicking the register link on the login page. For mobile, the account link is conveniently placed in a sticky footer. Users will be sent a confirmation email to verify their account. Once the account is verified, users will be able to log in to their account. Users will also see the name of their account in the navbar once they are logged in & a sign message will be displayed in the navbar.
 
-<details open>
+<details>
 
   <summary>📸 Preview</summary>
 
@@ -53,11 +65,11 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-**Account login**
+#### Account login
 
 - Users can log in to their account by clicking the login link in the navbar. or by clicking the login link on the register page. For mobile, the account link is conveniently placed in a sticky footer. Users will also see the name of their account in the navbar once they are logged in & a sign message will be displayed in the navbar.
 
-<details open>
+<details>
 
   <summary>📸 Preview</summary>
 
@@ -67,7 +79,7 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-**Account password reset**
+#### Account password reset
 
 - Users can reset their password by clicking the forgot password link on the login page. Users will be redirected to a confirmation page and will shortly after receive an email with a link to reset their password. Once the password is reset, users will be redirected to the login page.
 
@@ -80,7 +92,7 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-**Account profile**
+#### Account profile
 
 - Users can update their details, shipping details & view their order history. Users will receive a confirmation message once they have updated their details.
 
@@ -96,7 +108,7 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-**Store products**
+#### Store products
 
 - On the product page, users have the ability to view all available store products. Users can also view the product details to find out more information on the product which includes a product description and key benefits. Users can also conveniently sort products by category, brand, price, and the latest additions. Additionally, users can easily search for products by name or description. To add items to their cart, users simply need to click the "Add to Cart" button.
 - Pagination is also implemented on the product page to improve the user experience. Users can navigate through the pages to view more products.
@@ -113,7 +125,7 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-**Shopping cart**
+#### Shopping cart
 
 - Users can access the cart page by clicking on the cart icon located in the header for desktop or the sticky footer for mobile users. Users can also view the cart by hovering over the cart icon which will display a preview of the products in the cart. Users can also remove products from their cart by clicking the remove button. Users can also update the quantity of products in their cart by clicking x button icon. Users can also conveniently navigate back to the store by clicking the "Continue Shopping" button. Users can also conveniently navigate to the checkout page by clicking the "Checkout" button.
 
@@ -131,9 +143,7 @@ TThe features documentation provides a comprehensive and detailed explanation of
 
 </details>
 
-🔝 [Back to Top](#features-)
-
-**Wishlist**
+#### Wishlist
 
 - Users have the ability to create wishlists and add products to them. Additionally, they can view their wishlists and add products from their wishlists to their shopping carts. Users also have the option to modify the name and description of their wishlists, as well as delete them. Furthermore, users can select which wishlist they want to add products to.
 Upon updating their wishlist, users will receive a confirmation message to acknowledge the changes. To access the wishlist page, users can click on the wishlist icon located in the header for desktop users or the sticky footer for mobile users. To remove products from the wishlist, users can simply click the remove button.
@@ -157,7 +167,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 </details>
 
-**Checkout**
+#### Checkout
 
 - Registered Users can also update their address details at checkout using the checkbox located at the end of the deleivery information form in checkout. Users can view a preview of their order before placing an order. Users can also navigate back to the cart page by clicking the "Back to cart" button or link.
 - Users will also receive a confirmation message once they have placed their order. & an order confirmation email will be sent to the user.
@@ -173,7 +183,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 </details>
 
-**Newsletter**
+#### Newsletter
 
 - Users can subscribe to the newsletter by entering their email address in the newsletter form located in the footer. Users will receive a confirmation message once they have subscribed to the newsletter.
 
@@ -188,7 +198,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 </details>
 
-**Navigation**
+#### Navigation**
 
 - Users can easily navigate to the store page from the mobile flout menu, the desktop dropdown menu or the footer.
 
@@ -203,7 +213,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 </details>
 
-**Admin panel**
+#### Admin panel
 
 - Admins can add/update/delete products to the store via the admin panel. Admins can also add product categories/brands & product attributes to the store via the admin panel.
 - Admins can view & update all orders placed by users via the admin panel. Admins can view subscribers via the admin panel. Admins can add/update/delete users delivery information via the admin panel.
@@ -221,7 +231,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 </details>
 
-### ➕Additional features:
+#### ➕Additional features:
 
 - Users can view helpful information such as delivery information, returns & refunds, terms & conditions & privacy policy via the footer.
 - Users can view the store's social media links via the footer.
@@ -242,6 +252,7 @@ Upon updating their wishlist, users will receive a confirmation message to ackno
 
 ## 🔮Future features:
 
+- Upgrade user profile page to SPA. (Single Page Application using React JS)
 - Display products in search results below the search bar.
 - Add a product rating system.
 - Add a product review system.
