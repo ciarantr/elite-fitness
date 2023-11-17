@@ -41,6 +41,7 @@ const handleEditList = async (button) => {
   listInput.value = listName
   listForm.setAttribute('action', `/wishlist/edit/${listId}/`)
 
+
   try {
     const response = await fetch(`/wishlist/details/${listId}/`)
     if (!response.ok) throw new Error('Network response was not ok')
@@ -68,18 +69,21 @@ openDialogButtons.forEach((button) => {
   button.addEventListener('click', async () => {
     initialWishlistName =
       button.parentElement.previousElementSibling.textContent
-    const dialogId = button.getAttribute('id')
-    const dialog = document.querySelector(`dialog#${dialogId}`)
+    const dialogId = button.getAttribute('data-wishlist-type')
+    const dialog = document.querySelector(`dialog#${dialogId}-list`)
     dialog.showModal()
+
+    // focus on the first input element if it exists
+    dialog.querySelector('input[type=text]')?.focus()
 
     const form = dialog.querySelector('form')
     form.addEventListener('input', manageSubmitButtonState)
 
-    if (dialogId === 'edit-list') {
+    if (dialogId === 'edit') {
       await handleEditList(button)
     }
 
-    if (dialogId === 'delete-list') {
+    if (dialogId === 'delete') {
       handleDeleteList(button)
     }
   })
