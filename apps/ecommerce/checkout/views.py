@@ -73,8 +73,6 @@ class CheckoutView(View):
         return render(request, template, context)
 
     def post(self, request, *args, **kwargs):
-        stripe_public_key = settings.STRIPE_PUBLIC_KEY
-        stripe_secret_key = settings.STRIPE_SECRET_KEY
 
         cart = request.session.get('cart', {})
 
@@ -169,19 +167,17 @@ class CheckoutSuccessView(DetailView):
                 messages.info(request, "Order placed as guest.")
 
             messages.success(request,
-                             f'Order successfully processed! Your order '
-                             f'number is {order_number}. A confirmation '
-                             f'email will be sent to {order_email}.')
+                             f"""Order successfully processed! Your order
+                             number is {order_number}. A confirmation
+                             email will be sent to {order_email}.""")
 
             if 'cart' in request.session:
                 del request.session['cart']
         else:
             if request.user.is_authenticated:
                 messages.error(request,
-                               f"""Please view your past order history 
-                                                in your profile order details
-                                                section.
-                                                """)
+                               "Please view your past order history in your "
+                               "profile order details section.")
             else:
                 messages.error(request,
                                'Please login to view past orders.'
