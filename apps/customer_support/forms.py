@@ -10,8 +10,8 @@ class ContactForm(forms.Form):
     # +()-0-9
     alphanumeric_regex = RegexValidator(
         r'^[0-9+()-]*$',
-        mark_safe(f"""Please enter a valid phone number <br>
-                  Only numbers, +, (, ), and - are allowed."""
+        mark_safe("Please enter a valid phone number <br> Only numbers, +, "
+                  "(, ), and - are allowed."
                   )
     )
     alpha_regex = RegexValidator(
@@ -20,10 +20,10 @@ class ContactForm(forms.Form):
     )
 
     text_regex = RegexValidator(r'^[a-zA-Z0-9\s,.-]*$',
-                                mark_safe(f""" Please enter a valid message
-                                          <br> Only alphanumeric, spaces, and 
-                                          commas,periods, and dashes are
-                                           allowed.""")
+                                mark_safe("Please enter a valid message <br> "
+                                          "Only alphanumeric, spaces, "
+                                          "and commas,periods, and dashes "
+                                          "are allowed.")
                                 )
 
     # Email Validation Regex
@@ -45,10 +45,10 @@ class ContactForm(forms.Form):
 
     email_regex = RegexValidator(
         r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$',
-        mark_safe(f"""Invalid email address!
-                    <br> Enter a valid email formatted as 'name@domain.com"""
+        mark_safe("Invalid email address! <br> Enter a valid email formatted "
+                  "as 'name@domain.com"
                   )
-        ),
+    ),
 
     first_name = forms.CharField(
         label='first name',
