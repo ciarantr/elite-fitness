@@ -61,8 +61,8 @@
               <th class="px-4 py-3">Grand Total</th>
             </tr>
           </thead>
-          {% for order in orders %}
           <tbody class="text-gray-700">
+          {% for order in orders %}
             <tr class="border text-center">
               <td class="px-4 py-3">
                 <a
@@ -76,13 +76,13 @@
               <td class="px-4 py-3">€{{ order.delivery_cost }}</td>
               <td class="px-4 py-3">€{{ order.grand_total }}</td>
             </tr>
-            {% endfor %}
+           {% endfor %}
           </tbody>
         </table>
-        {% else %}
-        <h3 class="text-lg">No orders made.</h3>
       </div>
-    {% endif %}
+      {% else %}
+        <h3 class="text-lg">No orders made.</h3>
+      {% endif %}
     </section>
   </main>
 </div>
