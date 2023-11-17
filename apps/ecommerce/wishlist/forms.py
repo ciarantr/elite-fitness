@@ -24,7 +24,7 @@ class CreateWishlistForm(forms.ModelForm):
         """
         self.user = user
         super().__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['autofocus'] = True
+
         placeholders = {field: self.Meta.model._meta.get_field(
             field).verbose_name for field in self.fields}
 
@@ -34,13 +34,13 @@ class CreateWishlistForm(forms.ModelForm):
             })
         if self.Meta.model._meta.get_field(field).blank:
             self.fields[field].widget.attrs['placeholder'] += ' (optional)'
-        self.fields[field].label = False
 
     def clean_name(self):
         name = self.cleaned_data.get('name').lower()
 
         if List.objects.filter(user=self.user, name=name).exists():
-            raise ValidationError('You already have a wishlist with this name.')
+            raise ValidationError(
+                'You already have a wishlist with this name.')
 
         return name
 
@@ -53,6 +53,10 @@ class EditWishlistForm(forms.ModelForm):
     class Meta:
         model = List
         fields = ['name', 'description']
+        labels = {
+            'name': 'Update name',
+            'description': 'Update description',
+        }
         widgets = {
             'description': Textarea(attrs={'cols': 20, 'rows': 5}),
         }
@@ -64,8 +68,6 @@ class EditWishlistForm(forms.ModelForm):
         """
         super().__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs['autofocus'] = True
-
         placeholders = {field: self.Meta.model._meta.get_field(
             field).verbose_name for field in self.fields}
 
@@ -75,7 +77,9 @@ class EditWishlistForm(forms.ModelForm):
             })
             if self.Meta.model._meta.get_field(field).blank:
                 self.fields[field].widget.attrs['placeholder'] += ' (optional)'
-            self.fields[field].label = False
+
+        for field_name, field in self.fields.items():
+            field.widget.attrs['id'] = 'id_edit_' + field_name
 
 
 class AddProductToWishlistForm(forms.Form):
