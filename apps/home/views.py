@@ -73,7 +73,5 @@ class HomePageView(TemplateView):
                 _send_confirmation_email(form.instance, confirmation_link)
 
         messages.info(request,
-                      f'''Please check your email for to
-                          confirm subscription.''')
+                      "Please check your email for to confirm subscription.")
         return redirect('home')
-
