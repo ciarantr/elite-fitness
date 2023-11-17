@@ -38,7 +38,6 @@ To enhance readability and ease maintenance, the Readme files have been reorgani
 
 ## Target audience
 
-The target audience for our website includes diverse individuals united by a common interest: health and fitness. This wide-ranging group encompasses avid gym-goers looking for the next piece of equipment to elevate their workout routine, health-conscious consumers seeking quality supplements to support their nutritional needs, and even those just beginning their wellness journey who are in search of a transformative lifestyle change. Our goal is to make our platform inclusive and appealing to all, regardless of age, physical condition, or fitness expertise level. Elite Fitness caters to the inexperienced novice, the dedicated veteran, and every fitness enthusiast in-between, making us a comprehensive resource for anyone invested in bettering their health and well-being.
 The target audience for our website includes diverse individuals united by a common interest: health and fitness.
 This wide-ranging group encompasses avid gym-goers looking for the next piece of equipment to elevate their workout
 routine,
@@ -400,3 +399,71 @@ Benefits of this feature implementation include:
    high-quality, relevant, and engaging content that resonates with the target audience.
 
 By applying data-driven insights and informed recommendations, Elite Fitness could optimize its content strategy, attract more visitors, and improve search engine rankings, leading to sustained growth and success.
+
+## Agile Development Process
+
+During development of the project, Agile development methodologies were leveraged,
+employing tools like GitHub Project Boards, GitHub Issues, and MoSCoW Prioritization.
+GitHub Project Boards were instrumental in maintaining a visual overview of the project's progress.
+They facilitated the organization of tasks into columns
+corresponding to various stages of completion—from idea conception to final product -
+ensuring structured, transparent workflow management.
+GitHub Issues acted as a powerful tool for tracking tasks, bugs, and feature requests.
+They supported an interactive dialog between team members,
+providing a clear, effective method for team communication on specific project elements,
+thus promoting efficiency in problem-solving.
+
+The MoSCoW Prioritization technique played a critical role in defining the project's scope and managing expectations.
+It helped categorize tasks into Must have, Should have, Could have, and Won't have,
+which allowed for transparent decision-making in terms of feature importance,
+thereby enabling efficient allocation of resources.
+
+Implementing Agile methodologies within this project ensured a responsive,
+adaptable development process while fostering consistent progress and high-quality output.
+The practices mentioned above ensured efficient workflow,
+improving product delivery times and promoting a more collaborative and flexible project environment.
+
+### 1. Project Management
+
+#### 1.1 GitHub Project Boards
+
+The project utilised GitHub Project Boards to track the progress of our development efforts.
+
+- **Todo Column**: Any item (We.e., user story or bug) deemed ready for development was moved here.
+- **In Progress Column**: Items currently being worked on were moved into this column.
+- **Done Column**: Completed and closed items were moved here.
+
+![GitHub Project Board](../docs/github/project-board.png)
+
+#### 1.2 GitHub Issues
+
+GitHub Issues were used to track individual pieces of work.
+
+- Each user story and bug had its own GitHub Issue.
+- Metadata (like labels for priority, type, and who was assigned) was added to each issue.
+- Commits were linked to issues to track work being done.
+
+![GitHub Issue](../docs/github/issue.png)
+
+### 2. Development
+
+#### 2.1 MoSCoW Prioritization
+
+To prioritise the work, I used the MoSCoW method, assigning each issue a priority level:
+
+- **Must Have**: These were mission-critical requirements the project could not do without.
+- **Should Have**: Important but not vital requirements. Could be postponed if necessary.
+- **Could Have**: Desirable requirements, but could be dropped without significant loss or impact.
+- **Won't Have**: These were agreed to be unnecessary, to be addressed at a later time, or were beyond the scope of the
+  current iteration.
+
+At the start of each sprint, Must Have and Should Have issues were prioritised.
+It helped to maintain a steady flow in the project by keeping focus on high-value, high-impact work.
+
+![MoSCoW Prioritization](../docs/github/issue-tracker.png)
+
+### 3. Conclusion
+
+The combination of Agile Development practices, GitHub Project Boards, GitHub Issues, and MoSCoW Prioritization led to 
+a successful and effective project. By continuously iterating, I maintained a high level of quality while rapidly
+delivering working software.
