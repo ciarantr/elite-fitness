@@ -763,3 +763,90 @@ Download the [drawsql file](../docs/design/database/database-schema.drawio) to v
 | FK | product_id  | Bigint | FK, references products_product(id) |
 
 </details>
+
+## 🧰 Tools & Technologies Used
+
+### Code Validation
+
+- [Pycharm builtin inspection tools](https://www.jetbrains.com/pycharm/) used as the IDE for the project.
+- [W3C Markup Validation Service](https://validator.w3.org) used to validate HTML.
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator) used to validate CSS.
+- [Eslint](https://eslint.org) used to validate JavaScript.
+- [Ruff](https://pypi.org/project/ruff/) Used to linter and format python code.
+- [JSHint](https://jshint.com) used to validate JavaScript.
+
+### Database
+
+- [SQLite](https://www.sqlite.org/index.html) used as the database for the site during development.
+- [PostgreSQL](https://www.postgresql.org) used as the production database for the site.
+
+### Development Tools
+
+- [Git](https://git-scm.com) used for version control.
+- [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) used for testing and debugging.
+- [Firefox DevTools](https://developer.mozilla.org/en-US/docs/Tools) used for testing and debugging.
+- [Safari DevTools](https://developer.apple.com/safari/tools/) used for testing and debugging.
+- [DrawSQL](https://drawsql.app) used for creating the database schema.
+- [Figma](https://www.figma.com) used for creating high-fidelity mockups.
+- [Polypane](https://polypane.app) used for testing responsiveness, SEO & Accessibility.
+- [PyCharm](https://www.jetbrains.com/pycharm/) used as the IDE for development.
+
+### Frameworks & Libraries
+
+- [Django](https://www.djangoproject.com) used as the Python web framework.
+- [Tailwind CSS](https://tailwindcss.com) - used as the CSS framework.
+
+### Hosting
+
+- [AWS](https://aws.amazon.com) S3 used for static file storage.
+- [Heroku SQL](https://www.heroku.com/postgres) PostgreSQL used for the production database.
+- [Heroku](https://www.heroku.com) used for hosting the site.
+
+### Languages
+
+- [Python](https://www.python.org) - Back-end programming language.
+- [Django Templating Language](https://docs.djangoproject.com/en/3.2/ref/templates/language/) - Templating language.
+- [JavaScript](https://www.javascript.com) - Site interaction.
+- [HTML](https://en.wikipedia.org/wiki/HTML) - Main site content.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/css) - Styling site content.
+
+### Testing
+
+- [Coverage](https://coverage.readthedocs.io/en/coverage-5.5/) used to measure the code coverage of the tests.
+- [Django Unit Test](https://docs.djangoproject.com/en/3.2/topics/testing/) used for testing the Django app.
+
+### Version Control & Code Repository
+
+- [Git](https://git-scm.com) used for version control. (`git add`, `git commit`, `git push`)
+- [GitHub](https://github.com) used for secure online code storage.
+
+## 💌 Credits
+
+[Techsini mockup generator](https://techsini.com/multi-mockup/index.php)
+used for the website mockup generation of the site on mobile, iPad & Desktop.
+
+[Tim Nelson markdown builder](https://tim.2bn.dev/markdown-builder/) used for the structure of the README.md.,
+DEPLOYMENT.md, TESTING.md, and DEPLOYMENT.md files.
+
+### Content
+
+- [Peloton](https://www.onepeloton.com/): fitness peloton product images, description, pricing & product details.
+- [Wild Nutrition](https://www.wildnutrition.com/): supplement product images, description, pricing, product details.
+- [Juicers Ireland](https://www.juicers.ie/): juicer & blender product images, description, pricing & product details.
+
+### Media
+
+- [Icons](https://icones.js.org/collection/all) utilized on the website.
+- [Termify](https://app.termly.io/privacy) for the privacy policy.
+
+## Acknowledgements
+
+-  I would like to extend my sincere gratitude to [Tim Nelson](https://github.com/TravelTimN), my mentor from Code Institute, for offering unwavering support throughout the entire development process of this project.
+
+
+-  I express my appreciation to Rory Patrick Sheridan, my secondary mentor at Code Institute, for providing valuable feedback and guidance.
+
+
+-  I am thankful to [MrBin99](https://github.com/MrBin99/django-vite) for enabling the utilization of Vite in conjunction with the Django framework.
+
+🔝 [Back to Top](#elite-fitness-)
