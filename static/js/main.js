@@ -74,13 +74,6 @@ desktopMenu.forEach((menu) => {
 desktopSearchBtn.addEventListener('click', () => {
   desktopSearchContainer.classList.toggle('open')
 
-  const desktopSearchBtnAttrsState =
-    desktopSearchContainer.getAttribute('aria-hidden')
-
-  desktopSearchContainer.setAttribute(
-    'aria-hidden',
-    desktopSearchBtnAttrsState === 'true' ? 'false' : 'true',
-  )
   // add focus to the search input
   desktopSearchContainer.querySelector('input').focus()
   // add overlay to the page
