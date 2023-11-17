@@ -25,173 +25,171 @@
       Profile</a
     >
     <button
-      id="create-list"
+      data-wishlist-type="create"
       data-open-dialog
       class="rounded bg-slate-700 px-4 py-2 text-center text-sm text-white"
     >
       Add a new list
     </button>
   </div>
-  <hr />
 
   <main class="container mx-auto mt-16 px-4">
-    {# Pagination #} {% if is_paginated %}
-    <div class="rounded-md px-8 py-6 shadow">
-      <div class="flex items-center gap-x-4">
-        {% if page_obj.has_previous %}
-        <a
-          class="block"
-          href="?page={{ page_obj.previous_page_number }}"
-          >Previous</a
-        >
-        {% endif %} {# Pagination pages by number #}
-        <div class="flex items-baseline gap-x-3">
-          {% for i in paginator.page_range %} {% if page_obj.number == i %}
-          <div class="rounded-md bg-slate-700 px-3 py-2 text-white">
-            <a
-              class="block"
-              href="?page={{ i }}"
-              >{{ i }}</a
-            >
-          </div>
-          {% else %}
-          <div>
-            <a
-              class="block"
-              href="?page={{ i }}"
-              >{{ i }}</a
-            >
-          </div>
-          {% endif %} {% endfor %}
-        </div>
-
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">Next</a>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      <!-- Display wishlists -->
-      <section class="mt-12 space-y-8">
-        {% if wishlists %}
-        <h2>Your Wishlists:</h2>
-
-        {% for wishlist in wishlists %}
-        <div class="space-y-4 rounded-md border p-8">
-          <div class="flex justify-between">
-            <h3 class="text-lg font-semibold">{{ wishlist.name }}</h3>
-            <div>
-              <button
-                data-open-dialog
-                id="edit-list"
-                data-list-id="{{ wishlist.id }}"
-                title="Edit list"
-              >
-                <img
-                  src='{% static "icons/update.svg" %}'
-                  alt="update list icon"
-                  width="24"
-                  height="24"
-                />
-              </button>
-              {# delete from #}
-              <button
-                data-open-dialog
-                id="delete-list"
-                data-list-id="{{ wishlist.id }}"
-                title="Delete list"
-              >
-                <img
-                  src='{% static "icons/trash.svg" %}'
-                  alt="trash icon"
-                  width="24"
-                  height="24"
-                />
-              </button>
-            </div>
-          </div>
-          {# Wishlist products, image, price #} {% if wishlist.products.count %}
-          <ul
-            data-list-id="{{ wishlist.id }}"
-            class="grid grid-flow-col justify-start gap-x-8 overflow-x-auto py-4"
+    <!-- Display wishlists -->
+    <section class="mt-12 space-y-8">
+      {% if wishlists %}
+      <div class="space-y-8">
+        {# Pagination #} {% if is_paginated %}
+        <div class="flex items-center gap-x-4">
+          {% if page_obj.has_previous %}
+          <a
+            class="block"
+            href="?page={{ page_obj.previous_page_number }}"
+            >Previous</a
           >
-            {% for product in wishlist.get_all_products %}
-            <li class="h-full w-64 space-y-4 rounded-md pb-4 shadow">
-              <div class="flex h-full flex-col space-y-3">
-                {% if product.images.all.0 %}
-                <img
-                  src="{{ product.images.all.0.image.url }}"
-                  width="225"
-                  height="225"
-                  alt="{{ product.name }}"
-                  class="h-full w-full rounded-t-md object-cover"
-                />
-                {% else %}
-                <img
-                  src="{{ MEDIA_URL }}products/placeholder.svg"
-                  width="225"
-                  height="225"
-                  alt="{{ product.name }}"
-                  class="h-full w-full rounded-t-md object-cover"
-                />
-                {% endif %}
-                <div class="space-y-6 px-4">
-                  <div class="space-y-3 text-sm">
-                    <h3>
-                      <a href="{% url 'product_detail' product.slug %}"
-                        >{{ product.name }}</a
-                      >
-                    </h3>
-                    <p>€{{ product.price }}</p>
-                  </div>
-                  <!-- prettier-ignore -->
-                  {# add wishlist product to cart / remove product from wishlist #}
-                  <div class="space-y-2">
-                    <!-- prettier-ignore -->
-                    {% if product.stock > 1 %} {% if product.id|stringformat:"s" in cart.keys %}
-                    <p
-                      class="w-full rounded bg-slate-700/90 px-4 py-2 text-center text-sm text-white"
-                    >
-                      Added to cart
-                    </p>
-                    {% else %}
-                    <!-- prettier-ignore -->
-                    {# Add product to cart form #}
-                      {% include 'partials/forms/cart_add_from_wishlist_form.html' %}
-                    {%endif %}
+          {% endif %} {# Pagination pages by number #}
+          <div class="flex items-baseline gap-x-3">
+            {% for i in paginator.page_range %} {% if page_obj.number == i %}
+            <div class="rounded-md bg-slate-700 px-3 py-2 text-white">
+              <a
+                class="block"
+                href="/?page={{ i }}"
+                >{{ i }}</a
+              >
+            </div>
+            {% else %}
+            <div>
+              <a
+                class="block"
+                href="?page={{ i }}"
+                >{{ i }}</a
+              >
+            </div>
+            {% endif %} {% endfor %}
+          </div>
 
-                    {% else %}
-                    <p class="text-sm text-red-600">Out of stock</p>
-                    {% endif %}
-                    <!-- prettier-ignore -->
-                    {# remove product from wishlist #}
-                    {% include 'partials/forms/wishlist_product_remove_form.html' %}
-                  </div>
-                </div>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-
-          {% else %}
-          <p>No products added.</p>
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">Next</a>
           {% endif %}
         </div>
-
-        {% endfor %} {% else %}
-        <p>You have no wishlists.</p>
         {% endif %}
-      </section>
-    </div>
+      </div>
+
+      <!-- Display wishlists -->
+      {% for wishlist in wishlists %}
+      <div class="rounded px-6 py-4 shadow">
+        <div class="flex justify-between">
+          <h3 class="text-lg font-semibold">{{ wishlist.name }}</h3>
+          <div>
+            <button
+              data-wishlist-type="edit"
+              data-list-id="{{ wishlist.id }}"
+              data-open-dialog
+              title="Edit list"
+            >
+              <img
+                src='{% static "icons/update.svg" %}'
+                alt="update list icon"
+                width="24"
+                height="24"
+              />
+            </button>
+            {# delete from #}
+            <button
+              data-wishlist-type="delete"
+              data-open-dialog
+              data-list-id="{{ wishlist.id }}"
+              title="Delete list"
+            >
+              <img
+                src='{% static "icons/trash.svg" %}'
+                alt="trash icon"
+                width="24"
+                height="24"
+              />
+            </button>
+          </div>
+        </div>
+        {# Wishlist products, image, price #} {% if wishlist.products.count %}
+        <ul
+          data-list-id="{{ wishlist.id }}"
+          class="grid grid-flow-col justify-start gap-x-8 overflow-x-auto py-4"
+        >
+          {% for product in wishlist.get_all_products %}
+          <li class="h-full w-64 space-y-4 rounded-md pb-4 shadow">
+            <div class="flex h-full flex-col space-y-3">
+              {% if product.images.all.0 %}
+              <img
+                src="{{ product.images.all.0.image.url }}"
+                width="225"
+                height="225"
+                alt="{{ product.name }}"
+                class="h-full w-full rounded-t-md object-cover"
+              />
+              {% else %}
+              <img
+                src="{{ MEDIA_URL }}products/placeholder.svg"
+                width="225"
+                height="225"
+                alt="{{ product.name }}"
+                class="h-full w-full rounded-t-md object-cover"
+              />
+              {% endif %}
+              <div class="space-y-6 px-4">
+                <div class="space-y-3 text-sm">
+                  <h3>
+                    <a href="{% url 'product_detail' product.slug %}"
+                      >{{ product.name }}</a
+                    >
+                  </h3>
+                  <p>€{{ product.price }}</p>
+                </div>
+                <!-- prettier-ignore -->
+                {# add wishlist product to cart / remove product from wishlist #}
+                <div class="space-y-2">
+                  <!-- prettier-ignore -->
+                  {% if product.stock > 1 %} {% if product.id|stringformat:"s" in cart.keys %}
+                  <p
+                    class="w-full rounded bg-slate-700/90 px-4 py-2 text-center text-sm text-white"
+                  >
+                    Added to cart
+                  </p>
+                  {% else %}
+                  <!-- prettier-ignore -->
+                  {# Add product to cart form #}
+                  {% include 'partials/forms/cart_add_from_wishlist_form.html' %}
+                  {% endif %}
+
+                  {% else %}
+                    <p class="text-sm text-red-600">Out of stock</p>
+                  {% endif %}
+                  <!-- prettier-ignore -->
+                  {# remove product from wishlist #}
+                  {% include 'partials/forms/wishlist_product_remove_form.html' %}
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% else %}
+        <p>No products added.</p>
+        {% endif %}
+      </div>
+
+      {% endfor %} {% else %} {# If no wishlist are added #}
+      <p>You have no wishlists.</p>
+      {% endif %}
+    </section>
   </main>
 </div>
 {# create wishlist dialog #}
 <!-- prettier-ignore -->
 {% include 'partials/dialogs/wishlist_create_dialog.html' %}
-{# edit wishlist dialog#}
+  {# edit wishlist dialog#}
 <!-- prettier-ignore -->
-{%include 'partials/dialogs/wishlist_edit_dialog.html' %}
-{# delete wishlist dialog#}
+{% include 'partials/dialogs/wishlist_edit_dialog.html' %}
+  {# delete wishlist dialog#}
 <!-- prettier-ignore -->
-{%include 'partials/dialogs/wishlist_delete_dialog.html' %}
+{% include 'partials/dialogs/wishlist_delete_dialog.html' %}
 {% endblock %}
