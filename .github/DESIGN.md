@@ -1,18 +1,18 @@
 # UX / UI 🎨
 
-[Navigate back to README Documentation](./README.md)
-
 The design process for the Elite Fitness e-commerce website commenced with the utilisation of the Figma design tool. I developed designs for various screen sizes, encompassing mobile, iPad, and desktop, with the aim of ensuring a seamless user experience across all devices.
 
 To actualise our design process, I conducted extensive research to meticulously select the ideal colours and images for the application. I examined the utilisation of colour and imagery in other successful restaurant applications and delved into the cultural significance of colors in Japanese cuisine.
 
 In order to complement the visual representation of the available dishes, I judiciously curated a color palette that would harmonize with the visual elements, thereby creating a cohesive and inviting experience for users. By dedicating time to thorough research and meticulous selection of design elements, we achieved the creation of an application that not only boasts aesthetic appeal but also enhances the overall user experience.
 
+[Navigate back to README Documentation](./README.md)
+
 ## Colour Scheme
 
 I utilized Figma design tools to generate the color palette.
 
-![Colour Palette](../docs/design/colour-palette.png)
+![Colour Palette](../docs/design/mockups-high-fidelity/colour-palette.png)
 
 I have employed CSS :root variables to customize the appearance of Django alert messages. The following CSS variables are used to style the alert messages:
 
@@ -24,7 +24,6 @@ I have employed CSS :root variables to customize the appearance of Django alert 
     --alert-info: hsl(204, 58%, 32%);
 }
 ```
-
 
 ## Typography
 
@@ -44,7 +43,37 @@ I have sources my images from three different sources based on the product range
 
 ## Design Mockups with High Fidelity
 
-In adherence to industry standards, meticulous mockups were created for mobile, tablet, and desktop dimensions. Figma, a vector graphics editor and prototyping tool, was employed for the purpose of designing the website mockups. The Figma design file can be accessed in the docs/design/figma/elite-fitness.fig directory.
+In adherence to industry standards, meticulous mockups were created for mobile, tablet, and desktop dimensions.
+Figma, a vector graphics editor and prototyping tool, was employed for the purpose of designing the website mockups.
+The Figma design file can be accessed in the docs/design/mockups-high-fidelity/figma/elite-fitness.fig directory.
+I have provided a table to view the mockups & drop down menus to view the mockups for each page.
+
+| Page                              | Mobile                                                                                                         | Tablet                                                                                                         | Desktop                                                                                                         |
+|-----------------------------------|----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|
+| About Page                        | ![About Page Mobile](../docs/design/mockups-high-fidelity/about-sm.png)                                        | ![About Page Tablet](../docs/design/mockups-high-fidelity/about-md.png)                                        | ![About Page Desktop](../docs/design/mockups-high-fidelity/about-lg.png)                                        |
+| Contact Page                      | ![Contact Page Mobile](../docs/design/mockups-high-fidelity/contact-sm.png)                                    | ![Contact Page Tablet](../docs/design/mockups-high-fidelity/contact-md.png)                                    | ![Contact Page Desktop](../docs/design/mockups-high-fidelity/contact-lg.png)                                    |
+| Checkout Page                     | ![Checkout Page Mobile](../docs/design/mockups-high-fidelity/checkout-sm.png)                                  | ![Checkout Page Tablet](../docs/design/mockups-high-fidelity/checkout-md.png)                                  | ![Checkout Page Desktop](../docs/design/mockups-high-fidelity/checkout-lg.png)                                  |
+| Checkout Success Page             | ![Checkout Success Page Mobile](../docs/design/mockups-high-fidelity/checkout-success-sm.png)                  | ![Checkout Success Page Tablet](../docs/design/mockups-high-fidelity/checkout-success-md.png)                  | ![Checkout Success Page Desktop](../docs/design/mockups-high-fidelity/checkout-success-lg.png)                  |
+| Faq Page                          | ![Faq Page Mobile](../docs/design/mockups-high-fidelity/faq-sm.png)                                            | ![Faq Page Tablet](../docs/design/mockups-high-fidelity/faq-md.png)                                            | ![Faq Page Desktop](../docs/design/mockups-high-fidelity/faq-lg.png)                                            |
+| Home Page                         | ![Home Page Mobile](../docs/design/mockups-high-fidelity/home-sm.png)                                          | ![Home Page Tablet](../docs/design/mockups-high-fidelity/home-md.png)                                          | ![Home Page Desktop](../docs/design/mockups-high-fidelity/home-lg.png)                                          |
+| Login Page                        | ![Login Page Mobile](../docs/design/mockups-high-fidelity/login-sm.png)                                        | ![Login Page Tablet](../docs/design/mockups-high-fidelity/login-md.png)                                        | ![Login Page Desktop](../docs/design/mockups-high-fidelity/login-lg.png)                                        |
+| Mobile Flyout Menu                | ![Mobile Menu Open](../docs/design/mockups-high-fidelity/login-menu-open.png)                                  | -                                                                                                              | -                                                                                                               |
+| Profile Page                      | ![Profile Page Mobile](../docs/design/mockups-high-fidelity/profile-sm.png)                                    | ![Profile Page Tablet](../docs/design/mockups-high-fidelity/profile-md.png)                                    | ![Profile Page Desktop](../docs/design/mockups-high-fidelity/profile-lg.png)                                    |
+| Profile Delivery Information Page | ![Profile Delivery Information Page Mobile](../docs/design/mockups-high-fidelity/profile-delivery-info-sm.png) | ![Profile Delivery Information Page Tablet](../docs/design/mockups-high-fidelity/profile-delivery-info-md.png) | ![Profile Delivery Information Page Desktop](../docs/design/mockups-high-fidelity/profile-delivery-info-lg.png) |
+| Profile Order History Page        | ![Profile Order History Page Mobile](../docs/design/mockups-high-fidelity/profile-order-sm.png)                | ![Profile Order History Page Tablet](../docs/design/mockups-high-fidelity/profile-order-md.png)                | ![Profile Order History Page Desktop](../docs/design/mockups-high-fidelity/profile-order-lg.png)                |
+| Products Page                     | ![Product List Page Mobile](../docs/design/mockups-high-fidelity/products-sm.png)                              | ![Product List Page Tablet](../docs/design/mockups-high-fidelity/products-md.png)                              | ![Product List Page Desktop](../docs/design/mockups-high-fidelity/products-lg.png)                              |
+| Product Detail Page               | ![Product Detail Page Mobile](../docs/design/mockups-high-fidelity/product-detail-sm.png)                      | ![Product Detail Page Tablet](../docs/design/mockups-high-fidelity/product-detail-md.png)                      | ![Product Detail Page Desktop](../docs/design/mockups-high-fidelity/product-detail-lg.png)                      |
+| Privacy Policy Page               | ![Privacy Policy Page Mobile](../docs/design/mockups-high-fidelity/privacy-policy-sm.png)                      | ![Privacy Policy Page Tablet](../docs/design/mockups-high-fidelity/privacy-policy-md.png)                      | ![Privacy Policy Page Desktop](../docs/design/mockups-high-fidelity/privacy-policy-lg.png)                      |
+| Register Page                     | ![Register Page Mobile](../docs/design/mockups-high-fidelity/register-sm.png)                                  | ![Register Page Tablet](../docs/design/mockups-high-fidelity/register-md.png)                                  | ![Register Page Desktop](../docs/design/mockups-high-fidelity/register-lg.png)                                  |
+| Shopping Cart Page                | ![Shopping Cart Page Mobile](../docs/design/mockups-high-fidelity/cart-sm.png)                                 | ![Shopping Cart Page Tablet](../docs/design/mockups-high-fidelity/cart-md.png)                                 | ![Shopping Cart Page Desktop](../docs/design/mockups-high-fidelity/cart-lg.png)                                 |
+| Shipping And Information Page     | ![Shipping And Information Page Mobile](../docs/design/mockups-high-fidelity/shipping-information-sm.png)      | ![Shipping And Information Page Tablet](../docs/design/mockups-high-fidelity/shipping-information-md.png)      | ![Shipping And Information Page Desktop](../docs/design/mockups-high-fidelity/shipping-information-lg.png)      |
+| Wishlist Page With Products       | ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-with-product-sm.png)                     | ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-with-product-md.png)                     | ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-with-product-lg.png)                     |
+| Wishlist Page Without Products    | ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-created-sm.png)                          | ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-created-md.png)                          | ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-created-lg.png)                          |
+| Wishlist Page Edit Wishlist       | ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-edit-sm.png)                             | ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-edit-md.png)                             | ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-edit-lg.png)                             |
+| Wishlist Page Delete Wishlist     | ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-delete-sm.png)                           | ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-delete-md.png)                           | ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-delete-lg.png)                           |
+| Wishlist Page Add Product         | ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-add-product-sm.png)                      | ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-add-product-md.png)                      | ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-add-product-lg.png)                      |
+| 404 Page                          | ![404 Page Mobile](../docs/design/mockups-high-fidelity/error-404-sm.png)                                      | ![404 Page Tablet](../docs/design/mockups-high-fidelity/error-404-md.png)                                      | ![404 Page Desktop](../docs/design/mockups-high-fidelity/error-404-lg.png)                                      |
+| Facebook mockup                   | -                                                                                                              | -                                                                                                              | ![Facebook Mobile](../docs/design/mockups-high-fidelity/facebook-mockup.png)                                    |
 
 Navigate to design mockups for the following pages:
 
@@ -79,21 +108,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![About Page Mobile](../docs/design/about-sm.png)
+  ![About Page Mobile](../docs/design/mockups-high-fidelity/about-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![About Page Tablet](../docs/design/about-md.png)
+  ![About Page Tablet](../docs/design/mockups-high-fidelity/about-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![About Page Desktop](../docs/design/about-lg.png)
+  ![About Page Desktop](../docs/design/mockups-high-fidelity/about-lg.png)
 </details>
 
 ### Contact Page
@@ -102,21 +131,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Contact Page Mobile](../docs/design/contact-sm.png)
+  ![Contact Page Mobile](../docs/design/mockups-high-fidelity/contact-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Contact Page Tablet](../docs/design/contact-md.png)
+  ![Contact Page Tablet](../docs/design/mockups-high-fidelity/contact-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Contact Page Desktop](../docs/design/contact-lg.png)
+  ![Contact Page Desktop](../docs/design/mockups-high-fidelity/contact-lg.png)
 </details>
 
 ### Checkout Page
@@ -125,21 +154,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Checkout Page Mobile](../docs/design/checkout-sm.png)
+![Checkout Page Mobile](../docs/design/mockups-high-fidelity/checkout-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Checkout Page Tablet](../docs/design/checkout-md.png)
+![Checkout Page Tablet](../docs/design/mockups-high-fidelity/checkout-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Checkout Page Desktop](../docs/design/checkout-lg.png)
+![Checkout Page Desktop](../docs/design/mockups-high-fidelity/checkout-lg.png)
 </details>
 
 ### Checkout Success Page
@@ -148,21 +177,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Checkout Success Page Mobile](../docs/design/checkout-success-sm.png)
+![Checkout Success Page Mobile](../docs/design/mockups-high-fidelity/checkout-success-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Checkout Success Page Tablet](../docs/design/checkout-success-md.png)
+![Checkout Success Page Tablet](../docs/design/mockups-high-fidelity/checkout-success-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Checkout Success Page Desktop](../docs/design/checkout-success-lg.png)
+![Checkout Success Page Desktop](../docs/design/mockups-high-fidelity/checkout-success-lg.png)
 </details>
 
 ### Faq Page
@@ -171,21 +200,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Faq Page Mobile](../docs/design/faq-sm.png)
+  ![Faq Page Mobile](../docs/design/mockups-high-fidelity/faq-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Faq Page Tablet](../docs/design/faq-md.png)
+  ![Faq Page Tablet](../docs/design/mockups-high-fidelity/faq-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Faq Page Desktop](../docs/design/faq-lg.png)
+  ![Faq Page Desktop](../docs/design/mockups-high-fidelity/faq-lg.png)
 
 </details>
 
@@ -195,21 +224,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Home Page Mobile](../docs/design/home-sm.png)
+  ![Home Page Mobile](../docs/design/mockups-high-fidelity/home-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Home Page Tablet](../docs/design/home-md.png)
+  ![Home Page Tablet](../docs/design/mockups-high-fidelity/home-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Home Page Desktop](../docs/design/home-lg.png)
+  ![Home Page Desktop](../docs/design/mockups-high-fidelity/home-lg.png)
 </details>
 
 ### Login Page
@@ -218,21 +247,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Login Page Mobile](../docs/design/login-sm.png)
+![Login Page Mobile](../docs/design/mockups-high-fidelity/login-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Login Page Tablet](../docs/design/login-md.png)
+![Login Page Tablet](../docs/design/mockups-high-fidelity/login-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Login Page Desktop](../docs/design/login-lg.png)
+![Login Page Desktop](../docs/design/mockups-high-fidelity/login-lg.png)
 </details>
 
 ### Mobile Flyout Menu
@@ -240,7 +269,7 @@ Navigate to design mockups for the following pages:
 <details>
    <summary>Mobile Menu Open</summary>
 
-![Login Page Tablet](../docs/design/login-menu-open.png)
+![Login Page Tablet](../docs/design/mockups-high-fidelity/login-menu-open.png)
 </details>
 
 ### Profile Page
@@ -249,21 +278,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Profile Page Mobile](../docs/design/profile-sm.png)
+![Profile Page Mobile](../docs/design/mockups-high-fidelity/profile-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Profile Page Tablet](../docs/design/profile-md.png)
+![Profile Page Tablet](../docs/design/mockups-high-fidelity/profile-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Profile Page Desktop](../docs/design/profile-lg.png)
+![Profile Page Desktop](../docs/design/mockups-high-fidelity/profile-lg.png)
 </details>
 
 ### Profile Delivery Information Page
@@ -272,21 +301,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Profile Delivery Information Page Mobile](../docs/design/profile-delivery-info-sm.png)
+![Profile Delivery Information Page Mobile](../docs/design/mockups-high-fidelity/profile-delivery-info-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Profile Delivery Information Page Tablet](../docs/design/profile-delivery-info-md.png)
+![Profile Delivery Information Page Tablet](../docs/design/mockups-high-fidelity/profile-delivery-info-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Profile Delivery Information Page Desktop](../docs/design/profile-delivery-info-lg.png)
+![Profile Delivery Information Page Desktop](../docs/design/mockups-high-fidelity/profile-delivery-info-lg.png)
 </details>
 
 ### Profile Order History Page
@@ -294,21 +323,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Profile Order History Page Mobile](../docs/design/profile-order-sm.png)
+![Profile Order History Page Mobile](../docs/design/mockups-high-fidelity/profile-order-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Profile Order History Page Tablet](../docs/design/profile-order-md.png)
+![Profile Order History Page Tablet](../docs/design/mockups-high-fidelity/profile-order-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Profile Order History Page Desktop](../docs/design/profile-order-lg.png)
+![Profile Order History Page Desktop](../docs/design/mockups-high-fidelity/profile-order-lg.png)
 </details>
 
 ### Products Page
@@ -317,21 +346,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Product List Page Mobile](../docs/design/products-sm.png)
+![Product List Page Mobile](../docs/design/mockups-high-fidelity/products-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-![Product List Page Tablet](../docs/design/products-md.png)
+![Product List Page Tablet](../docs/design/mockups-high-fidelity/products-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Product List Page Desktop](../docs/design/products-lg.png)
+![Product List Page Desktop](../docs/design/mockups-high-fidelity/products-lg.png)
 </details>
 
 ### Product Detail Page
@@ -340,21 +369,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Product Detail Page Mobile](../docs/design/product-detail-sm.png)
+  ![Product Detail Page Mobile](../docs/design/mockups-high-fidelity/product-detail-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Product Detail Page Tablet](../docs/design/product-detail-md.png)
+  ![Product Detail Page Tablet](../docs/design/mockups-high-fidelity/product-detail-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Product Detail Page Desktop](../docs/design/product-detail-lg.png)
+  ![Product Detail Page Desktop](../docs/design/mockups-high-fidelity/product-detail-lg.png)
 </details>
 
 ### Privacy Policy Page
@@ -363,21 +392,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Privacy Policy Page Mobile](../docs/design/privacy-policy-sm.png)
+  ![Privacy Policy Page Mobile](../docs/design/mockups-high-fidelity/privacy-policy-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Privacy Policy Page Tablet](../docs/design/privacy-policy-md.png)
+  ![Privacy Policy Page Tablet](../docs/design/mockups-high-fidelity/privacy-policy-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Privacy Policy Page Desktop](../docs/design/privacy-policy-lg.png)
+  ![Privacy Policy Page Desktop](../docs/design/mockups-high-fidelity/privacy-policy-lg.png)
 </details>
 
 ### Register Page
@@ -386,7 +415,7 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-![Register Page Mobile](../docs/design/register-sm.png)
+![Register Page Mobile](../docs/design/mockups-high-fidelity/register-sm.png)
 </details>
 
 
@@ -394,14 +423,14 @@ Navigate to design mockups for the following pages:
 
   <summary>Tablet</summary>
 
-![Register Page Tablet](../docs/design/register-md.png)
+![Register Page Tablet](../docs/design/mockups-high-fidelity/register-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-![Register Page Desktop](../docs/design/register-lg.png)
+![Register Page Desktop](../docs/design/mockups-high-fidelity/register-lg.png)
 </details>
 
 ### Shopping Cart Page
@@ -410,21 +439,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Shopping Cart Page Mobile](../docs/design/cart-sm.png)
+  ![Shopping Cart Page Mobile](../docs/design/mockups-high-fidelity/cart-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Shopping Cart Page Tablet](../docs/design/cart-md.png)
+  ![Shopping Cart Page Tablet](../docs/design/mockups-high-fidelity/cart-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Shopping Cart Page Desktop](../docs/design/cart-lg.png)
+  ![Shopping Cart Page Desktop](../docs/design/mockups-high-fidelity/cart-lg.png)
 </details>
 
 ### Shipping And Information Page
@@ -433,21 +462,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Shipping And Information Page Mobile](../docs/design/shipping-information-sm.png)
+  ![Shipping And Information Page Mobile](../docs/design/mockups-high-fidelity/shipping-information-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Shipping And Information Page Tablet](../docs/design/shipping-information-md.png)
+  ![Shipping And Information Page Tablet](../docs/design/mockups-high-fidelity/shipping-information-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Shipping And Information Page Desktop](../docs/design/shipping-information-lg.png)
+  ![Shipping And Information Page Desktop](../docs/design/mockups-high-fidelity/shipping-information-lg.png)
 </details>
 
 ### Wishlist Page With Products
@@ -456,21 +485,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Wishlist Page Mobile](../docs/design/wishlist-with-product-sm.png)
+  ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-with-product-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Wishlist Page Tablet](../docs/design/wishlist-with-product-md.png)
+  ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-with-product-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Wishlist Page Desktop](../docs/design/wishlist-with-product-lg.png)
+  ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-with-product-lg.png)
 </details>
 
 ### Wishlist Page Without Products
@@ -479,21 +508,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Wishlist Page Mobile](../docs/design/wishlist-created-sm.png)
+  ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-created-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Wishlist Page Tablet](../docs/design/wishlist-created-md.png)
+  ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-created-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Wishlist Page Desktop](../docs/design/wishlist-created-lg.png)
+  ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-created-lg.png)
 </details>
 
 ### Wishlist Page Edit Wishlist
@@ -502,21 +531,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Wishlist Page Mobile](../docs/design/wishlist-edit-sm.png)
+  ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-edit-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Wishlist Page Tablet](../docs/design/wishlist-edit-md.png)
+  ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-edit-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Wishlist Page Desktop](../docs/design/wishlist-edit-lg.png)
+  ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-edit-lg.png)
 </details>
 
 ### Wishlist Page Delete Wishlist
@@ -525,21 +554,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Wishlist Page Mobile](../docs/design/wishlist-delete-sm.png)
+  ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-delete-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Wishlist Page Tablet](../docs/design/wishlist-delete-md.png)
+  ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-delete-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Wishlist Page Desktop](../docs/design/wishlist-delete-lg.png)
+  ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-delete-lg.png)
 </details>
 
 ### Wishlist Page Add Product
@@ -548,21 +577,21 @@ Navigate to design mockups for the following pages:
 
   <summary>Mobile</summary>
 
-  ![Wishlist Page Mobile](../docs/design/wishlist-add-product-sm.png)
+  ![Wishlist Page Mobile](../docs/design/mockups-high-fidelity/wishlist-add-product-sm.png)
 </details>
 
 <details>
 
   <summary>Tablet</summary>
 
-  ![Wishlist Page Tablet](../docs/design/wishlist-add-product-md.png)
+  ![Wishlist Page Tablet](../docs/design/mockups-high-fidelity/wishlist-add-product-md.png)
 </details>
 
 <details>
 
   <summary>Desktop</summary>
 
-  ![Wishlist Page Desktop](../docs/design/wishlist-add-product-lg.png)
+  ![Wishlist Page Desktop](../docs/design/mockups-high-fidelity/wishlist-add-product-lg.png)
 </details>
 
 ### 404 Page
@@ -570,19 +599,19 @@ Navigate to design mockups for the following pages:
 <details>
    <summary>Mobile</summary>
 
-  ![404 Page Mobile](../docs/design/error-404-sm.png)
+  ![404 Page Mobile](../docs/design/mockups-high-fidelity/error-404-sm.png)
 </details>
 
 <details>
    <summary>Tablet</summary>
 
-  ![404 Page Tablet](../docs/design/error-404-md.png)
+  ![404 Page Tablet](../docs/design/mockups-high-fidelity/error-404-md.png)
 </details>
 
 <details>
    <summary>Desktop</summary>
 
-  ![404 Page Desktop](../docs/design/error-404-lg.png)
+  ![404 Page Desktop](../docs/design/mockups-high-fidelity/error-404-lg.png)
 </details>
 
 ### Facebook mockup
@@ -590,7 +619,7 @@ Navigate to design mockups for the following pages:
 <details>
    <summary>Desktop</summary>
 
-  ![Facebook Mobile](../docs/design/facebook-mockup.png)
+  ![Facebook Mobile](../docs/design/mockups-high-fidelity/facebook-mockup.png)
 </details>
 
 🔝 [Back to top](#ux--ui-)
