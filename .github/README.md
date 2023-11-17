@@ -477,7 +477,7 @@ Download the [drawsql file](../docs/design/database/database-schema.drawio) to v
 
 ### Database Models
 
-> [!NOTE] Note
+> [!NOTE]
 >
 > Please note that in the formulated table, the "PK" and "FK" annotations indicate the primary key and foreign key
 > constraints, respectively.
