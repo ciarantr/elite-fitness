@@ -45,6 +45,10 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class CustomerDeliveryForm(forms.ModelForm):
+    """
+    A customer profile model for maintaining default delivery information
+    """
+
     class Meta:
         model = DeliveryDetails
         exclude = ('user',)
@@ -60,6 +64,12 @@ class CustomerDeliveryForm(forms.ModelForm):
         # Replace underscores with spaces and title case field names
         placeholders = {field: field.replace("_", " ").title() for field in
                         self.fields}
+
+        # remove placeholder for default_country
+        # Placeholders should not be on select fields
+        self.fields['default_country'].widget.attrs.pop(
+            'placeholder', None)
+
         # Update placeholders and set autofocus on first field
         for field in self.fields:
             self.fields[field].widget.attrs.update({
@@ -70,3 +80,4 @@ class CustomerDeliveryForm(forms.ModelForm):
             if field not in non_required_fields:
                 self.fields[field].required = True
                 self.fields[field].widget.attrs['placeholder'] += ' *'
+
