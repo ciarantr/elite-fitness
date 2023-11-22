@@ -1,6 +1,27 @@
 from django.views.generic import TemplateView
 
 
+class Handler403View(TemplateView):
+    """
+    A class based view for the custom 404 error page
+    """
+
+    template_name = 'errors/base_error.html'
+
+    # send 404 status code
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+        response.status_code = 403
+        return response
+
+    # Add meta title, message and status code
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = '(403) Unauthorized Access'
+        context['message'] = 'You are not authorized to access this page.'
+        context['status_code'] = '403'
+        return context
+
 class Handler404View(TemplateView):
     """
     A class based view for the custom 404 error page
