@@ -1,3 +1,12 @@
+// Js Hint options added for assessor convenience
+
+// Allows the JShint validator to recognise modern ES6 methods, such as
+// `let`, `const`, `template literals`, `arrow functions (=>)`,
+/* jshint esversion: 11 */
+
+// Suppress warnings missing semicolons
+/* jshint asi: true */
+
 const openDialogButtons = document.querySelectorAll('[data-open-dialog]')
 const closeDialogButtons = document.querySelectorAll('[data-close-dialog]')
 const wishListForms = document.querySelectorAll('[data-wishlist-form]')
