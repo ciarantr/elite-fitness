@@ -74,3 +74,43 @@ class OrderProfileViewTest(TestCase):
         response = self.client.get(reverse('order_information'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'delivery_information.html')
+
+    def test_form_valid(self):
+        # Assuming form fields for `CustomerDeliveryForm` are 'address',
+        # 'city', and 'zipcode'
+        response = self.client.post(
+            reverse('order_information'),
+            {
+                'default_full_name': 'jane doe',
+                'default_email': 'janedoe@gmail.com',
+                'default_phone_number': '1234567890',
+                'default_street_address1': 'new address',
+                'default_street_address2': 'new address 2',
+                'default_country': 'IE',
+                'default_town_or_city': 'new city',
+                'default_postcode': 'new zip'
+            }
+        )
+        self.delivery_details_obj.refresh_from_db()
+        self.assertEqual(self.delivery_details_obj.default_full_name,
+                         'jane doe')
+        self.assertEqual(self.delivery_details_obj.default_email,
+                         'janedoe@gmail.com')
+        self.assertEqual(self.delivery_details_obj.default_phone_number,
+                         '1234567890')
+        self.assertEqual(self.delivery_details_obj.default_country,
+                            'IE')
+        self.assertEqual(self.delivery_details_obj.default_street_address1,
+                         'new address')
+        self.assertEqual(self.delivery_details_obj.default_street_address2,
+                         'new address 2')
+        self.assertEqual(self.delivery_details_obj.default_town_or_city,
+                         'new city')
+        self.assertEqual(self.delivery_details_obj.default_postcode,
+                         'new zip')
+
+        self.assertEqual(response.status_code, 302)
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(str(messages[0]),
+                         'Delivery information updated successfully')
