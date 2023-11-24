@@ -87,3 +87,34 @@ class ContactViewTest(TestCase):
         self.assertEqual(str(messages[0]),
                          'Please correct the errors below.')
 
+
+class FaqsViewTest(TestCase):
+    """
+    Test the FaqsView
+    1. Test that the view url exists at the desired location
+    and returns a 200 response code & uses the correct template
+    2. Test that the view returns the correct context data
+    """
+
+    def setUp(self):
+        self.client = Client()
+
+    @patch('builtins.open',
+           new_callable=mock_open,
+           read_data='[{"q":"Question", "a":"Answer"}]')
+    def test_get_context_data(self, mock_file):
+        response = self.client.get(reverse('customer_support:faqs'))
+
+        # Ensure status code 200 i.e., OK
+        self.assertEqual(response.status_code, 200)
+        #  test url uses the correct template
+        self.assertTemplateUsed(response, 'faqs.html')
+
+        # Ensure faqs data in the context, you can add more specific
+        # checks about its content
+        self.assertIn('faqs', response.context_data)
+
+        # Check that 'faqs' context data is the same type object as mocked data
+        self.assertEqual(json.loads(mock_file().read()),
+                         response.context_data['faqs'])
+
