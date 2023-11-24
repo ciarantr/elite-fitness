@@ -107,3 +107,81 @@ line at the very top of every single JavaScript file (this should remain in your
 | wishlist.js  [Navigate to file](../static/js/wishlist.js)                                                           | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-main.js.png)                      | Pass: No Errors |
 | wishlist_append_to_dialog.js  [Navigate to file](../apps/ecommerce/wishlist/static/js/wishlist_append_to_dialog.js) | ![screenshot](../docs/testing/validation/js/JSHint-javaScript-Code-Quality-Tool-wishlist_append_to_dialog.js.png) | Pass: No Errors |
 
+## Responsiveness
+
+Device testing was conducted using the [Polypane browser app](https://polypane.app), which allows for testing on multiple
+devices simultaneously.
+
+The three sizes tested were:
+
+- Mobile (320px)
+- Tablet (500px)
+- Desktop (12580px)
+
+
+| Page                 | Screenshots                                               | Notes             |
+|----------------------|-----------------------------------------------------------|-------------------|
+| About us             | ![screenshot](../docs/testing/polypane/about-us.png)      | Works as expected |
+| Cart                 | ![screenshot](../docs/testing/polypane/cart.png)          | Works as expected |
+| Checkout             | ![screenshot](../docs/testing/polypane/checkout.png)      | Works as expected |
+| Delivery Information | ![screenshot](../docs/testing/polypane/delivery-info.png) | Works as expected |
+| Desktop Menu         | ![screenshot](../docs/testing/polypane/desktop-menu.png)  | Works as expected |
+| Email Verification   | ![screenshot](../docs/testing/polypane/email-verify.png)  | Works as expected | 
+| Home                 | ![screenshot](../docs/testing/polypane/home.png)          | Works as expected |  
+| Login                | ![screenshot](../docs/testing/polypane/sign-in.png)       | Works as expected |
+| Mobile Menu          | ![screenshot](../docs/testing/polypane/mobile-menu.png)   | Works as expected |
+| Products All    | ![screenshot](../docs/testing/polypane/products.png)      | Works as expected |
+| Product Detail       | ![screenshot](../docs/testing/polypane/product.png)       | Works as expected |
+| Profile              | ![screenshot](../docs/testing/polypane/profile.png)       | Works as expected |
+| Profile Orders       | ![screenshot](../docs/testing/polypane/past-order.png)    | Works as expected |
+| Register New User    | ![screenshot](../docs/testing/polypane/register.png)      | Works as expected |
+| Register New User    | ![screenshot](../docs/testing/polypane/register.png)      | Works as expected |
+
+## Lighthouse Audit
+
+> [!IMPORTANT]
+>
+> **Lighthouse Audit**
+> The primary cause of performance issues can be attributed to the Stripe.js file and the static files obtained from the AWS S3 bucket. The Stripe.js file is essential for enabling Stripe payment functionality, while the static files from AWS are necessary for the proper functioning of CSS, JavaScript, and image files.
+
+![screenshot performance](../docs/testing/lighthouse/PageSpeed-Insights-perf-issues.png)
+
+I have conducted a series of Lighthouse Audits on my application. The Lighthouse Audit is a tool that is built into the Chrome DevTools. It is used to measure the performance, accessibility, best practices and SEO of a website.
+
+The Lighthouse Audit was conducted on the following pages:
+
+- About us
+- Cart
+- Contact us
+- FAQS
+- Home
+- Products
+- Product Detail
+- Profile
+- Profile Delivery Information
+- Profile Orders
+- Privacy Policy
+- Register
+- Sign In
+- Terms and Conditions
+- Wishlist
+
+| Page     | Device (Mobile)   | Device (Desktop) | Notes              |
+|----------|-------------------|-----------------|---------------------|
+| About us | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-desktop.png) | Minor issues|
+| Cart | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-desktop.png) | Minor issues|
+| Contact us | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-desktop.png) | Minor issues|
+| FAQS | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-desktop.png) | Minor issues|
+| Home | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-desktop.png) | Minor issues|
+| Products | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-desktop.png) | Minor issues|
+| Product Detail | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-desktop.png) | Minor issues|
+| Profile | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-desktop.png) | Minor issues|
+| Profile Delivery Information | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-desktop.png) | Minor issues|
+| Profile Orders | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-desktop.png) | Minor issues|
+| Privacy Policy | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-desktop.png) | Minor issues|
+| Register | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-desktop.png) | Minor issues|
+| Sign In | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-desktop.png) | Minor issues|
+| Terms and Conditions | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-desktop.png) | Minor issues|
+| Wishlist | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-desktop.png) | Minor issues|
+
+
