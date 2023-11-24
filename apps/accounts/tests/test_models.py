@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
+from ..models import DeliveryDetails
+
 
 class DeliveryDetailsModelTest(TestCase):
     """
@@ -75,4 +77,46 @@ class DeliveryDetailsModelTest(TestCase):
                          expected_street_address2)
         self.assertEqual(delivery_details.default_county,
                          expected_county)
+
+    def test_delivery_details_content_updated(self):
+        # change all the details and test values are updated
+        self.user.deliverydetails.default_full_name = "Jane Doe"
+        self.user.deliverydetails.default_email = "janedoe@example.com"
+        self.user.deliverydetails.default_phone_number = "0987654321"
+        self.user.deliverydetails.default_country = "GB"
+        self.user.deliverydetails.default_postcode = "54321"
+        self.user.deliverydetails.default_town_or_city = "London"
+        self.user.deliverydetails.default_street_address1 = "456 street"
+        self.user.deliverydetails.default_street_address2 = "Apartment 123"
+        self.user.deliverydetails.default_county = "Greater London"
+        self.user.deliverydetails.save()
+
+        delivery_details = DeliveryDetails.objects.get(id=1)
+        expected_full_name_update = "Jane Doe"
+        expected_email_update = "janedoe@example.com"
+        expected_phone_number_update = "0987654321"
+        expected_country_update = "GB"
+        expected_postcode_update = "54321"
+        expected_town_or_city_update = "London"
+        expected_street_address1_update = "456 street"
+        expected_street_address2_update = "Apartment 123"
+        expected_county_update = "Greater London"
+
+        self.assertEqual(delivery_details.default_full_name,
+                         expected_full_name_update)
+        self.assertEqual(delivery_details.default_email, expected_email_update)
+        self.assertEqual(delivery_details.default_phone_number,
+                         expected_phone_number_update)
+        self.assertEqual(delivery_details.default_country,
+                         expected_country_update)
+        self.assertEqual(delivery_details.default_postcode,
+                         expected_postcode_update)
+        self.assertEqual(delivery_details.default_town_or_city,
+                         expected_town_or_city_update)
+        self.assertEqual(delivery_details.default_street_address1,
+                         expected_street_address1_update)
+        self.assertEqual(delivery_details.default_street_address2,
+                         expected_street_address2_update)
+        self.assertEqual(delivery_details.default_county,
+                         expected_county_update)
 
