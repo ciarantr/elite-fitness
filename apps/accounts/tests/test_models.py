@@ -35,3 +35,44 @@ class DeliveryDetailsModelTest(TestCase):
         cls.user.deliverydetails.default_county = "Dublin County"
         cls.user.deliverydetails.save()
 
+    def test_delivery_details_creation(self):
+        delivery_details = DeliveryDetails.objects.get(id=1)
+        self.assertEqual(str(delivery_details), 'testuser')
+
+    def test_delivery_details_username(self):
+        delivery_details = DeliveryDetails.objects.get(id=1)
+        expected_username = "testuser"
+
+        self.assertEqual(str(delivery_details.user.username),
+                         expected_username)
+
+    def test_delivery_details_content(self):
+        delivery_details = DeliveryDetails.objects.get(id=1)
+        expected_full_name = "John Doe"
+        expected_email = "johndoe@example.com"
+        expected_phone_number = "1234567890"
+        expected_country = "Ireland"
+        expected_postcode = "12345"
+        expected_town_or_city = "Dublin"
+        expected_street_address1 = "123 street"
+        expected_street_address2 = "Apartment 456"
+        expected_county = "Dublin County"
+
+        self.assertEqual(delivery_details.default_full_name,
+                         expected_full_name)
+        self.assertEqual(delivery_details.default_email, expected_email)
+        self.assertEqual(delivery_details.default_phone_number,
+                         expected_phone_number)
+        self.assertEqual(delivery_details.default_country,
+                         expected_country)
+        self.assertEqual(delivery_details.default_postcode,
+                         expected_postcode)
+        self.assertEqual(delivery_details.default_town_or_city,
+                         expected_town_or_city)
+        self.assertEqual(delivery_details.default_street_address1,
+                         expected_street_address1)
+        self.assertEqual(delivery_details.default_street_address2,
+                         expected_street_address2)
+        self.assertEqual(delivery_details.default_county,
+                         expected_county)
+
