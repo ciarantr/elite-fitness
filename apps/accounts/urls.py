@@ -6,6 +6,7 @@ from allauth.account.views import (ConfirmEmailView, EmailVerificationSentView,
                                    SignupView)
 from django.contrib.auth.views import LogoutView
 from django.urls import path
+from django.views.generic.base import RedirectView
 
 from .views import OrderProfileView, ProfileView
 
@@ -14,6 +15,11 @@ urlpatterns = [
          name='login'),
     path('register/', SignupView.as_view(template_name='register.html'),
          name='register'),
+    # Redirect allauth signup to register view:
+    path('signup/', RedirectView.as_view(url='/account/register/')),
+    # Redirect allauth password reset view:
+    path('password/reset/',
+         RedirectView.as_view(url='/account/password-reset')),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('profile/', ProfileView.as_view(),
          name='profile'),
