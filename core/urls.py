@@ -23,8 +23,8 @@ from .views import Handler403View, Handler404View, Handler500View
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('allauth.urls')),
     path('account/', include('apps.accounts.urls')),
+    path('account/', include('allauth.urls')),
     path('', include('apps.home.urls')),
     path('products/', include('apps.ecommerce.products.urls')),
     path('cart/', include('apps.ecommerce.cart.urls')),
