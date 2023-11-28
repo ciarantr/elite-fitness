@@ -4,3 +4,4 @@ Disallow: /account/
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /wishlist/
+Sitemap: https://elite-fitness-f6b7c0ead930.herokuapp.com/sitemap.xml
