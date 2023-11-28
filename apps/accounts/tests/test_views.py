@@ -99,7 +99,7 @@ class OrderProfileViewTest(TestCase):
         self.assertEqual(self.delivery_details_obj.default_phone_number,
                          '1234567890')
         self.assertEqual(self.delivery_details_obj.default_country,
-                            'IE')
+                         'IE')
         self.assertEqual(self.delivery_details_obj.default_street_address1,
                          'new address')
         self.assertEqual(self.delivery_details_obj.default_street_address2,

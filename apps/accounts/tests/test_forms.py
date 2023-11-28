@@ -41,9 +41,9 @@ class TestUserUpdateForm(TestCase):
         }, instance=self.user)
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors['username'],
-                            ['This field is required.'])
+                         ['This field is required.'])
         self.assertEqual(form.errors['email'],
-                            ['This field is required.'])
+                         ['This field is required.'])
 
 
 class TestCustomUserCreationForm(TestCase):

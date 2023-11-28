@@ -32,4 +32,3 @@ class OrderForm(forms.ModelForm):
                 'class': 'stripe-style-input'
             })
             self.fields[field].label = False
-

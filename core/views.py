@@ -22,6 +22,7 @@ class Handler403View(TemplateView):
         context['status_code'] = '403'
         return context
 
+
 class Handler404View(TemplateView):
     """
     A class based view for the custom 404 error page

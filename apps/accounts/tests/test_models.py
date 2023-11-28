@@ -119,4 +119,3 @@ class DeliveryDetailsModelTest(TestCase):
                          expected_street_address2_update)
         self.assertEqual(delivery_details.default_county,
                          expected_county_update)
-

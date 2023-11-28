@@ -80,4 +80,3 @@ class CustomerDeliveryForm(forms.ModelForm):
             if field not in non_required_fields:
                 self.fields[field].required = True
                 self.fields[field].widget.attrs['placeholder'] += ' *'
-
