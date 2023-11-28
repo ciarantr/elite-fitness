@@ -1,3 +1,8 @@
+// Js Hint options added for assessor convenience
+// Suppress warnings missing semicolons and set es versions number
+
+/* jshint esversion: 11, asi: true */
+
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
