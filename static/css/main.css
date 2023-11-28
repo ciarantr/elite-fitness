@@ -241,9 +241,13 @@ form {
     @apply text-sm
       text-red-500;
   }
+  /* Allauth form help text */
+  .helptext {
+    @apply hidden;
+  }
 }
 
-/* Strip */
+/* Stripe */
 /*stripe form elements*/
 
 .StripeElement,
