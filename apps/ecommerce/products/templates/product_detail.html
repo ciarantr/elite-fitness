@@ -1,20 +1,20 @@
 {% extends 'base.html' %} {% load static %}
 <!-- prettier-ignore -->
 {# Meta information #}
-{% block extra_tite %}{{ product.name|safe }}{% endblock %}
+{% block extra_tite %}{{ product.name }}{% endblock %}
 
 {% block extra_meta %}
 <meta
   name="description"
-  content="{{ product.description|safe }}"
+  content="{{ product.description }}"
 />
 <meta
   property="og:title"
-  content="{{ product.name|safe }}"
+  content="{{ product.name }}"
 />
 <meta
   property="og:description"
-  content="{{ product.description|safe }}"
+  content="{{ product.description }}"
 />
 <meta
   property="og:image"
@@ -22,11 +22,11 @@
 />
 <meta
   property="og:image:alt"
-  content="{{ product.name|safe }}"
+  content="{{ product.name }}"
 />
 <meta
   property="og:url"
-  content="{{ request.build_absolute_uri|safe }}"
+  content="{{ request.build_absolute_uri }}"
 />
 <meta
   property="og:type"
@@ -46,7 +46,7 @@
 />
 <meta
   property="product:brand"
-  content="{{ product.brand.name|safe }}"
+  content="{{ product.brand.name }}"
 />
 
 <meta
@@ -59,11 +59,11 @@
 />
 <meta
   name="twitter:title"
-  content="{{ product.name|safe }}"
+  content="{{ product.name }}"
 />
 <meta
   name="twitter:description"
-  content="{{ product.description|safe }}"
+  content="{{ product.description }}"
 />
 <meta
   name="twitter:image"
@@ -71,7 +71,7 @@
 />
 <meta
   name="twitter:image:alt"
-  content="{{ product.name|safe }}"
+  content="{{ product.name }}"
 />
 <meta
   name="twitter:creator"
@@ -79,7 +79,7 @@
 />
 <meta
   name="twitter:domain"
-  content="{{ request.build_absolute_uri|safe }}"
+  content="{{ request.build_absolute_uri }}"
 />
 
 {% endblock %} {% block extra_js %}
@@ -88,7 +88,6 @@
 
 <!-- prettier-ignore -->
 {% block content %}
-
 <div class="container mx-auto mt-12 px-4">
   <div>
     <a href="{% url 'home' %}">Home</a>
