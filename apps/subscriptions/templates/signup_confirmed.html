@@ -1,6 +1,6 @@
 {% load django_vite %} {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     {% vite_hmr_client %}
@@ -14,16 +14,36 @@
       content="ie=edge"
     />
     <!-- For classic favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static 'public/icons/favicon.ico' %}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'public/icons/favicon.ico' %}"
+    />
 
     <!-- For modern browsers -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'public/icons/favicon-16x16.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'public/icons/favicon-32x32.png' %}">
-    <link rel="icon" type="image/svg+xml" href="{% static 'public/icons/favicon.svg' %}">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'public/icons/favicon-16x16.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'public/icons/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{% static 'public/icons/favicon.svg' %}"
+    />
     <!-- For apple devices -->
-    <link rel="apple-touch-icon"
-          sizes="180x180"
-          href="{% static 'public/icons/apple-touch-icon.png' %}">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'public/icons/apple-touch-icon.png' %}"
+    />
 
     {# vite compiled assets #} {% vite_asset 'js/css-import.js' %}
 
@@ -31,51 +51,60 @@
   </head>
 
   <body class="flex min-h-screen flex-col">
-    <main id='subscription-confirm' class="flex-auto">
+    <main
+      id="subscription-confirm"
+      class="flex-auto px-4"
+    >
       <section class="container mx-auto mt-12">
-        <div class="flex items-center pl-8 pt-12">
-          <div>
-            <a
-              class="flex items-end"
-              href="{% url 'home' %}"
-            >
+        <div class="space-y-12 p-4">
+          <div class="flex flex-wrap items-center">
+            <div>
+              <a
+                class="flex items-end"
+                href="{% url 'home' %}"
+              >
+                <img
+                  aria-hidden="true"
+                  src="{% static 'icons/home.svg' %}"
+                  alt="home icon"
+                  width="26"
+                  height="26"
+                />
+                <span class="text-sm"> Home </span>
+              </a>
+            </div>
+
+            <div class="flex grow items-center justify-center gap-x-4">
               <img
-                src="{% static 'icons/home.svg' %}"
-                alt="home icon"
-                width="26"
-                height="26"
+                src="{% static 'icons/elite-fitness-icon.svg' %}"
+                alt="elite fitness logo"
+                width="80"
+                height="80"
               />
-              <span class="text-sm"> Home </span>
-            </a>
+              <h1 class="text-2xl">Elite Fitness</h1>
+            </div>
           </div>
 
-          <div class="flex grow items-center justify-center gap-x-4">
-            <img
-              src="{% static 'icons/elite-fitness-icon.svg' %}"
-              alt="elite fitness logo"
-              width="80"
-              height="80"
-            />
-            <h1 class="text-2xl">Elite Fitness</h1>
-          </div>
-        </div>
+          <div class="flex justify-center md:p-4">
+            <div class="space-y-12">
+              <div>
+                <h2 class="text-xl md:w-[20ch] md:text-4xl">
+                  Signup complete!
+                  <br />
+                  You are now subscribed to our newsletter
+                </h2>
+              </div>
 
-        <div class="space-y-3 p-32">
-          <div>
-            <h2 class="text-3xl">
-              Signup complete you are now
-              <br />
-              subscribed to our newsletter!
-            </h2>
-          </div>
-
-          <div>
-            <h2 class="text-2xl">Your details</h2>
-            <p class="capitalize">Name {{ full_name }}</p>
-            <p>Email {{ email }}</p>
+              <div class="space-y-1">
+                <h2 class="text-xl md:text-3xl">Your details</h2>
+                <div class="text-md">
+                  <p class="capitalize">Name: {{ full_name }}</p>
+                  <p>Email: {{ email }}</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </section>
     </main>
     <div class="flex-shrink-0">{% include 'partials/footer.html' %}</div>
