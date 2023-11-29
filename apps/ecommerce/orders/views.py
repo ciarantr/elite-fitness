@@ -16,7 +16,7 @@ class OrderView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         order_number = kwargs.get('order_number')
         order = get_object_or_404(Order, order_number=order_number)
-        if order.user_profile_id == self.request.user.id:
+        if order.user_profile.user.id == self.request.user.id:
             context['order'] = order
         else:
             raise PermissionDenied()
