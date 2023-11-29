@@ -69,9 +69,9 @@
     {% else %}
     <!-- prettier-ignore -->
     <div class=' text-sm hidden lg:inline-block'>
-      <a href="{% url 'login' %}" class="">Sign-in</a>
+      <a href="{% url 'account_login' %}" class="">Sign-in</a>
       <span> / </span>
-      <a href="{% url 'register' %}" class="">Register</a>
+      <a href="{% url 'account_signup' %}" class="">Register</a>
     </div>
     {% endif %}
     <div class="flex grow justify-center">
