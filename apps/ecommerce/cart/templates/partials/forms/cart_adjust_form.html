@@ -3,7 +3,7 @@
   method="POST"
 >
   {% csrf_token %}
-  <div class="flex items-center space-x-2">
+  <div class="flex flex-wrap items-center gap-2">
     <label
       for="quantity-product-{{ forloop.counter }}"
       class="text-sm"
@@ -16,11 +16,12 @@
       min="1"
       max="{{ item.product.stock }}"
       value="{{ item.quantity }}"
-      class="rounded border border-gray-300 px-2 py-1 text-sm"
+      size="10"
+      class="grow rounded border border-gray-300 px-2 py-1 text-sm"
     />
     <button
       type="submit"
-      class="rounded bg-blue-600 px-2 py-1 text-sm text-white"
+      class="grow rounded bg-blue-600 px-2 py-1 text-sm text-white"
     >
       Update
     </button>
