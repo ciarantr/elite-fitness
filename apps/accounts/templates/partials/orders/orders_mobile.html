@@ -1,0 +1,27 @@
+<div class=" md:hidden">
+  {% for order in orders %}
+  <div class=" odd:border-b odd:border-slate-500 pt-2 pb-8  ">
+    <div class="flex gap-x-2 text-sm py-4">
+      <div>
+        <span>Order </span>
+        <span class="uppercase"
+          >#{{ order.order_number|truncatechars:12 }}</span
+        >
+      </div>
+      <div>
+        <span>{{ order.date|date }}</span>
+      </div>
+    </div>
+    <div>{{ order.get_status_display }}</div>
+    <div>
+      <span>Grand total: </span>
+      <span class="font-semibold">€{{ order.grand_total }}</span>
+    </div>
+    <a
+      class="mt-8 block rounded bg-slate-700 px-4 py-2 text-center text-sm text-white"
+      href=" {% url 'order_history_view' order.order_number %}"
+      >View order</a
+    >
+  </div>
+  {% endfor %}
+</div>
