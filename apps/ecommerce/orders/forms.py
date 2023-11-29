@@ -20,15 +20,12 @@ class OrderForm(forms.ModelForm):
         self.fields['full_name'].widget.attrs['autofocus'] = True
         placeholders = {field: field.replace("_", " ").title() for field in
                         self.fields}
-
-        # remove placeholder for Country
-        # Placeholders should not be on select fields
-        self.fields['country'].widget.attrs.pop(
-            'placeholder', None)
-
         for field in self.fields:
             self.fields[field].widget.attrs.update({
-                'placeholder': placeholders[field],
                 'class': 'stripe-style-input'
             })
+            #  Skip placeholder on select fields (django-countries)
+            if field != 'country':
+                self.fields[field].widget.attrs['placeholder'] = placeholders[
+                    field]
             self.fields[field].label = False
