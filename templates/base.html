@@ -1,6 +1,6 @@
 {% load django_vite %} {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     {% vite_hmr_client %}
@@ -58,7 +58,6 @@
 
     <!-- prettier-ignore -->
     {% block extra_js %}{% endblock %}
-
   </head>
   <body class="flex min-h-screen flex-col">
     <header class="bg-[hsl(49deg,_20%,_84%)] px-4 py-4">
@@ -68,16 +67,18 @@
     </header>
 
     {% if messages %}
-    <div class="fixed right-20 top-12 z-50 grid">
-      {% for message in messages %}
-      <div
-        role="alertdialog"
-        data-django-message
-        aria-labelledby="alert"
-      >
-        {% include 'partials/toasts/toast.html' %}
+    <div class="fixed top-5 z-50 w-screen md:right-20 md:top-32 md:w-max">
+      <div class="mx-auto w-11/12">
+        {% for message in messages %}
+        <div
+          role="alertdialog"
+          data-django-message
+          aria-labelledby="alert"
+        >
+          {% include 'partials/toasts/toast.html' %}
+        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
     {% endif %}
 
