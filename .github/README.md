@@ -445,11 +445,55 @@ GitHub Issues were used to track individual pieces of work.
 
 ![GitHub Issue](../docs/github/issue.png)
 
+#### 1.3 GitHub Milestones
+
+GitHub Milestones were used to track the progress of the project.
+
+- Each sprint was assigned a milestone.
+- Issues were assigned to the milestone they were being worked on.
+- The milestone was closed when all issues were completed.
+- The next milestone was then opened.
+- This process was repeated for each sprint.
+
+![GitHub Milestone](../docs/github/milestone.png)
+
+#### 1.4 GitHub labels
+
+GitHub's labels were used to categorise issues.
+
+- **bug**: Issues that were bugs.
+- **enhancement**: Issues that were enhancements. 
+- **should have**: Issues that where Should Have.
+- **must have**: Issues that were Must Have.
+- **could have**: Issues that where Could Have.
+- **won't have**: Issues that were Won't Have.
+
+![GitHub Labels](../docs/github/labels.png)
+
+#### 1.5 Git Branching
+
+Git branching was used to manage the development process. The following branches were used:
+
+- **Main**: The primary branch housed the code that was ready for production.
+- **Feature Branches**: Feature branches were established for every user story or bug. These branches were derived from the development branch and subsequently integrated back into it upon completion of the respective tasks.
+
+#### 1.6 Git Commit Messages
+
+Git commit messages were used to track the progress of the project. The following conventions were followed using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/):
+
+- **feat**: A new feature
+- **fix**: A bug fix
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc.)
+- **refactor**: A code change that neither fixes a bug nor adds a feature
+
+![Git Commits](../docs/github/commits.png)
+
 ### 2. Development
 
 #### 2.1 MoSCoW Prioritization
 
-To prioritise the work, I used the MoSCoW method, assigning each issue a priority level:
+To prioritise the project work, I used the MoSCoW method, assigning each issue a priority level:
 
 - **Must Have**: These were mission-critical requirements the project could not do without.
 - **Should Have**: Important but not vital requirements. Could be postponed if necessary.
@@ -474,6 +518,10 @@ The Database schema was created using [draw.io](https://www.drawio.com/)
 Download the [drawsql file](../docs/design/database/database-schema.drawio) to view or edit the schema.
 
 ![screenshot](../docs/design/database/database-schema.png)
+
+Enhanced ER diagram database schema made with [Pycharm](https://www.jetbrains.com/pycharm/) Database Tools.
+
+![screenshot](../docs/design/database/database-schema-pycharm.png)
 
 ### Database Models
 
