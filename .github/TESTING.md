@@ -1,6 +1,12 @@
 # Testing 🧪
 
-[Navigate back to README Documentation](./README.md)
+**Readme navigation links: 🧭**
+- [📕 View Readme documentation](./README.md)
+- [🎨 View Design documentation](./DESIGN.md#ux--ui-)
+- [🚀 View Deployment documentation (Local & Production)](./DEPLOYMENT.md#deployment-)
+- [✨ View Features documentation](./FEATURES.md#features-)
+- [🔓 View Security documentation](./SECURITY.md#security-)
+---
 
 The testing documentation offers a thorough walkthrough of the website's testing procedures and functionality.
 It includes screenshots from various testing stages for visual guidance.
@@ -105,7 +111,7 @@ line at the very top of every single JavaScript file (this should remain in your
 | main.js [Navigate to file](../static/js/main.js)                                                                    | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-main.js.png)                      | Pass: No Errors |
 | stripe.js [Navigate to file](../static/js/stripe.js)                                                                | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-stripe.js.png)                    | Pass: No Errors |
 | wishlist.js  [Navigate to file](../static/js/wishlist.js)                                                           | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-main.js.png)                      | Pass: No Errors |
-| wishlist_append_to_dialog.js  [Navigate to file](../apps/ecommerce/wishlist/static/js/wishlist_append_to_dialog.js) | ![screenshot](../docs/testing/validation/js/JSHint-javaScript-Code-Quality-Tool-wishlist_append_to_dialog.js.png) | Pass: No Errors |
+| wishlist_append_to_dialog.js  [Navigate to file](../apps/ecommerce/wishlist/static/js/wishlist_append_to_dialog.js) | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-wishlist_append_to_dialog.js.png) | Pass: No Errors |
 | Build file main.js Located in ~/static/dist/ directory                                                              | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-build-main.js.png)                | Pass: No Errors |
 | Build file stripe.js Located in ~/static/dist/ directory                                                            | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-build-stripe.js.png)              | Pass: No Errors |
 | Build file wishlist.js Located in ~/static/dist/ directory                                                          | ![screenshot](../docs/testing/validation/js/JSHint-JavaScript-Code-Quality-Tool-build-wishlist.js.png)            | Pass: No Errors |
@@ -119,7 +125,7 @@ Additionally,
 I employed the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com)
 to validate all files excluding diregtories in the **tests** & **migrations** folders, as well as `__init__.py` files.
 
->[!note]
+>[!important]
 > 
 > **Testing Python Code**
 > 
@@ -181,10 +187,16 @@ to validate all files excluding diregtories in the **tests** & **migrations** fo
 | Pass   | ./apps/marketing/apps.py                      | All clear, no errors found |
 | Pass   | ./apps/marketing/admin.py                     | All clear, no errors found |
 
+> [!NOTE]
+> 
+> **Extend Python Validation screenshots and links**
+> 
 <details>
-  <summary>View detailed testing with screenshots and CI Python Linter links</summary>
+  <summary>
+    <strong>View detailed testing with screenshots with CI Python Linter links</strong>
+  </summary>
 
-| Status | Filename                                      | Screenshort                                                                                   | Result                     | CI URL                                                                                                                                          |
+| Status | Filename                                      | Screenshot                                                                                    | Result                     | CI URL                                                                                                                                          |
 |--------|-----------------------------------------------|-----------------------------------------------------------------------------------------------|----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | Pass   | ./apps/home/apps.py                           | ![screenshot](../docs/testing/ci-pep8-linter/apps-home-apps.py.png)                           | All clear, no errors found | [Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/ciaran-io/elite-fitness/main/apps/home/apps.py)                           |
 | Pass   | ./apps/home/urls.py                           | ![screenshot](../docs/testing/ci-pep8-linter/apps-home-urls.py.png)                           | All clear, no errors found | [Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/ciaran-io/elite-fitness/main/apps/home/urls.py)                           |
@@ -265,6 +277,137 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 ```
 
+## Browser Compatibility
+
+> [!note]
+> 
+> **Browser Screenshots**
+> 
+> Screenshots of the deployed project on various browsers can be found in the [docs/testing/browser-testing](../docs/testing/browser-testing) directory.
+> Due to the large number of screenshots,
+> the browsers have been categorized based on their types
+> and can be accessed in the dropdown menu below `view detailed screenshots`.
+> Nearly all pages have been tested on mobile & desktop in Chrome, Firefox & Safari.
+
+I have tested my deployed project on multiple browsers to check for compatibility issues. The browsers tested were:
+
+- [Chrome](https://www.google.com/chrome) Version 121.0.6115.2 (Official Build) dev (arm64)
+
+<details>
+  <summary>
+    <strong>View detailed screenshots for Chrome</strong>
+  </summary>
+
+| Page                                 | Device (mobile)                                                                                    | Device (desktop)                                                                                    | Notes             |
+|--------------------------------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| About                                | ![screenshot](../docs/testing/browser-testing/chrome/about-mobile.png)                             | ![screenshot](../docs/testing/browser-testing/chrome/about-desktop.png)                             | Works as expected |
+| Account New User Verify              | ![screenshot](../docs/testing/browser-testing/chrome/account-new-user-mobile.png)                  | ![screenshot](../docs/testing/browser-testing/chrome/account-new-user-desktop.png)                  | Works as expected |
+| Account Profile                      | ![screenshot](../docs/testing/browser-testing/chrome/account-profile-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/chrome/account-profile-desktop.png)                   | Works as expected |
+| Account Profile Delivery Information | ![screenshot](../docs/testing/browser-testing/chrome/account-profile-order-information-mobile.png) | ![screenshot](../docs/testing/browser-testing/chrome/account-profile-order-information-desktop.png) | Works as expected |
+| Account Profile Orders No Auth       | ![screenshot](../docs/testing/browser-testing/chrome/account-order-no-auth-mobile.png)             | ![screenshot](../docs/testing/browser-testing/chrome/account-order-no-auth-desktop.png)             | Works as expected |
+| Cart Preview                         | NA                                                                                                 | ![screenshot](../docs/testing/browser-testing/chrome/cart-preview.png)                              | Works as expected |
+| Checkout                             | ![screenshot](../docs/testing/browser-testing/chrome/checkout-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/chrome/checkout-desktop.png)                          | Works as expected |
+| Contact                              | ![screenshot](../docs/testing/browser-testing/chrome/contact-mobile.png)                           | ![screenshot](../docs/testing/browser-testing/chrome/contact-desktop.png)                           | Works as expected |
+| FAQS                                 | ![screenshot](../docs/testing/browser-testing/chrome/faqs-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/chrome/faqs-desktop.png)                              | Works as expected |
+| Home                                 | ![screenshot](../docs/testing/browser-testing/chrome/home-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/chrome/home-desktop.png)                              | Works as expected |
+| Home Menu Open                       | ![screenshot](../docs/testing/browser-testing/chrome/home-menu-open-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/chrome/home-menu-open-desktop.png)                    | Works as expected |
+| Order Confirmation                   | ![screenshot](../docs/testing/browser-testing/chrome/order-complete-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/chrome/order-complete-desktop.png)                    | Works as expected |
+| Privacy                              | ![screenshot](../docs/testing/browser-testing/chrome/privacy-mobile.png)                           | ![screenshot](../docs/testing/browser-testing/chrome/privacy-desktop.png)                           | Works as expected |
+| Product To Wishlist                  | ![screenshot](../docs/testing/browser-testing/chrome/product-detail-wishlist-mobile.png)           | ![screenshot](../docs/testing/browser-testing/chrome/product-detail-wishlist-desktop.png)           | Works as expected |
+| Products                             | ![screenshot](../docs/testing/browser-testing/chrome/products-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/chrome/products-desktop.png)                          | Works as expected |
+| Products Detailed                    | ![screenshot](../docs/testing/browser-testing/chrome/product-detail-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/chrome/product-detail-desktop.png)                    | Works as expected |
+| Register                             | ![screenshot](../docs/testing/browser-testing/chrome/register-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/chrome/register-desktop.png)                          | Works as expected |
+| Register Confirmation Email          | ![screenshot](../docs/testing/browser-testing/chrome/register-confirmation-email.png)              | NA                                                                                                  | Works as expected |
+| Shipping & Information               | ![screenshot](../docs/testing/browser-testing/chrome/shipping-and-information-mobile.png)          | ![screenshot](../docs/testing/browser-testing/chrome/shipping-and-information-desktop.png)          | Works as expected |
+| Shopping Cart                        | ![screenshot](../docs/testing/browser-testing/chrome/shopping-cart-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/chrome/shopping-cart-desktop.png)                     | Works as expected |
+| Subscription Email                   | ![screenshot](../docs/testing/browser-testing/firefox/subscription-email.png)                      | NA                                                                                                  | Works as expected |
+| Subscription Complete                | ![screenshot](../docs/testing/browser-testing/chrome/subscription-confirm-mobile.png)              | ![screenshot](../docs/testing/browser-testing/chrome/subscription-confirm-desktop.png)              | Works as expected |
+| Terms & Conditions                   | ![screenshot](../docs/testing/browser-testing/chrome/terms-and-conditions-mobile.png)              | ![screenshot](../docs/testing/browser-testing/chrome/terms-and-conditions-desktop.png)              | Works as expected |
+| wishlist                             | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-desktop.png)                          | Works as expected |
+| wishlist Create                      | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-create-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-create-desktop.png)                   | Works as expected |
+| wishlist   Delete                    | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-delete-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-delete-desktop.png)                   | Works as expected |
+| wishlist   Edit                      | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-edit-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/chrome/wishlist-edit-desktop.png)                     | Works as expected |
+| 404 Not Found                        | ![screenshot](../docs/testing/browser-testing/chrome/404-mobile.png)                               | ![screenshot](../docs/testing/browser-testing/chrome/404-desktop.png)                               | Works as expected |
+
+</details>
+
+
+- [Firefox (Developer Edition)](https://www.mozilla.org/firefox/developer) Version 121.056 (64-bit)
+
+<details>
+  <summary>
+    <strong>View detailed screenshots for Firefox</strong>
+  </summary>
+
+| Browser                              | Device (mobile)                                                                                     | Device (desktop)                                                                                     | Notes             |
+|--------------------------------------|-----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------------|
+| About                                | ![screenshot](../docs/testing/browser-testing/firefox/about-mobile.png)                             | ![screenshot](../docs/testing/browser-testing/firefox/about-desktop.png)                             | Works as expected |
+| Account Profile                      | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-desktop.png)                   | Works as expected |
+| Account Profile Delivery Information | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-order-information-mobile.png) | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-order-information-desktop.png) | Works as expected |
+| Account Profile  Past Orders         | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/firefox/account-profile-desktop.png)                   | Works as expected |
+| Cart Preview                         | NA                                                                                                  | ![screenshot](../docs/testing/browser-testing/firefox/cart-preview-desktop.png)                      | Works as expected |
+| Checkout                             | ![screenshot](../docs/testing/browser-testing/firefox/checkout-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/firefox/checkout-desktop.png)                          | Works as expected |
+| Contact                              | ![screenshot](../docs/testing/browser-testing/firefox/contact-mobile.png)                           | ![screenshot](../docs/testing/browser-testing/firefox/contact-desktop.png)                           | Works as expected |
+| FAQS                                 | ![screenshot](../docs/testing/browser-testing/firefox/faqs-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/firefox/faqs-desktop.png)                              | Works as expected |
+| Home                                 | ![screenshot](../docs/testing/browser-testing/firefox/home-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/firefox/home-desktop.png)                              | Works as expected |
+| Home Menu Open                       | ![screenshot](../docs/testing/browser-testing/firefox/home-mobile-menu-open.png)                    | ![screenshot](../docs/testing/browser-testing/firefox/home-menu-open-desktop.png)                    | Works as expected |
+| Login                                | ![screenshot](../docs/testing/browser-testing/firefox/login-mobile.png)                             | ![screenshot](../docs/testing/browser-testing/firefox/login-desktop.png)                             | Works as expected |
+| Order Complete                       | ![screenshot](../docs/testing/browser-testing/firefox/order-complete-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/firefox/order-complete-desktop.png)                    | Works as expected |
+| Order Summary                        | ![screenshot](../docs/testing/browser-testing/firefox/order-summary-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/firefox/order-summary-desktop.png)                     | Works as expected |
+| Privacy                              | ![screenshot](../docs/testing/browser-testing/firefox/privacy-policy-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/firefox/privacy-policy-desktop.png)                    | Works as expected |
+| Product Add To Wishlist              | ![screenshot](../docs/testing/browser-testing/firefox/product-detail-wishlist-mobile.png)           | ![screenshot](../docs/testing/browser-testing/firefox/product-detail-wishlist-desktop.png)           | Works as expected |
+| Products All                         | ![screenshot](../docs/testing/browser-testing/firefox/products-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/firefox/products-desktop.png)                          | Works as expected |
+| Register                             | ![screenshot](../docs/testing/browser-testing/firefox/register-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/firefox/register-desktop.png)                          | Works as expected |
+| Shipping Information                 | ![screenshot](../docs/testing/browser-testing/firefox/shipping-information-mobile.png)              | ![screenshot](../docs/testing/browser-testing/firefox/shipping-information-desktop.png)              | Works as expected |
+| Shopping Cart                        | ![screenshot](../docs/testing/browser-testing/firefox/shopping-cart-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/firefox/shopping-cart-desktop.png)                     | Works as expected |
+| Subscription Complete                | ![screenshot](../docs/testing/browser-testing/firefox/subscription-confirm-mobile.png)              | ![screenshot](../docs/testing/browser-testing/firefox/subscription-confirm-desktop.png)              | Works as expected |
+| Terms & Conditions                   | ![screenshot](../docs/testing/browser-testing/firefox/terms-and-conditions-mobile.png)              | ![screenshot](../docs/testing/browser-testing/firefox/terms-and-conditions-desktop.png)              | Works as expected |
+| Wishlist                             | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-desktop.png)                          | Works as expected |
+| Wishlist Edit                        | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-edit-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-edit-desktop.png)                     | Works as expected |
+| Wishlist   Create                    | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-create-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-create-desktop.png)                   | Works as expected |
+| Wishlist   Delete                    | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-delete-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/firefox/wishlist-delete-desktop.png)                   | Works as expected |
+| 404 Not Found                        | ![screenshot](../docs/testing/browser-testing/firefox/404-error-mobile.png)                         | ![screenshot](../docs/testing/browser-testing/firefox/404-error-desktop.png)                         | Works as expected |
+
+
+</details>
+
+- [Safari](https://support.apple.com/downloads/safari) Version 17.1 (19616.2.9.11.7)
+
+<details>
+  <summary>
+    <strong>View detailed screenshots for Safari</strong>
+  </summary>
+
+| Browser                              | Device (mobile)                                                                                    | Device (desktop)                                                                                    | Notes             |
+|--------------------------------------|----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|-------------------|
+| About                                | ![screenshot](../docs/testing/browser-testing/webkit/about-mobile.png)                             | ![screenshot](../docs/testing/browser-testing/webkit/about-desktop.png)                             | Works as expected |
+| Account Profile                      | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-desktop.png)                   | Works as expected |
+| Account Profile Delivery Information | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-order-information-mobile.png) | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-order-information-desktop.png) | Works as expected |
+| Account Profile Past Orders          | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-past-orders-mobile.png)       | ![screenshot](../docs/testing/browser-testing/webkit/account-profile-past-orders-desktop.png)       | Works as expected |
+| Checkout                             | ![screenshot](../docs/testing/browser-testing/webkit/checkout-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/webkit/checkout-desktop.png)                          | Works as expected |
+| Contact                              | ![screenshot](../docs/testing/browser-testing/webkit/contact-mobile.png)                           | ![screenshot](../docs/testing/browser-testing/webkit/contact-desktop.png)                           | Works as expected |
+| FAQS                                 | ![screenshot](../docs/testing/browser-testing/webkit/faqs-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/webkit/faqs-desktop.png)                              | Works as expected |
+| Home                                 | ![screenshot](../docs/testing/browser-testing/webkit/home-mobile.png)                              | ![screenshot](../docs/testing/browser-testing/webkit/home-desktop.png)                              | Works as expected |
+| Home Menu Open                       | ![screenshot](../docs/testing/browser-testing/webkit/home-menu-open-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/webkit/home-menu-open-desktop.png)                    | Works as expected |
+| Home Subscription Signup             | ![screenshot](../docs/testing/browser-testing/webkit/home-subscription-signup-mobile.png)          | ![screenshot](../docs/testing/browser-testing/webkit/home-subscription-signup-desktop.png)          | Works as expected |
+| Login                                | ![screenshot](../docs/testing/browser-testing/webkit/login-mobile.png)                             | ![screenshot](../docs/testing/browser-testing/webkit/login-desktop.png)                             | Works as expected |
+| Order Complete                       | ![screenshot](../docs/testing/browser-testing/webkit/order-complete-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/webkit/order-complete-desktop.png)                    | Works as expected |
+| Privacy Policy                       | ![screenshot](../docs/testing/browser-testing/webkit/privacy-policy-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/webkit/privacy-policy-desktop.png)                    | Works as expected |
+| Products                             | ![screenshot](../docs/testing/browser-testing/webkit/products-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/webkit/products-desktop.png)                          | Works as expected |
+| Product Detail                       | ![screenshot](../docs/testing/browser-testing/webkit/product-detail-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/webkit/product-detail-desktop.png)                    | Works as expected |
+| Product Detail Wishlist              | ![screenshot](../docs/testing/browser-testing/webkit/product-detail-wishlist-mobile.png)           | ![screenshot](../docs/testing/browser-testing/webkit/product-detail-wishlist-desktop.png)           | Works as expected |
+| Product Search                       | ![screenshot](../docs/testing/browser-testing/webkit/product-search-mobile.png)                    | ![screenshot](../docs/testing/browser-testing/webkit/product-search-desktop.png)                    | Works as expected |
+| Register                             | ![screenshot](../docs/testing/browser-testing/webkit/register-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/webkit/register-desktop.png)                          | Works as expected |
+| Shipping & Information               | ![screenshot](../docs/testing/browser-testing/webkit/shipping-and-information-mobile.png)          | ![screenshot](../docs/testing/browser-testing/webkit/shipping-and-information-desktop.png)          | Works as expected |
+| Shopping Cart                        | ![screenshot](../docs/testing/browser-testing/webkit/shopping-cart-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/webkit/shopping-cart-desktop.png)                     | Works as expected |
+| Terms & Conditions                   | ![screenshot](../docs/testing/browser-testing/webkit/terms-and-conditions-mobile.png)              | ![screenshot](../docs/testing/browser-testing/webkit/terms-and-conditions-desktop.png)              | Works as expected |
+| Wishlist                             | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-mobile.png)                          | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-desktop.png)                          | Works as expected |
+| Wishlist Create                      | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-create-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-create-desktop.png)                   | Works as expected |
+| Wishlist   Edit                      | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-edit-mobile.png)                     | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-edit-desktop.png)                     | Works as expected |
+| wishlist   Delete                    | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-delete-mobile.png)                   | ![screenshot](../docs/testing/browser-testing/webkit/wishlist-delete-desktop.png)                   | Works as expected |
+| 404                                  | ![screenshot](../docs/testing/browser-testing/webkit/404-error-mobile.png)                         | ![screenshot](../docs/testing/browser-testing/webkit/404-desktop.png)                               | Works as expected |
+
+</details>
 
 ## Responsiveness
 
