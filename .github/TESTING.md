@@ -474,23 +474,6 @@ I have conducted a series of Lighthouse Audits on my application. The Lighthouse
 - Terms and Conditions
 - Wishlist
 
-| Page     | Device (Mobile)   | Device (Desktop) | Notes              |
-|----------|-------------------|-----------------|---------------------|
-| About us | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-desktop.png) | Minor issues|
-| Cart | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-desktop.png) | Minor issues|
-| Contact us | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-desktop.png) | Minor issues|
-| FAQS | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-desktop.png) | Minor issues|
-| Home | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-desktop.png) | Minor issues|
-| Products | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-desktop.png) | Minor issues|
-| Product Detail | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-desktop.png) | Minor issues|
-| Profile | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-desktop.png) | Minor issues|
-| Profile Delivery Information | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-desktop.png) | Minor issues|
-| Profile Orders | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-desktop.png) | Minor issues|
-| Privacy Policy | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-desktop.png) | Minor issues|
-| Register | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-desktop.png) | Minor issues|
-| Sign In | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-desktop.png) | Minor issues|
-| Terms and Conditions | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-desktop.png) | Minor issues|
-| Wishlist | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-desktop.png) | Minor issues|
 | Page                         | Device (Mobile)                                                                                      | Device (Desktop)                                                                                      | Notes        |
 |------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------|
 | About us                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-mobile.png)                        | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-desktop.png)                        | Minor issues |
@@ -519,7 +502,7 @@ I categorised the user stories into three segments:
 •	Returning Customers
 •	Site Administrators
 
-This categorization provides a comprehensive overview of each accomplished user story. Each story is presented with the following structure:
+This categorisation provides a comprehensive overview of each accomplished user story. Each story is presented with the following structure:
 
 1. The User Story: This describes the specific task or functionality from the perspective of the end user. 
 2. Requirement Met: Here, I state whether the proposed functionality or attribute has been successfully implemented. 
@@ -579,3 +562,89 @@ This structure ensures a systematic and user-centred approach to our website dev
 | As a site administrator, I should be able to ***have a overview of available products***, so that I can ***examine stock quantities, prices, and the most recent update of each product.***. | ✅               |     ![screenshot](../docs/features/admin-products-overview.png)     |
 | As a site administrator, I should be able to ***modify customer subscriptions***, so that I can ***update subscriber information or remove subscribers if necessary.***.                     | ✅               |   ![screenshot](../docs/features/admin-subscription-details.png)    |
 
+## Automated Testing
+
+I have conducted a series of automated tests on my application.
+
+I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more
+comprehensive.
+
+### Python (Unit Testing)
+
+I have used Django's built-in unit testing framework to test the application functionality.
+
+In order to run the tests, I ran the following command in the terminal each time:
+
+`python3 manage.py test name-of-app `
+
+To create the coverage report, I would then run the following commands:
+
+`coverage run --source=name-of-app manage.py test`
+
+`coverage report`
+
+To see the HTML version of the reports, and find out whether some pieces of code were missing, I ran the following
+commands:
+
+`coverage html`
+
+`python3 -m http.server`
+
+**[Accounts App](../apps/accounts)**
+
+| App            | File                     | Coverage | Screenshot                                               |
+|----------------|--------------------------|----------|----------------------------------------------------------|
+| Total Coverage |                          | 99%      | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/apps.py    | 100%     | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/admin.py   | 100%     | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/forms.py   | 100%     | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/models.py  | 100%     | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/urls.py    | 100%     | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/views.py   | 95%      | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+| Accounts       | apps/accounts/signals.py | 82%      | ![screenshot](../docs/testing/coverage/accounts-app.png) |
+
+**[Checkout App](../apps/ecommerce/checkout)**
+
+| App              | File                                        | Coverage | Screenshot                                                       |
+|------------------|---------------------------------------------|----------|------------------------------------------------------------------|
+| Total Coverage   |                                             | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Customer Support | apps/customer_support/apps.py               | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Customer Support | apps/customer_support/context_processors.py | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Customer Support | apps/customer_support/forms.py              | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Customer Support | apps/customer_support/views.py              | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+
+**[Ecommerce App](../apps/ecommerce)**
+
+| App            | File                                      | Coverage | Screenshot                                                       |
+|----------------|-------------------------------------------|----------|------------------------------------------------------------------|
+| Total Coverage |                                           | 79%      | ![screenshot](../docs/testing/coverage/ecommerce-cart-app.png)   |
+| Cart           | apps/ecommerce/cart/apps.py               | 100%     | ![screenshot](../docs/testing/coverage/ecommerce-cart-app.png)   |
+| Cart           | apps/ecommerce/cart/context_processors.py | 73%      | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Cart           | apps/ecommerce/cart/urls.py               | 100%     | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+| Cart           | apps/ecommerce/cart/views.py              | 82%      | ![screenshot](../docs/testing/coverage/customer_support-app.png) |
+
+**[Products App](../apps/ecommerce/products)**
+
+| App            | File                              | Coverage | Screenshot                                                         |
+|----------------|-----------------------------------|----------|--------------------------------------------------------------------|
+| Total Coverage |                                   | 88%      | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/admin.py  | 85%      | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/apps.py   | 100%     | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/models.py | 88%      | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/urls.py   | 100%     | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/utils.py  | 100%     | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+| Products       | apps/ecommerce/products/views.py  | 80%      | ![screenshot](../docs/testing/coverage/ecommerce-products-app.png) |
+
+#### Unit Test Issues
+
+> [!IMPORTANT]
+> 
+> **Unit Test Issues**
+> Apart from the previously mentioned Django tests, I have formulated a series of unit tests for diverse applications.
+> Unfortunately, due to project-imposed time constraints, I was unable to generate unit tests for all applications.
+
+## Bugs 🐛
+
+To the best of my knowledge, there are no bugs present in my application.
+
+🔝 [Back to Top](#testing-)
