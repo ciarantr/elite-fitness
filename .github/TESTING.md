@@ -28,8 +28,6 @@ The sections included are:
   - [Python (Unit Testing)](#python-unit-testing)
     - [Unit Test Issues](#unit-test-issues)
 - [Bugs](#bugs)
-  - [GitHub **Issues**](#github-issues)
-- [Unfixed Bugs](#unfixed-bugs)
 
 ## Code Validation
 
