@@ -187,9 +187,13 @@ to validate all files excluding diregtories in the **tests** & **migrations** fo
 | Pass   | ./apps/marketing/admin.py                     | All clear, no errors found |
 
 > [!NOTE]
+> [!IMPORTANT]
 > 
 > **Extend Python Validation screenshots and links**
+> **Extended Python Validation screenshots and links**
 > 
+> The following table contains links to the PEP8 CI Python Linter validation results for each file.
+
 <details>
   <summary>
     <strong>View detailed testing with screenshots with CI Python Linter links</strong>
@@ -251,6 +255,8 @@ to validate all files excluding diregtories in the **tests** & **migrations** fo
 | Pass   | ./apps/marketing/admin.py                     | ![screenshot](../docs/testing/ci-pep8-linter/apps-marketing-admin.py.png)                     | All clear, no errors found | [Link](https://pep8ci.herokuapp.com/https://raw.githubusercontent.com/ciaran-io/elite-fitness/main/apps/marketing/admin.py)                     |
 
 </details>
+
+---
 
 > [!IMPORTANT]
 > 
@@ -450,6 +456,10 @@ The three sizes tested were:
 I have conducted a series of Lighthouse Audits on my application. The Lighthouse Audit is a tool that is built into the Chrome DevTools. It is used to measure the performance, accessibility, best practices and SEO of a website.
 
 The Lighthouse Audit was conducted on the following pages:
+>[!info]
+> 
+> **The Lighthouse Audit was conducted on the following pages:**
+> Screenshots of the Lighthouse Audit results can be found in the [docs/testing/lighthouse](../docs/testing/lighthouse) directory.
 
 - About us
 - Cart
@@ -484,5 +494,91 @@ The Lighthouse Audit was conducted on the following pages:
 | Sign In | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-desktop.png) | Minor issues|
 | Terms and Conditions | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-desktop.png) | Minor issues|
 | Wishlist | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-desktop.png) | Minor issues|
+| Page                         | Device (Mobile)                                                                                      | Device (Desktop)                                                                                      | Notes        |
+|------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------|
+| About us                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-mobile.png)                        | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-about-desktop.png)                        | Minor issues |
+| Cart                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-mobile.png)                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-cart-desktop.png)                         | Minor issues |
+| Contact us                   | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-mobile.png)                      | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-contact-desktop.png)                      | Minor issues |
+| FAQS                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-mobile.png)                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-faqs-desktop.png)                         | Minor issues |
+| Home                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-mobile.png)                         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-home-desktop.png)                         | Minor issues |
+| Products                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-mobile.png)                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-products-desktop.png)                     | Minor issues |
+| Product Detail               | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-mobile.png)               | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-product-detail-desktop.png)               | Minor issues |
+| Profile                      | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-mobile.png)                      | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-desktop.png)                      | Minor issues |
+| Profile Delivery Information | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-mobile.png) | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-delivery-information-desktop.png) | Minor issues |
+| Profile Orders               | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-mobile.png)          | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-profile-past-orders-desktop.png)          | Minor issues |
+| Privacy Policy               | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-mobile.png)               | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-privacy-policy-desktop.png)               | Minor issues |
+| Register                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-mobile.png)                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-register-desktop.png)                     | Minor issues |
+| Sign In                      | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-mobile.png)                        | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-login-desktop.png)                        | Minor issues |
+| Terms and Conditions         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-mobile.png)         | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-terms-and-conditions-desktop.png)         | Minor issues |
+| Wishlist                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-mobile.png)                     | ![screenshot](../docs/testing/lighthouse/PageSpeed-Insights-wishlist-desktop.png)                     | Minor issues |
 
+
+## User Story Testing
+
+During the development of the Elite Fitness website, I utilised User Story Testing. This approach placed emphasis on the end user's perspective, ensuring that the website's development and validation corresponded with practical, real-world requirements.
+
+I categorised the user stories into three segments:
+•	New Customers
+•	Returning Customers
+•	Site Administrators
+
+This categorization provides a comprehensive overview of each accomplished user story. Each story is presented with the following structure:
+
+1. The User Story: This describes the specific task or functionality from the perspective of the end user. 
+2. Requirement Met: Here, I state whether the proposed functionality or attribute has been successfully implemented. 
+3. Screenshot: Visual proof of the implemented attribute or functionality is provided through a screenshot.
+
+This structure ensures a systematic and user-centred approach to our website development process.
+
+### User stories for new customers
+
+| User Story (new customers)                                                                                                                                                                                                                  | Requirement met | Screenshot                                                              |
+|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------------|
+| As a new site user, I would like to ***View the website on both mobile and desktop devices***, so that I can ***access the site conveniently***.                                                                                            | ✅               | ![screenshot](../docs/testing/polypane/home.png)                        |
+| As a new site user, I would like to ***Easily navigate throughout the site***, so that I can ***find products or information I may need***.                                                                                                 | ✅               | ![screenshot](../docs/features/footer-menu.png)                         |
+| As a new site user, I would like to ***Contact customer service***, so that I can ***obtain assistance regarding product inquiries or general questions I may have***.                                                                      | ✅               | ![screenshot](../docs/features/contact-us.png)                          |
+| As a new site user, I would like to ***search for products available***, so that I can ***locate and explore the range of available products***.                                                                                            | ✅               | ![screenshot](../docs/features/product-search.png)                      |
+| As a new site user, I would like to ***filter through available products***, so that I can ***easily view & find products quickly***.                                                                                                       | ✅               | ![screenshot](../docs/features/product-filters.png)                     |
+| As a new site user, I would like to ***view detailed information on the product***, so that I can ***make an informed purchase decision***.                                                                                                 | ✅               | ![screenshot](../docs/features/product-detail.png)                      |
+| As a new site user, I would like to ***add my products to my shopping cart***, so that I can ***easily make my purchase***.                                                                                                                 | ✅               | ![screenshot](../docs/features/product-add-to-cart.png)                 |
+| As a new site user, I would like to ***preview my shopping cart***, so that I can ***see what items I have added to my cart & quickly view the total cost of goods***.                                                                      | ✅               | ![screenshot](../docs/features/cart-preview.png)                        |
+| As a new site user, I would like to ***view the shipping information***, so that I can ***gain a comprehensive understanding of the shipping policies prior to finalising any purchase.***.                                                 | ✅               | ![screenshot](../docs/features/shipping-information.png)                |
+| As a new site user, I would like to ***signup to the newsletter***, so that I can ***avail of exclusive offers and receive information on fitness & wellness***.                                                                            | ✅               | ![screenshot](../docs/features/subscribe-form.png)                      |
+| As a new site user, I would like to ***modify the items within my shopping cart***, so that I can ***adjust quantities or eliminate products from my cart as needed***.                                                                     | ✅               | ![screenshot](../docs/features/shopping-cart-wishlist-option.png)       |
+| As a new site user, I would like to ***review the products and their associated costs prior to making a final purchase***, so that I can ***validate my intended purchases and ensure their accuracy before proceeding with the payment***. | ✅               | ![screenshot](../docs/features/checkout.png)                            |
+| As a new site user, I would like to ***receiving a comprehensive summary of my recent purchase***, so that I can ***the details of my purchases accurately***.                                                                              | ✅               | ![screenshot](../docs/features/order-confirmation.png)                  |
+| As a new site user, I would like to ***an email confirmation of my purchase***, so that I can ***verify the successful completion of my transaction***.                                                                                     | ✅               | ![screenshot](../docs/features/email-order-confirmation.png)            |                      
+| As a new site user, I would like to ***create an account***, so that I can ***access and modify my personal information, as well as review my previous transactions***.                                                                     | ✅               | ![screenshot](../docs/features/account-register.png)                    |
+| As a new site user, I would like to ***receive confirmation email upon registration***, so that I can ***authenticate my account sign-up***.                                                                                                | ✅               | ![screenshot](../docs/features/register-account-confirmation-email.png) |
+
+### User stories for returning customers
+
+| User Story (returning customers)                                                                                                                                                                             | Requirement met                                           | Screenshot                                                       |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|------------------------------------------------------------------|
+| As a returning site user, I would like to ***log in to my account***, so that I can ***access my personal information and review my previous orders***.                                                      | ✅                                                         | ![screenshot](../docs/features/account-login.png)                |
+| As a returning site user, I would like to ***reset my password***, so that I can ***in the event that I have forgotten it***.                                                                                | ✅                                                         | ![screenshot](../docs/features/password-reset.png)               |
+| As a returning site user, I would like to ***receive feedback upon submitting my email for the purpose of resetting my password***, so that I can ***be assured I have entered the correct email address***. | ✅                                                         | ![screenshot](../docs/features/password-reset-message.png)       |
+| As a returning site user, I would like to ***access my account***, so that I can ***review and modify my account information***.                                                                             | ✅                                                         | ![screenshot](../docs/features/profile-account-information.png)  |
+| As a returning site user, I would like to ***access my account***, so that I can ***review and modify my delivery details***.                                                                                | ✅                                                         | ![screenshot](../docs/features/profile-delivery-information.png) |
+| As a returning site user, I would like to ***receive confirmation whenever there are updates made to my account details***, so that I can ***be assured my information has been successfully updated***.     | ✅                                                         | ![screenshot](../docs/features/profile-update-message.png)       |
+| As a returning site user, I would like to ***access my account***, so that I can ***review my previous orders***. ✅                                                                                          | ![screenshot](../docs/features/profile-order-history.png) |
+| As a returning site user, I would like to ***create a wishlist***, so that I can ***add products for potential future purchase***.                                                                           | ✅                                                         | ![screenshot](../docs/features/wishlist-create.png)              |
+| As a returning site user, I would like to ***add product easily to a wishlist***, so that I can ***promptly transfer them to my shopping cart***.                                                            | ✅                                                         | ![screenshot](../docs/features/add-to-wishlist-button.png)       |
+| As a returning site user, I would like to ***modify my wishlist***, so that I can ***rename my wishlist or add a description***.                                                                             | ✅                                                         | ![screenshot](../docs/features/wishlist-edit.png)                |
+| As a returning site user, I would like to ***create a wishlist***, so that I can ***compile a collection of products that I may consider purchasing at a later time.***.                                     | ✅                                                         | ![screenshot](../docs/features/wishlist-confirm-delete.png)      |
+| As a returning site user, I would like to ***confirmation message regarding the update of my wishlist***, so that I can ***hat the changes have been successfully implemented***.                            | ✅                                                         | ![screenshot](../docs/features/wishlist-updated-msg.png)         |
+| As a returning site user, I would like to ***easily navigate to my wishlists***, so that I can ***conveniently review the products I have previously added to my wishlists.***.                              | ✅                                                         | ![screenshot](../docs/features/sign-in-mobile.png)               |
+
+### User stories for site administrators
+
+| User Story (site administrators)                                                                                                                                                             | Requirement met |                             Screenshot                              |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|:-------------------------------------------------------------------:|
+| As a site administrator, I should be able to ***modify customer delivery information***, so that I can ***make any necessary changes needed***.                                              | ✅               | ![screenshot](../docs/features/admin-customer-delivery-details.png) |
+| As a site administrator, I should be able to ***access and review customer orders***, so that I can ***efficiently evaluate both the orders themselves and their details***.                 | ✅               |  ![screenshot](../docs/features/admin-customer-order-overview.png)  |
+| As a site administrator, I should be able to ***edit customer orders***, so that I can ***qmake any necessary changes needed***.                                                             | ✅               |  ![screenshot](../docs/features/admin-customer-order-overview.png)  |
+| As a site administrator, I should be able to ***modify product attributes***, so that I can ***make changes to product attributes***.                                                        | ✅               |       ![screenshot](../docs/features/admin-brand-details.png)       |
+| As a site administrator, I should be able to ***modify product categories***, so that I can ***make changes to product categories***.                                                        | ✅               |       ![screenshot](../docs/features/admin-brand-details.png)       |
+| As a site administrator, I should be able to ***modify products***, so that I can ***make changes to the available products***.                                                              | ✅               |       ![screenshot](../docs/features/admin-brand-details.png)       |
+| As a site administrator, I should be able to ***have a overview of available products***, so that I can ***examine stock quantities, prices, and the most recent update of each product.***. | ✅               |     ![screenshot](../docs/features/admin-products-overview.png)     |
+| As a site administrator, I should be able to ***modify customer subscriptions***, so that I can ***update subscriber information or remove subscribers if necessary.***.                     | ✅               |   ![screenshot](../docs/features/admin-subscription-details.png)    |
 
