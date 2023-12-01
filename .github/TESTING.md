@@ -23,7 +23,6 @@ The sections included are:
 - [Browser Compatibility](#browser-compatibility)
 - [Responsiveness](#responsiveness)
 - [Lighthouse Audit](#lighthouse-audit)
-- [Defensive Programming](#defensive-programming)
 - [User Story Testing](#user-story-testing)
 - [Automated Testing](#automated-testing)
   - [Python (Unit Testing)](#python-unit-testing)
