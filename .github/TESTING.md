@@ -26,7 +26,6 @@ The sections included are:
 - [User Story Testing](#user-story-testing)
 - [Automated Testing](#automated-testing)
   - [Python (Unit Testing)](#python-unit-testing)
-    - [Unit Test Issues](#unit-test-issues)
 - [Bugs](#bugs)
 
 ## Code Validation
