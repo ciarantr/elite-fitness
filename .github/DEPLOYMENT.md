@@ -1,6 +1,12 @@
 # Deployment 🚀
 
-[Navigate back to README Documentation](./README.md)
+**Readme navigation links: 🧭**
+- [📕 View Readme documentation](./README.md)
+- [🎨 View Design documentation](./DESIGN.md#ux--ui-)
+- [✨ View Features documentation](./FEATURES.md#features-)
+- [🔓 View Security documentation](./SECURITY.md#security-)
+- [🧪 View Testing documentation](./TESTING.md#testing-)
+---
 
 The live deployed application can be found deployed on [Heroku](https://elite-fitness-f6b7c0ead930.herokuapp.com).
 

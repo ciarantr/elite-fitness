@@ -186,10 +186,8 @@ to validate all files excluding diregtories in the **tests** & **migrations** fo
 | Pass   | ./apps/marketing/apps.py                      | All clear, no errors found |
 | Pass   | ./apps/marketing/admin.py                     | All clear, no errors found |
 
-> [!NOTE]
 > [!IMPORTANT]
 > 
-> **Extend Python Validation screenshots and links**
 > **Extended Python Validation screenshots and links**
 > 
 > The following table contains links to the PEP8 CI Python Linter validation results for each file.
@@ -455,8 +453,7 @@ The three sizes tested were:
 
 I have conducted a series of Lighthouse Audits on my application. The Lighthouse Audit is a tool that is built into the Chrome DevTools. It is used to measure the performance, accessibility, best practices and SEO of a website.
 
-The Lighthouse Audit was conducted on the following pages:
->[!info]
+>[!note]
 > 
 > **The Lighthouse Audit was conducted on the following pages:**
 > Screenshots of the Lighthouse Audit results can be found in the [docs/testing/lighthouse](../docs/testing/lighthouse) directory.

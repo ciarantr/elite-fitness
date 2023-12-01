@@ -1,12 +1,19 @@
 # UX / UI 🎨
 
+**Readme navigation links: 🧭**
+- [📕 View Readme documentation](./README.md)
+- [🚀 View Deployment documentation (Local & Production)](./DEPLOYMENT.md#deployment-)
+- [✨ View Features documentation](./FEATURES.md#features-)
+- [🔓 View Security documentation](./SECURITY.md#security-)
+- [🧪 View Testing documentation](./TESTING.md#testing-)
+---
+
 The design process for the Elite Fitness e-commerce website commenced with the utilisation of the Figma design tool. I developed designs for various screen sizes, encompassing mobile, iPad, and desktop, with the aim of ensuring a seamless user experience across all devices.
 
 To actualise our design process, I conducted extensive research to meticulously select the ideal colours and images for the application. I examined the utilisation of colour and imagery in other successful restaurant applications and delved into the cultural significance of colors in Japanese cuisine.
 
 In order to complement the visual representation of the available dishes, I judiciously curated a color palette that would harmonize with the visual elements, thereby creating a cohesive and inviting experience for users. By dedicating time to thorough research and meticulous selection of design elements, we achieved the creation of an application that not only boasts aesthetic appeal but also enhances the overall user experience.
 
-[Navigate back to README Documentation](./README.md)
 
 ## Colour Scheme
 
@@ -45,7 +52,7 @@ I have sources my images from three different sources based on the product range
 
 In adherence to industry standards, meticulous mockups were created for mobile, tablet, and desktop dimensions.
 Figma, a vector graphics editor and prototyping tool, was employed for the purpose of designing the website mockups.
-The Figma design file can be accessed in the docs/design/mockups-high-fidelity/figma/elite-fitness.fig directory.
+The Figma design file can be accessed in the root directory inside [docs/design/figma](../docs/design/figma/Elite-Fitness.fig).
 I have provided a table to view the mockups & drop down menus to view the mockups for each page.
 
 | Page                              | Mobile                                                                                                         | Tablet                                                                                                         | Desktop                                                                                                         |
