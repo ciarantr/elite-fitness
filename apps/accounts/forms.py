@@ -67,15 +67,17 @@ class CustomerDeliveryForm(forms.ModelForm):
 
         # Update placeholders and set autofocus on first field
         for field in self.fields:
-            # Skip placeholder on select fields (django-countries)
-            if field is 'default_country':
-                continue
-            else:
-                self.fields[field].widget.attrs.update({
-                    'placeholder': placeholders[field],
-                })
-            # Set required fields to True and add * to placeholder
-            # if field is not in non_required_fields
+            field_obj = self.fields[field]
+
+            # set the required attribute for all fields including select
             if field not in non_required_fields:
-                self.fields[field].required = True
-                self.fields[field].widget.attrs['placeholder'] += ' *'
+                field_obj.required = True
+
+            # Skip placeholder for select fields (django-countries)
+            if field_obj.widget.input_type == 'select':
+                continue
+
+            field_obj.widget.attrs.update({'placeholder': placeholders[field]})
+
+            if field not in non_required_fields:
+                field_obj.widget.attrs['placeholder'] += ' *'
